@@ -397,14 +397,10 @@ def main(argv=None, *, root=ROOT):
     args = parser.parse_args(argv)
     try:
         if args.command in {"create", "start"}:
+            if args.command == "start":
+                from .preparation import prepare
+                prepare(root, args.lesson, endpoint=args.endpoint, allow_remote=args.allow_remote, split=args.split)
             session = Session.create(args.lesson, endpoint=args.endpoint, allow_remote=args.allow_remote, sandbox_image=args.sandbox_image, root=root)
-            if args.command == "start" and str(args.lesson).zfill(2) == '04':
-                if session._find_lesson('04')[1].get('practice_mode')=='learning-lab-v1':
-                    from .learning_lab import ensure_prepared
-                    ensure_prepared(root)
-                elif args.endpoint in (None, 'http://127.0.0.1:8089'):
-                    from .training_lesson import ensure_server
-                    ensure_server(root)
             if args.command == "start":
                 if args.split:
                     from .classroom_tmux import run_split

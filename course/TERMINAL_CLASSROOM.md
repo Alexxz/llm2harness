@@ -15,7 +15,7 @@
 В обычном терминале:
 
 ```bash
-cd /path/to/llm2harnes
+cd /path/to/llm2harness
 ./lab classroom start --lesson 00 --split
 ```
 
