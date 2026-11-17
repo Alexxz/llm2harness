@@ -1,0 +1,18 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "dtype": "float32",
+  "device": "cpu",
+  "threads": 4,
+  "adapter": null,
+  "endpoint": "http://127.0.0.1:8089",
+  "inputs_sha256": "fa5b87912ceaf70566e2ba77d0eeddb79c12c50f3f8cd2cb3487caeb62235140",
+  "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+  "weights_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "transformers": "4.51.3",
+    "peft": "0.15.2"
+  },
+  "previous_profile": "Qwen2.5-1.5B base GGUF Q4, not comparable as an adapter effect"
+}

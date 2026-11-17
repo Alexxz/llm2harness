@@ -1,0 +1,5 @@
+{
+  "fixture_kind": "offline_fixture",
+  "description": "Заданный правильный ответ для проверки проверяющей программы. Не измерение модели.",
+  "model_response": {"physical": 159, "available": 144}
+}

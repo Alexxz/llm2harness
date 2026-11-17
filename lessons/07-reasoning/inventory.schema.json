@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "physical": {"type": "integer", "minimum": 0},
+    "available": {"type": "integer", "minimum": 0},
+    "plan": {"type": "array", "items": {"type": "string"}, "minItems": 2, "maxItems": 2}
+  },
+  "required": ["physical", "available"],
+  "additionalProperties": false
+}

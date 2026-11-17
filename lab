@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+"""Запуск основного стенда системным Python, независимо от пользовательского pyenv."""
+
+from coursekit.__main__ import main
+
+raise SystemExit(main())

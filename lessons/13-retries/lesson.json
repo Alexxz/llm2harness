@@ -1,0 +1,78 @@
+{
+  "id": "13",
+  "slug": "retries",
+  "title": "Повторы запросов и пределы работы",
+  "duration_minutes": 75,
+  "depends_on": [
+    "09",
+    "11",
+    "12"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "failure-routing",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/cases.json",
+      "change": "Разные причины сбоя при одном лимите попыток",
+      "observe": "Разные реакции программы: retry_model, repair_json, repair_code, reconcile, stop_policy, retry_read",
+      "acceptance": "retry_experiment.py --self-test проходит; неизвестный эффект записи не вызывает повтор"
+    },
+    {
+      "id": "budget",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/cases.json",
+      "change": "Только максимальное число попыток 3 на 1",
+      "observe": "Новые запросы и исправления прекращаются; неопределённый эффект остаётся предметом сверки",
+      "acceptance": "A/B/C/F получают stop_budget, D reconcile, E stop_policy"
+    },
+    {
+      "id": "bounded-repetition",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/cases.json",
+      "change": "Только лимит 3 на 1 при заданном генераторе temporary, temporary, success",
+      "observe": "Настоящие повторные вызовы инъецированной функции считаются до вызова; LLM и HTTP не используются",
+      "acceptance": "--sequence даёт success/calls=3 при лимите 3 и stop_budget/calls=1 при лимите 1"
+    },
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Исходная инструкция классификации",
+      "observe": "Форма JSON и решения модели отдельно",
+      "acceptance": "Сохранён исходный ответ; решения оценены относительно заданного ключа без скрытого исправления"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Добавлено одно правило выбора реакции; входные случаи и настройки прежние",
+      "observe": "Влияние инструкции на долю правильных решений",
+      "acceptance": "Схема и смысл проверены отдельно; различие или его отсутствие объяснено"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "fixtures/cases.json",
+    "decision.schema.json",
+    "retry_experiment.py"
+  ],
+  "completion_criteria": [
+    "Различены транспортный повтор, исправление формы и исправление результата",
+    "Неопределённый побочный эффект ведёт к сверке вместо слепого повтора",
+    "Неуспешные попытки учитываются в бюджете",
+    "Сохранены реальные ответы модели и отдельные оценки формы и смысла либо live-этап отмечен not_run"
+  ],
+  "sources": [
+    "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2",
+    "https://www.rfc-editor.org/rfc/rfc9110.html#section-10.2.3"
+  ]
+}

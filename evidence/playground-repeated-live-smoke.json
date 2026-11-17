@@ -1,0 +1,121 @@
+{
+  "evidence": "real_model_author_pilot_not_learner",
+  "parent_session": "lesson-01-b52ab1245f8c",
+  "playground_session": "lesson-01-9b392c319974",
+  "results": [
+    {
+      "run_id": "2215072291c14e2882b8d88a9b07fe6c",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": " кошка\n\nАнглий",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.647631,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 8,
+            "temperature": 0.0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 1000.283,
+              "prompt_per_token_ms": 28.579514285714286,
+              "prompt_per_second": 34.99009780232194,
+              "predicted_n": 8,
+              "predicted_ms": 479.461,
+              "predicted_per_token_ms": 68.49442857142857,
+              "predicted_per_second": 14.599727610796288
+            },
+            "tokens_predicted": 8,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "run_id": "125b2c9024324462beb58f01977bdb00",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": " дом\n\nСлово \"house\" в русском языке произ",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.881482,
+          "prompt_sha256": "aa9fad294183d576f55a9435c9083ed5eda8958efa02c84d04135792ebaf8fc0",
+          "settings": {
+            "n_predict": 16,
+            "temperature": 0.9,
+            "seed": 7,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 631.165,
+              "prompt_per_token_ms": 18.033285714285714,
+              "prompt_per_second": 55.4530114946171,
+              "predicted_n": 16,
+              "predicted_ms": 1068.818,
+              "predicted_per_token_ms": 71.25453333333333,
+              "predicted_per_second": 14.034194783396238
+            },
+            "tokens_predicted": 16,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "run_id": "c3d1b4cac2264c19903475ef5f3bcbdf",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": " кошка\n\nАнглийское слово:",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.558766,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 12,
+            "temperature": 0.5,
+            "seed": 23,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 621.675,
+              "prompt_per_token_ms": 17.762142857142855,
+              "prompt_per_second": 56.29951341134837,
+              "predicted_n": 12,
+              "predicted_ms": 770.361,
+              "predicted_per_token_ms": 70.03281818181819,
+              "predicted_per_second": 14.279019836154738
+            },
+            "tokens_predicted": 12,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    }
+  ]
+}

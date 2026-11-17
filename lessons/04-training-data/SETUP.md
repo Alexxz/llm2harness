@@ -1,0 +1,26 @@
+# Подготовка автора, отдельно от занятия
+
+Профиль уроков 04–05: Qwen/Qwen2.5-0.5B-Instruct, revision 7ae557604adf67be50417f59c2c2f167def9a775, Transformers 4.51.3, PyTorch 2.6.0 CPU float32, 4 потока. Веса публичные, локальные; token=False, trust_remote_code=False. Нет внешнего или платного API для ученического ядра. Уже выполненное upstream instruction tuning объясняется ученику.
+
+Подготовлено отдельное work/training-venv по requirements-training.txt и work/model-cache. Основной практикум F8 запускает фиксированный tools/learning_episode_worker.py в отдельном управляемом процессе для каждого действия. Он читает только уже подготовленные публичные веса, использует CPU float32, seed=42 и safetensors; remote code, downloads и implicit token отключены. До/после повторяет одинаковый шаблон сообщений. Обучение меняет только LoRA-параметры q_proj/v_proj, r=4, 12 шагов, learning_rate=0.001, четыре видимые пары. Точные параметры — learning-lab.json.
+
+У каждого опыта своя дочерняя сессия и каталог learning-adapters с уникальным ID. Готовность добавки подтверждают завершённый manifest, разные digest параметров и checksum весов. При остановке незавершённая добавка не становится доступной для шага «после». Закрытие F8 сохраняет результат и место. Авторские адаптеры из results не подключаются к пользовательскому опыту.
+
+F8 не требует отдельного HTTP-сервера и не загружает модель заранее при открытии занятия. Проверяются наличие среды и весов; сами вычисления начинаются только по F5. F9 остаётся отдельной свободной песочницей: для неё при необходимости поднимается прежний локальный сервер 8089. Он не является процессом обучения и не содержит добавку текущего F8-опыта.
+
+Исторические data/, profile.json и команды baseline/report сохранены как материалы старого эксперимента. Они не применяются к новому практикуму и не выдаются как задания. Старый before-отчёт действий с файлами не сравнивается с новым опытом про напитки. Урок 05 требует отдельной адаптации к продолжению этого опыта.
+
+Запуск занятия: ./lab classroom start --lesson 04 --split. Методические и технические результаты отдельно записаны в STATUS.json. Человеческая понятность нового экрана ещё не подтверждена. Авторский ресурсный прогон: около 22.8 с на процесс обучения вместе с загрузкой и около 3.1 GiB пиковой RSS; во время других работ время может отличаться.
+
+## Восстановление среды автором
+
+Эти команды не являются заданием ученика и не выполняются стендом автоматически:
+
+```bash
+/usr/bin/python3 -m venv work/training-venv
+work/training-venv/bin/python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+work/training-venv/bin/python -m pip install -r requirements-training.txt
+HF_HOME="$PWD/work/hf-home" HF_HUB_DISABLE_IMPLICIT_TOKEN=1 HF_HUB_DISABLE_XET=1 work/training-venv/bin/python -c "from huggingface_hub import snapshot_download; snapshot_download('Qwen/Qwen2.5-0.5B-Instruct', revision='7ae557604adf67be50417f59c2c2f167def9a775', cache_dir='work/model-cache', token=False, allow_patterns=['*.json','*.safetensors','merges.txt'])"
+```
+
+Набор и уже отрендеренные входы сохранены в Git: пересоздавать их для старого эксперимента не нужно. SHA256 публичного model.safetensors должен совпасть с weights_sha256 в profile.json. При другом checkpoint, tokenizer, precision или версиях библиотек сначала оформляется отдельный профиль с новым исходным измерением; старый frozen-отчёт не перезаписывается.

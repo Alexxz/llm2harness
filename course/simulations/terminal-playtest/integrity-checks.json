@@ -1,0 +1,16 @@
+{
+  "documents_unchanged": true,
+  "runtime_unchanged": true,
+  "actual_console_commands_equal_verbatim_choices": true,
+  "all_advices_in_actual_terminal": true,
+  "bounded_advice": true,
+  "bounded_commands": true,
+  "console_closed_no_active_run": true,
+  "console_owner_detached": true,
+  "console_and_server_reaped": true,
+  "temporary_root_removed": true,
+  "no_heldout_in_teacher_material": true,
+  "no_teacher_actions_after_posttest": true,
+  "packet_omits_private_card_and_agent_identifiers": true,
+  "schema_only_validator_pass_recorded": true
+}

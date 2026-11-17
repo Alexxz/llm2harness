@@ -1,0 +1,80 @@
+{
+  "id": "15",
+  "slug": "mcp",
+  "title": "Подключение инструмента через MCP",
+  "duration_minutes": 75,
+  "depends_on": [
+    "08",
+    "12",
+    "14"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "protocol",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/protocol-example.json",
+      "change": "Прогноз по заданному примеру сменяется настоящим локальным stdio-обменом",
+      "observe": "initialize, initialized notification, tools/list и tools/call с согласованными id",
+      "acceptance": "mcp-demo содержит настоящую трассу клиента и результат отдельного сервера без модели"
+    },
+    {
+      "id": "negative-calls",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/notes-a.txt",
+      "change": "Валидные аргументы заменяются неверными, неизвестным инструментом и выходом за каталог",
+      "observe": "Протокольная ошибка отличается от результата инструмента isError; соединение остаётся пригодным",
+      "acceptance": "mcp_experiment.py --self-test проверяет отказ, чтение после ошибок и завершение дочернего процесса"
+    },
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Предписан прямой read_file; MCP включён в обеих конфигурациях",
+      "observe": "Правильный ответ сопоставляется с фактическим маршрутом инструмента",
+      "acceptance": "Сохранён реальный вызов read_file и ответ на основании notes.txt"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Только инструкция маршрута заменена на обнаруженный MCP-инструмент",
+      "observe": "Модель предлагает mcp_call, клиент выполняет tools/call, данные возвращаются в контекст",
+      "acceptance": "Сохранён настоящий tools/call и результат read_note; ответ соответствует версии A"
+    },
+    {
+      "id": "fresh-data",
+      "mode": "manual",
+      "change": "Человек заменяет только notes.txt синтетической версией B и повторяет вызов",
+      "observe": "Новый факт появляется в результате инструмента и ответе модели без изменения весов",
+      "acceptance": "В инструментальном результате версия B, выход x и пауза space; ответ или расхождение сохранены"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "fixtures/notes-a.txt",
+    "fixtures/notes-b.txt",
+    "fixtures/protocol-example.json",
+    "mcp_experiment.py"
+  ],
+  "completion_criteria": [
+    "Настоящий локальный клиент и отдельный сервер проходят жизненный цикл MCP",
+    "Отрицательные вызовы отклонены без чтения за пределами workspace",
+    "Сервер закрывается вместе с клиентом",
+    "Подключение и обнаружение отличаются от фактического выбора инструмента моделью",
+    "Новые данные прослежены от заметки до ответа без изменения весов"
+  ],
+  "sources": [
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/transports",
+    "https://modelcontextprotocol.io/specification/2025-06-18/server/tools"
+  ]
+}

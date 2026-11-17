@@ -1,0 +1,43 @@
+{
+  "description": "Заполняется наблюдателем для реальных сессий; оценки заранее не заданы.",
+  "run_id": null,
+  "criteria": [
+    {
+      "id": "frontier",
+      "question": "Все вопросы раунда имеют уже решённые предпосылки?",
+      "result": null,
+      "evidence": null
+    },
+    {
+      "id": "coverage",
+      "question": "Все существенные независимые вопросы текущего фронта заданы?",
+      "result": null,
+      "evidence": null
+    },
+    {
+      "id": "recommendations",
+      "question": "Для каждого вопроса дана понятная рекомендация?",
+      "result": null,
+      "evidence": null
+    },
+    {
+      "id": "waiting",
+      "question": "Вопросы отправлены через ask_user и исполнение остановилось?",
+      "result": null,
+      "evidence": null
+    },
+    {
+      "id": "uses_answers",
+      "question": "Следующий раунд учитывает фактические ответы человека?",
+      "result": null,
+      "evidence": null
+    },
+    {
+      "id": "shared_understanding",
+      "question": "Перед завершением человек подтвердил резюме?",
+      "result": null,
+      "evidence": null
+    }
+  ]
+}
+

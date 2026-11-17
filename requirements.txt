@@ -1,0 +1,3 @@
+# Main harness; training dependencies are in requirements-training.txt.
+jsonschema==4.10.3
+rich==13.7.1

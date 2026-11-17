@@ -1,0 +1,74 @@
+{
+  "id": "06",
+  "slug": "constrained-output",
+  "title": "Ограничение формата ответа при генерации",
+  "duration_minutes": 75,
+  "depends_on": [
+    "03",
+    "05"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Обычная генерация без json_schema",
+      "observe": "Форма и смысл настоящего ответа при фиксированных весах",
+      "acceptance": "Сохранён исходный запрос, ответ и результат независимых проверок"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Сначала повторяется тот же промпт baseline со схемой; затем отдельная пара для variation с просьбой пояснить",
+      "observe": "Эффект ограничения формы отдельно от изменения инструкции",
+      "acceptance": "Каждая сравниваемая пара имеет одинаковый промпт; отличие только в schema"
+    },
+    {
+      "id": "wrong-meaning",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/synthetic-wrong-meaning.json",
+      "change": "Задан объект правильной формы с другим именем файла",
+      "observe": "Schema проходит, семантическая проверка отказывает",
+      "acceptance": "Ожидаемый ненулевой код check_semantics.py сохранён как отрицательный результат"
+    },
+    {
+      "id": "wrong-contract",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Движку передаётся finish-only.schema.json",
+      "observe": "Конфликт разрешённого формата с потребностью чтения файла",
+      "acceptance": "Объект по схеме или явный отказ не выдан за правильное чтение файла"
+    }
+  ],
+  "artifacts": [
+    "INSTRUCTOR.md",
+    "INTRO.md",
+    "README.md",
+    "check_semantics.py",
+    "command.schema.json",
+    "finish-only.schema.json",
+    "fixtures/README.md",
+    "fixtures/expected.json",
+    "fixtures/synthetic-invalid.json",
+    "fixtures/synthetic-valid.json",
+    "fixtures/synthetic-wrong-meaning.json",
+    "prompts/baseline.txt",
+    "prompts/variation.txt"
+  ],
+  "completion_criteria": [
+    "Показан синтетический объект правильной формы с неправильным смыслом",
+    "Получена настоящая сопоставимая пара без схемы и со схемой",
+    "Ученик отличает prompting, дообучение, ограничение генерации и проверку результата"
+  ],
+  "sources": [
+    "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md",
+    "https://github.com/ggml-org/llama.cpp/blob/master/grammars/README.md",
+    "https://json-schema.org/understanding-json-schema"
+  ]
+}

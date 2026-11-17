@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "instruction": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.",
+  "request": "Две чашки чая.",
+  "pairs": [
+    {"request": "Две чашки чая.", "answer": "{\"drink\":\"tea\",\"cups\":2}"},
+    {"request": "Три чашки кофе.", "answer": "{\"drink\":\"coffee\",\"cups\":3}"},
+    {"request": "Одна чашка чая.", "answer": "{\"drink\":\"tea\",\"cups\":1}"},
+    {"request": "Одна чашка кофе.", "answer": "{\"drink\":\"coffee\",\"cups\":1}"}
+  ],
+  "new_request": "Четыре чашки кофе.",
+  "steps": 12,
+  "learning_rate": 0.001,
+  "rank": 4,
+  "max_new_tokens": 64,
+  "max_seconds": 120
+}

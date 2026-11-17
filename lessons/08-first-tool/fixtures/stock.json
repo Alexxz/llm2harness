@@ -1,0 +1,8 @@
+{
+  "record_id": "synthetic-stock-08",
+  "initial": 120,
+  "arrivals": [32, 47],
+  "sales": [29, 18],
+  "returns": [7],
+  "reserved": 15
+}

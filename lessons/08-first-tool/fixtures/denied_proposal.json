@@ -1,0 +1,5 @@
+{
+  "fixture_kind": "offline_fixture",
+  "description": "Заданное отклоняемое предложение: чтение вне единственного разрешённого имени. Не ответ модели.",
+  "model_response": {"action": "read_file", "arguments": {"path": "../outside.txt"}}
+}

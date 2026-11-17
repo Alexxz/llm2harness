@@ -1,0 +1,25 @@
+# Опыты публичных моделей
+
+Авторские результаты, подготовка и выбор примеров; не результаты нового ученика и не обещание точного повторения текста. Входы, ответы, параметры и измерения сохранены из реальных опытов. Персональные пути и сведения о подключении преподавателя обезличены; это редакционные копии. Хеши опубликованных файлов — в manifest.json. Исторические SHA256 исходных пакетов не следует использовать для проверки изменённых копий.
+
+- [learning-episode-benchmark.json](learning-episode-benchmark.json)
+- [learning-lab-controller-pilot.json](learning-lab-controller-pilot.json)
+- [learning-lab-preflight.json](learning-lab-preflight.json)
+- [learning-lab-terminal-pilot.json](learning-lab-terminal-pilot.json)
+- [lesson-01-example-candidates.json](lesson-01-example-candidates.json)
+- [lesson-01-live-pilot-v2.json](lesson-01-live-pilot-v2.json)
+- [lesson-01-live-pilot.json](lesson-01-live-pilot.json)
+- [lesson-01-preflight-v2.json](lesson-01-preflight-v2.json)
+- [lesson-01-preflight.json](lesson-01-preflight.json)
+- [lesson-01-repair-preflight-20261117.json](lesson-01-repair-preflight-20261117.json)
+- [lesson-01-simple-example-pilot.json](lesson-01-simple-example-pilot.json)
+- [lesson-02-example-selection.json](lesson-02-example-selection.json)
+- [lesson-02-live-pilot.json](lesson-02-live-pilot.json)
+- [lesson-02-preflight.json](lesson-02-preflight.json)
+- [lesson-03-example-selection.json](lesson-03-example-selection.json)
+- [lesson-03-live-pilot.json](lesson-03-live-pilot.json)
+- [lesson-03-preflight.json](lesson-03-preflight.json)
+- [lesson-04-live-pilot.json](lesson-04-live-pilot.json)
+- [lesson-04-preflight.json](lesson-04-preflight.json)
+- [playground-live-smoke.json](playground-live-smoke.json)
+- [playground-repeated-live-smoke.json](playground-repeated-live-smoke.json)

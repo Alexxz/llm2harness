@@ -1,0 +1,294 @@
+{
+  "evidence": "author_pilot_real_model_not_learner",
+  "session": "lesson-01-6fee7c6d870d",
+  "results": [
+    {
+      "name": "baseline",
+      "run_id": "a954de49fed047a09edee1e1d1442ad9",
+      "result": {
+        "text": "\"Вот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список\".\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список.\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 9.334544,
+          "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+          "settings": {
+            "n_predict": 96,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 41,
+              "prompt_ms": 340.514,
+              "prompt_per_token_ms": 8.305219512195123,
+              "prompt_per_second": 120.40620943632274,
+              "predicted_n": 96,
+              "predicted_ms": 8901.949,
+              "predicted_per_token_ms": 93.70472631578949,
+              "predicted_per_second": 10.671820294634355
+            },
+            "tokens_predicted": 96,
+            "tokens_evaluated": 41,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "repeat",
+      "run_id": "ce001ce418ed466f9511eb30f22f4fec",
+      "result": {
+        "text": "\"Вот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список\".\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список.\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 9.011244,
+          "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+          "settings": {
+            "n_predict": 96,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 41,
+              "prompt_ms": 726.086,
+              "prompt_per_token_ms": 17.70941463414634,
+              "prompt_per_second": 56.467140256112906,
+              "predicted_n": 96,
+              "predicted_ms": 8071.208,
+              "predicted_per_token_ms": 84.96008421052632,
+              "predicted_per_second": 11.770233154690104
+            },
+            "tokens_predicted": 96,
+            "tokens_evaluated": 41,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "variation",
+      "run_id": "5e0d9a38143d471d94fe21d09380fc92",
+      "result": {
+        "text": "\"Карта города, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин, где находится магазин",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 8.832529,
+          "prompt_sha256": "56c48389aeb6833d5a2a5090eb5393793c35c2611d0d8c42fcf9b9bb53556854",
+          "settings": {
+            "n_predict": 96,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 65,
+              "prompt_ms": 1281.055,
+              "prompt_per_token_ms": 19.708538461538463,
+              "prompt_per_second": 50.739429610750506,
+              "predicted_n": 96,
+              "predicted_ms": 7365.956,
+              "predicted_per_token_ms": 77.53637894736842,
+              "predicted_per_second": 12.897171799560029
+            },
+            "tokens_predicted": 96,
+            "tokens_evaluated": 65,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t0s7",
+      "run_id": "d43ed86b59e64a72900206622a8478c9",
+      "result": {
+        "text": "\"Вот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список\".\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожал",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.698064,
+          "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0,
+            "seed": 7,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 41,
+              "prompt_ms": 709.572,
+              "prompt_per_token_ms": 17.306634146341462,
+              "prompt_per_second": 57.7813104237484,
+              "predicted_n": 64,
+              "predicted_ms": 4804.389,
+              "predicted_per_token_ms": 76.26014285714285,
+              "predicted_per_second": 13.11300979167174
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 41,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t9s7",
+      "run_id": "1e42363f23cc46a8aa08e3c2f7bd0b86",
+      "result": {
+        "text": "«Молодежный клуб «Красный угол» в этом городе, как и в любом другом городе, нуждается в поддержке. К сожалению, в нынешних реалиях низкий уровень доходов не позволяет клубу заниматься серьёзными мероприятия",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.668322,
+          "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0.9,
+            "seed": 7,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 41,
+              "prompt_ms": 625.75,
+              "prompt_per_token_ms": 15.262195121951219,
+              "prompt_per_second": 65.52137435077906,
+              "predicted_n": 64,
+              "predicted_ms": 4845.205,
+              "predicted_per_token_ms": 76.90801587301587,
+              "predicted_per_second": 13.00254581591491
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 41,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t0s42",
+      "run_id": "3bb5eaf9218640beaeb14ceed6ca1985",
+      "result": {
+        "text": "\"Вот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список\".\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожал",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.819739,
+          "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 41,
+              "prompt_ms": 661.424,
+              "prompt_per_token_ms": 16.132292682926828,
+              "prompt_per_second": 61.98746945983212,
+              "predicted_n": 64,
+              "predicted_ms": 4978.687,
+              "predicted_per_token_ms": 79.02677777777778,
+              "predicted_per_second": 12.65393867901316
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 41,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t9s42",
+      "run_id": "f03e5b1847234b06825aed58e82fee00",
+      "result": {
+        "text": "Изображение: Картинка \"Компас\" и \"Навигатор\" из цикла \"Манчестер\", 2010 года, виртуальная картина\nСохранила. Не помню, но уже на протяж",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.759251,
+          "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0.9,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 41,
+              "prompt_ms": 710.018,
+              "prompt_per_token_ms": 17.317512195121953,
+              "prompt_per_second": 57.74501491511482,
+              "predicted_n": 64,
+              "predicted_ms": 4873.284,
+              "predicted_per_token_ms": 77.35371428571428,
+              "predicted_per_second": 12.927627447938598
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 41,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "short",
+      "run_id": "9d1907dbbd16453f9179108038e1d873",
+      "result": {
+        "text": "\"Вот и всё, что я знаю о городе.",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.416257,
+          "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+          "settings": {
+            "n_predict": 12,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 41,
+              "prompt_ms": 556.142,
+              "prompt_per_token_ms": 13.564439024390245,
+              "prompt_per_second": 73.72217886798695,
+              "predicted_n": 12,
+              "predicted_ms": 697.309,
+              "predicted_per_token_ms": 63.39172727272727,
+              "predicted_per_second": 15.774929048671394
+            },
+            "tokens_predicted": 12,
+            "tokens_evaluated": 41,
+            "truncated": false
+          }
+        }
+      }
+    }
+  ]
+}

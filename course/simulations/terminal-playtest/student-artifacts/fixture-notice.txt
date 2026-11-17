@@ -1,0 +1,1 @@
+SYNTHETIC HTTP FIXTURE, NO MODEL. Responses are fixed by the test harness. They are not measurements of model quality. After a completed request, validator.json records the trusted syntax/schema-only checker on the raw response.

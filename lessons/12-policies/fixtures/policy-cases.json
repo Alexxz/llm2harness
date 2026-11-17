@@ -1,0 +1,48 @@
+{
+  "mode": "offline_fixture",
+  "description": "Заданные действия для проверки политики стенда; настоящая модель не вызывается.",
+  "cases": [
+    {
+      "name": "read_inside",
+      "action": "read_file",
+      "path": "notes.txt",
+      "expect": "allow"
+    },
+    {
+      "name": "write_inside",
+      "action": "write_file",
+      "path": "inside.txt",
+      "expect": "allow"
+    },
+    {
+      "name": "read_parent",
+      "action": "read_file",
+      "path": "../outside-canary.txt",
+      "expect": "deny"
+    },
+    {
+      "name": "read_absolute",
+      "action": "read_file",
+      "path": "synthetic absolute path created by probe",
+      "expect": "deny"
+    },
+    {
+      "name": "write_parent",
+      "action": "write_file",
+      "path": "../outside-written.txt",
+      "expect": "deny"
+    },
+    {
+      "name": "read_symlink",
+      "action": "read_file",
+      "path": "escape.txt",
+      "expect": "deny"
+    },
+    {
+      "name": "shell_not_granted",
+      "action": "run_bash",
+      "expect": "deny"
+    }
+  ]
+}
+

@@ -1,0 +1,7 @@
+{
+  "outer_stdin_isatty": true,
+  "child_master_isatty": true,
+  "console_pid": 81,
+  "runner_pid": 2,
+  "entrypoint": "unchanged coursekit.classroom_console.main -> StudentConsole.run -> Session.claim_owner"
+}

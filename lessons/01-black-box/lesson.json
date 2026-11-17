@@ -1,0 +1,97 @@
+{
+  "id": "01",
+  "slug": "black-box",
+  "title": "Модель как чёрный ящик",
+  "duration_minutes": 75,
+  "depends_on": [
+    "00"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "passed"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Исходный запрос и повтор с теми же настройками",
+      "observe": "Продолжение текста и совпадение либо различие двух ответов",
+      "acceptance": "Сохранены два реальных результата, исходный промпт и профиль; сравнивается только text"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Во входе заменено только cat на house",
+      "observe": "Изменение перевода при тех же весах и настройках; возможное продолжение следующих пар",
+      "acceptance": "Сопоставлены входы, отличающиеся одним словом, реальные выходы и вывод; правильный перевод не гарантируется"
+    },
+    {
+      "id": "length",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Только max_tokens уменьшен с 32 до 8",
+      "observe": "Объём и завершённость продолжения",
+      "acceptance": "Есть отдельный результат и объяснение, что лимит является верхней границей"
+    },
+    {
+      "id": "temperature",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Температура 0 и 0.9 при одинаковом наборе seed",
+      "observe": "Попарные ответы и число различных продолжений",
+      "acceptance": "Сохранены минимум две пары запросов; отсутствие различий не заменено выдуманным эффектом"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "run-card.json",
+    "compare.py",
+    "INTRO.md",
+    "REFERENCE.md",
+    "TEACHER_START.md",
+    "SETUP.md",
+    "AFTER_SHOW.md",
+    "EXPLANATIONS.md"
+  ],
+  "completion_criteria": [
+    "Выполнены два реальных исходных запроса и запрос изменённого промпта с сохранёнными параметрами",
+    "Сравнение температуры проведено минимум для двух seed, совпадающих внутри каждой пары",
+    "Сравнены ответы с лимитами 32 и 8 при прочих одинаковых условиях",
+    "Ученик различает вход, выход, консоль, преподавателя и исследуемую модель; текст не принят за исполненное действие",
+    "Смена входа не названа изменением весов; профиль модели зафиксирован"
+  ],
+  "sources": [
+    "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md",
+    "https://huggingface.co/Qwen/Qwen2.5-1.5B",
+    "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct"
+  ],
+  "preparation": {
+    "guide": "SETUP.md",
+    "profile": "base",
+    "weights_ready": true,
+    "live_pilot": "evidence/lesson-01-live-pilot-v2.json",
+    "note": "Новый пример с переводами проверен восемью реальными авторскими запросами через classroom. Старые пилоты сохранены отдельно.",
+    "example_pilot": "evidence/lesson-01-example-candidates.json",
+    "previous_live_pilot_note": "Восьмизапросный пилот относится к прежнему примеру об истории; новый пример отдельно проверен на настоящей модели."
+  },
+  "initial_generation": {
+    "temperature": 0,
+    "seed": 42,
+    "max_tokens": 32
+  },
+  "pedagogy_revision": "mechanism_explanation_then_worked_example_then_experiment_then_assessment",
+  "teaching_order": [
+    "first_completion",
+    "optional_play",
+    "max_tokens",
+    "temperature",
+    "conclusion"
+  ],
+  "delivery_contract": "interactive-v1"
+}

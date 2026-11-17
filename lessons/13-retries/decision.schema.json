@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["A", "B", "C", "D", "E", "F"],
+  "properties": {
+    "A": {"enum": ["retry_model", "repair_json", "repair_code", "reconcile", "stop_policy", "retry_read", "stop_budget"]},
+    "B": {"enum": ["retry_model", "repair_json", "repair_code", "reconcile", "stop_policy", "retry_read", "stop_budget"]},
+    "C": {"enum": ["retry_model", "repair_json", "repair_code", "reconcile", "stop_policy", "retry_read", "stop_budget"]},
+    "D": {"enum": ["retry_model", "repair_json", "repair_code", "reconcile", "stop_policy", "retry_read", "stop_budget"]},
+    "E": {"enum": ["retry_model", "repair_json", "repair_code", "reconcile", "stop_policy", "retry_read", "stop_budget"]},
+    "F": {"enum": ["retry_model", "repair_json", "repair_code", "reconcile", "stop_policy", "retry_read", "stop_budget"]}
+  },
+  "additionalProperties": false
+}

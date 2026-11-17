@@ -1,0 +1,58 @@
+{
+  "id": "10",
+  "slug": "code-artifacts",
+  "title": "Создание кода и проверка артефакта",
+  "depends_on": [
+    "09"
+  ],
+  "duration_minutes": 75,
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Исходный запрос создания greet.sh",
+      "observe": "Связь предложения действия, записи файла и фактической проверки",
+      "acceptance": "Сохранены артефакт и трасса; созданный файл оценён независимым контейнерным оракулом"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Добавлено только явное требование проверки перед завершением",
+      "observe": "Запрошенные проверки, расход действий и результат того же независимого оракула",
+      "acceptance": "Сравнение проведено на одинаковой модели, образе и новых рабочих каталогах"
+    },
+    {
+      "id": "independent-oracle",
+      "mode": "manual",
+      "change": "Ученик запускает доверенный check.py через DockerSandbox",
+      "observe": "Реальные stdout, stderr, exit code и сравнение с контрактом",
+      "acceptance": "Хотя бы один созданный моделью артефакт проходит проверки; при неуспехе приёмка исполнения остаётся открытой до исправления и повторного прогона"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "check.py"
+  ],
+  "completion_criteria": [
+    "Показать write_file и фактически созданный файл",
+    "Получить контейнерный отчёт независимой проверки",
+    "Объяснить отличие синтаксической и функциональной проверки",
+    "Сопоставить два запроса с одинаковым функциональным контрактом"
+  ],
+  "sources": [
+    "https://www.gnu.org/software/bash/manual/bash.html",
+    "https://docs.docker.com/engine/containers/run/",
+    "https://docs.docker.com/reference/cli/docker/container/run/"
+  ]
+}

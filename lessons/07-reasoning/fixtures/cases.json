@@ -1,0 +1,9 @@
+{
+  "fixture_kind": "offline_fixture",
+  "description": "Синтетические исходные данные для независимого расчёта. Ответы модели здесь не записаны.",
+  "cases": {
+    "base": {"initial": 120, "arrivals": [32, 47], "sales": [29, 18], "returns": [7], "reserved": 15},
+    "no_reserve": {"initial": 120, "arrivals": [32, 47], "sales": [29, 18], "returns": [7], "reserved": 0},
+    "small": {"initial": 11, "arrivals": [8], "sales": [7, 3], "returns": [1], "reserved": 4}
+  }
+}

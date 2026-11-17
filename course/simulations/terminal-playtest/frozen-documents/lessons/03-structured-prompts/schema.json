@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Учебная заявка на напиток",
+  "type": "object",
+  "properties": {
+    "drink": {"enum": ["tea", "coffee", null]},
+    "cups": {"type": ["integer", "null"], "minimum": 1, "maximum": 20},
+    "urgent": {"type": "boolean"}
+  },
+  "required": ["drink", "cups", "urgent"],
+  "additionalProperties": false
+}

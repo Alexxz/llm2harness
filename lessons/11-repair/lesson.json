@@ -1,0 +1,66 @@
+{
+  "id": "11",
+  "slug": "repair",
+  "title": "Исправление кода по результату выполнения",
+  "depends_on": [
+    "10"
+  ],
+  "duration_minutes": 80,
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Ремонт исходной ошибочной фикстуры по контракту без входного отчёта",
+      "observe": "Прочитанные данные, предложенные изменения и результат независимой проверки",
+      "acceptance": "Сохранены исходная фикстура, трасса и полный отчёт после ремонта"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Добавлен фактический исходный отчёт проверки, подставленный build_task.py",
+      "observe": "Влияние обратной связи на действия и результат при том же исходном коде",
+      "acceptance": "Отчёт получен настоящим контейнерным запуском; веса, бюджет и начальные файлы сохранены"
+    },
+    {
+      "id": "seeded-defect",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/sum-lines.sh",
+      "change": "Заданная преподавателем ошибка чтения последней строки",
+      "observe": "Разница входов с завершающим переводом строки и без него",
+      "acceptance": "Исходный дефект воспроизводится через контейнерный оракул; он не объявляется неудачей ещё не вызванной модели"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "fixtures/sum-lines.sh",
+    "fixtures/normal.txt",
+    "fixtures/no-final-newline.txt",
+    "fixtures/empty.txt",
+    "fixtures/single-no-newline.txt",
+    "prepare.py",
+    "build_task.py",
+    "check.py",
+    "test_helpers.py"
+  ],
+  "completion_criteria": [
+    "Получить настоящий исходный отчёт дефекта",
+    "Сравнить ремонт с фактическим отчётом и без него на свежих копиях",
+    "После исправления повторить весь независимый набор проверок",
+    "Объяснить, почему передача ошибки меняет контекст, а не веса"
+  ],
+  "sources": [
+    "https://www.gnu.org/software/bash/manual/bash.html",
+    "https://docs.docker.com/reference/cli/docker/container/run/"
+  ]
+}

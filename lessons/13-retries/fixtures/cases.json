@@ -1,0 +1,12 @@
+{
+  "kind": "offline_fixture",
+  "description": "Заданные учебные ситуации, не реальные ответы модели или инструментов",
+  "cases": [
+    {"id": "A", "failure": "model_transport", "temporary": true, "effect": "none", "attempts_used": 1, "expected": "retry_model"},
+    {"id": "B", "failure": "model_output", "effect": "none", "attempts_used": 1, "expected": "repair_json"},
+    {"id": "C", "failure": "check_failed", "effect": "none", "attempts_used": 1, "expected": "repair_code"},
+    {"id": "D", "failure": "tool_timeout", "effect": "unknown_write", "attempts_used": 1, "expected": "reconcile"},
+    {"id": "E", "failure": "policy_denied", "effect": "none", "attempts_used": 1, "expected": "stop_policy"},
+    {"id": "F", "failure": "tool_timeout", "effect": "none", "attempts_used": 1, "expected": "retry_read"}
+  ]
+}

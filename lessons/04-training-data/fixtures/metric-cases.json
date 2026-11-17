@@ -1,0 +1,10 @@
+{
+  "source": "synthetic_stand_fixture_not_model_output",
+  "expected": {"action": "read_file", "arguments": {"path": "report.txt"}},
+  "cases": [
+    {"id": "not_json", "output": "Вот ответ: прочитать report.txt", "expected_metrics": {"valid_json": false, "schema_valid": false, "semantic_correct": false}},
+    {"id": "wrong_shape", "output": "{\"action\":\"read_file\",\"arguments\":{\"path\":17}}", "expected_metrics": {"valid_json": true, "schema_valid": false, "semantic_correct": false}},
+    {"id": "wrong_meaning", "output": "{\"action\":\"read_file\",\"arguments\":{\"path\":\"other.txt\"}}", "expected_metrics": {"valid_json": true, "schema_valid": true, "semantic_correct": false}},
+    {"id": "correct", "output": "{\"arguments\":{\"path\":\"report.txt\"},\"action\":\"read_file\"}", "expected_metrics": {"valid_json": true, "schema_valid": true, "semantic_correct": true}}
+  ]
+}

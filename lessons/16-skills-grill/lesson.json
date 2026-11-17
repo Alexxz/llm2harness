@@ -1,0 +1,59 @@
+{
+  "id": "16",
+  "slug": "skills-grill",
+  "title": "Навыки и обсуждение требований через GrillMe",
+  "duration_minutes": 75,
+  "depends_on": [
+    "14",
+    "15"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Контроль без файла навыка при тех же весах и доступных действиях",
+      "observe": "Качество вопросов и переходы состояния",
+      "acceptance": "Сохранены запрос, ответ, статус и независимая рубрика"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Добавлен только skills/grill-me.md",
+      "observe": "Готовый фронт вопросов, рекомендации и ожидание ответа",
+      "acceptance": "Настоящий ask_user, ответ человека и продолжение с учётом ответа"
+    },
+    {
+      "id": "state-fixtures",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/interview-rounds.json",
+      "change": "Заданные правильные и неправильные переходы",
+      "observe": "Разница между паузой и завершением",
+      "acceptance": "Ученик правильно классифицирует три записи"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "rubric.json",
+    "fixtures/interview-rounds.json"
+  ],
+  "completion_criteria": [
+    "Ученик показывает подключённую инструкцию в запросе к той же модели",
+    "Состоялся реальный раунд вопрос–ответ и продолжение сохранённой сессии",
+    "Есть различение ask_user и finish и явное согласование требований"
+  ],
+  "sources": [
+    "https://learn.chatgpt.com/docs/build-skills",
+    "https://agentskills.io/specification"
+  ]
+}

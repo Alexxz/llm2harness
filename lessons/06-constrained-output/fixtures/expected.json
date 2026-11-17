@@ -1,0 +1,6 @@
+{
+  "action": "read_file",
+  "arguments": {
+    "path": "report.txt"
+  }
+}

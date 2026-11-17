@@ -1,0 +1,78 @@
+{
+  "id": "18",
+  "slug": "snake",
+  "title": "Агент создаёт и проверяет Змейку",
+  "duration_minutes": 90,
+  "depends_on": [
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Согласованная спецификация передана нашему агенту для самостоятельной реализации",
+      "observe": "Файлы, настоящие проверки, обратная связь и причины остановки",
+      "acceptance": "Есть трасса модели и контейнерных действий и реальные результаты независимой проверки"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "В новой ограниченной задаче возвращён настоящий независимый отчёт",
+      "observe": "Исправление по конкретным неуспешным сценариям без подмены требований",
+      "acceptance": "Повторный независимый отчёт подтверждает исправление либо честно сохраняет неуспех"
+    },
+    {
+      "id": "checker-fixture",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/synthetic-good-report.json",
+      "change": "Доверенный checker получает явно синтетические результаты",
+      "observe": "Работа проверяющего кода без модели и контейнера",
+      "acceptance": "Фикстура проходит, контролируемая неправильная оценка счёта обнаруживается"
+    },
+    {
+      "id": "manual-play",
+      "mode": "manual",
+      "change": "Человек играет в изолированной TTY",
+      "observe": "Управление, выход, прерывание и восстановление терминала",
+      "acceptance": "Заполнен manual-acceptance.json с реальными наблюдениями"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "HEADLESS.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "manual-acceptance.json",
+    "fixtures/headless_cases.json",
+    "fixtures/synthetic-good-report.json",
+    "check_snake.py",
+    "test_checker.py"
+  ],
+  "completion_criteria": [
+    "Игру создал собственный агент с трассой настоящих модельных запросов",
+    "Реальная реализация прошла независимые контейнерные проверки согласованного поведения",
+    "Человек сыграл и проверил терминал после выхода и прерывания",
+    "Результаты модели, контейнера и ручной приёмки отмечены раздельно"
+  ],
+  "sources": [
+    "https://github.com/Fission-AI/OpenSpec/blob/main/docs/workflows.md",
+    "https://docs.docker.com/reference/cli/docker/container/run/",
+    "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html"
+  ]
+}

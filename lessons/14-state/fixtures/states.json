@@ -1,0 +1,12 @@
+{
+  "kind": "offline_fixture",
+  "description": "Условные учебные снимки, не файлы состояния настоящего runtime",
+  "cases": [
+    {"id": "completed_read", "state": {"schema_version": 1, "status": "running", "steps": 2, "max_steps": 6, "pending": null, "last_result": {"action_id": "a1", "ok": true}}, "expected": "next_model_request"},
+    {"id": "pending_write", "state": {"schema_version": 1, "status": "running", "steps": 2, "max_steps": 6, "pending": {"action_id": "a2", "action": "write_file"}, "last_result": null}, "expected": "outcome_unknown"},
+    {"id": "finished", "state": {"schema_version": 1, "status": "finished", "steps": 4, "max_steps": 6, "pending": null, "last_result": {"answer": "done"}}, "expected": "return_saved_result"},
+    {"id": "waiting", "state": {"schema_version": 1, "status": "waiting_for_user", "steps": 1, "max_steps": 6, "pending": null, "last_result": null}, "expected": "wait_for_answer"},
+    {"id": "exhausted", "state": {"schema_version": 1, "status": "budget_exhausted", "steps": 6, "max_steps": 6, "pending": null, "last_result": null}, "expected": "return_saved_result"},
+    {"id": "unsupported", "state": {"schema_version": 999, "status": "running", "steps": 1, "max_steps": 6, "pending": null, "last_result": null}, "expected": "reject_version"}
+  ]
+}

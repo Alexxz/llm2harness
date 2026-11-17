@@ -1,0 +1,106 @@
+{
+  "id": "04",
+  "slug": "training-data",
+  "title": "Маленькое настоящее обучение: до и после",
+  "duration_minutes": 75,
+  "depends_on": [
+    "03"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "passed"
+  },
+  "experiments": [
+    {
+      "id": "before",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Первый ответ на знакомую заявку без обученной добавки",
+      "observe": "Настоящий неизменённый текст и проверка JSON",
+      "acceptance": "Сохранён исходный ответ и точный вход"
+    },
+    {
+      "id": "teach",
+      "mode": "manual",
+      "change": "Ученик видит четыре пары и запускает настоящее обучение кнопкой F5",
+      "observe": "Реальные шаги, время, файл добавки и изменение обучаемых параметров",
+      "acceptance": "Обучение завершено, параметры изменились; просмотр пары не засчитан как обучение"
+    },
+    {
+      "id": "after",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Подключена обученная добавка при том же входе и настройках",
+      "observe": "Два настоящих ответа и добровольное отключение добавки",
+      "acceptance": "Входы и настройки равны; желаемый ответ не добавлен в повторный запрос"
+    },
+    {
+      "id": "probe",
+      "mode": "manual",
+      "change": "После сравнения выполнен запрос на новой заявке вне четырёх пар",
+      "observe": "Первая проба переноса и отличие от успеха на учебном примере",
+      "acceptance": "Новый настоящий ответ записан; понимание обсуждено без экзамена на термин eval"
+    }
+  ],
+  "artifacts": [
+    "INSTRUCTOR.md",
+    "INTRO.md",
+    "README.md",
+    "check_metrics.py",
+    "fixtures/metric-cases.json",
+    "fixtures/preview.json",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "TEACHER_START.md",
+    "AFTER_SHOW.md",
+    "EXPLANATIONS.md",
+    "SETUP.md",
+    "data/train.jsonl",
+    "data/eval.jsonl",
+    "data/command.schema.json",
+    "data/manifest.json",
+    "data/inputs.json",
+    "profile.json",
+    "REDESIGN.md",
+    "learning-lab.json",
+    "core-schema.json"
+  ],
+  "completion_criteria": [
+    "Получены настоящий ответ до и после на одинаковом входе и настройках",
+    "Реально завершено обучение добавки на видимых четырёх парах и проверено изменение параметров",
+    "Новая заявка не использовалась при обучении; её результат сохранён отдельно",
+    "Ученик на своём опыте отличает пример во входе от изменения параметров; выполненные кнопки не заменяют понимания"
+  ],
+  "sources": [
+    "https://huggingface.co/docs/transformers/v4.51.3/chat_templating",
+    "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct",
+    "https://huggingface.co/docs/transformers/v4.51.3/main_classes/trainer",
+    "https://pytorch.org/get-started/previous-versions/"
+  ],
+  "delivery_contract": "interactive-v1",
+  "initial_generation": {
+    "temperature": 0,
+    "seed": 42,
+    "max_tokens": 64
+  },
+  "initial_endpoint": "http://127.0.0.1:8089",
+  "preparation": {
+    "human_validation": "not_run_new_approach",
+    "prior_failure": "course/reviews/lesson-04-human-onboarding-failure.md",
+    "benchmark": "evidence/learning-episode-benchmark.json",
+    "status": "ready_for_human_trial_not_pedagogically_accepted",
+    "runtime_pilot": "evidence/learning-lab-controller-pilot.json",
+    "terminal_pilot": "evidence/learning-lab-terminal-pilot.json",
+    "teacher_state_regression": "results/learning-teacher-state-regression.json",
+    "teacher_closed_regression": "results/learning-teacher-closed-regression.json",
+    "training_steps": 12,
+    "training_seconds_reference": 18.651,
+    "resource_measurement": "results/learning-training-resources.txt",
+    "training_peak_rss_mib": 3167.3,
+    "tests": 157,
+    "test_log": "results/learning-lab-full-tests.log",
+    "preflight": "evidence/learning-lab-preflight.json"
+  },
+  "practice_mode": "learning-lab-v1"
+}

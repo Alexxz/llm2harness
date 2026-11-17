@@ -1,0 +1,208 @@
+{
+  "source": "synthetic_generator_preview_not_model_output",
+  "train": [
+    {
+      "id": "train-0005",
+      "split": "train",
+      "entity_id": "17fc695a07a0ca6e",
+      "template_id": "train-finish-0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Заверши задачу сообщением «Маяк 17fc695a07a0ca6e готов»."
+        }
+      ],
+      "target": {
+        "action": "finish",
+        "arguments": {
+          "answer": "Маяк 17fc695a07a0ca6e готов"
+        }
+      }
+    },
+    {
+      "id": "train-0003",
+      "split": "train",
+      "entity_id": "bd9c66b3ad3c2d6d",
+      "template_id": "train-read_file-0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Прочитай файл «note-bd9c66b3ad3c2d6d.txt»."
+        }
+      ],
+      "target": {
+        "action": "read_file",
+        "arguments": {
+          "path": "note-bd9c66b3ad3c2d6d.txt"
+        }
+      }
+    },
+    {
+      "id": "train-0002",
+      "split": "train",
+      "entity_id": "23b8c1e9392456de",
+      "template_id": "train-finish-0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Заверши задачу сообщением «Маяк 23b8c1e9392456de готов»."
+        }
+      ],
+      "target": {
+        "action": "finish",
+        "arguments": {
+          "answer": "Маяк 23b8c1e9392456de готов"
+        }
+      }
+    },
+    {
+      "id": "train-0000",
+      "split": "train",
+      "entity_id": "1c80317fa3b1799d",
+      "template_id": "train-read_file-0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Прочитай файл «note-1c80317fa3b1799d.txt»."
+        }
+      ],
+      "target": {
+        "action": "read_file",
+        "arguments": {
+          "path": "note-1c80317fa3b1799d.txt"
+        }
+      }
+    },
+    {
+      "id": "train-0004",
+      "split": "train",
+      "entity_id": "6c031199972a8469",
+      "template_id": "train-write_file-0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Запиши в файл «note-6c031199972a8469.txt» текст «Маяк 6c031199972a8469 готов»."
+        }
+      ],
+      "target": {
+        "action": "write_file",
+        "arguments": {
+          "path": "note-6c031199972a8469.txt",
+          "content": "Маяк 6c031199972a8469 готов"
+        }
+      }
+    },
+    {
+      "id": "train-0001",
+      "split": "train",
+      "entity_id": "46685257bdd640fb",
+      "template_id": "train-write_file-0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Запиши в файл «note-46685257bdd640fb.txt» текст «Маяк 46685257bdd640fb готов»."
+        }
+      ],
+      "target": {
+        "action": "write_file",
+        "arguments": {
+          "path": "note-46685257bdd640fb.txt",
+          "content": "Маяк 46685257bdd640fb готов"
+        }
+      }
+    }
+  ],
+  "eval": [
+    {
+      "id": "eval-0002",
+      "split": "eval",
+      "entity_id": "de8a774bcf36d58b",
+      "template_id": "eval-finish-0",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Работа завершена. Итоговый ответ должен быть ровно «Маяк de8a774bcf36d58b готов»."
+        }
+      ],
+      "target": {
+        "action": "finish",
+        "arguments": {
+          "answer": "Маяк de8a774bcf36d58b готов"
+        }
+      }
+    },
+    {
+      "id": "eval-0001",
+      "split": "eval",
+      "entity_id": "72ff5d2a386ecbe0",
+      "template_id": "eval-write_file-1",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Сохрани строку «Маяк 72ff5d2a386ecbe0 готов» в документе «note-72ff5d2a386ecbe0.txt»."
+        }
+      ],
+      "target": {
+        "action": "write_file",
+        "arguments": {
+          "path": "note-72ff5d2a386ecbe0.txt",
+          "content": "Маяк 72ff5d2a386ecbe0 готов"
+        }
+      }
+    },
+    {
+      "id": "eval-0000",
+      "split": "eval",
+      "entity_id": "a65ed389b74d0fb1",
+      "template_id": "eval-read_file-1",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Преобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй."
+        },
+        {
+          "role": "user",
+          "content": "Выполни чтение документа с именем «note-a65ed389b74d0fb1.txt»."
+        }
+      ],
+      "target": {
+        "action": "read_file",
+        "arguments": {
+          "path": "note-a65ed389b74d0fb1.txt"
+        }
+      }
+    }
+  ]
+}

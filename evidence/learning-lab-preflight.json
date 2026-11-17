@@ -1,0 +1,14 @@
+{
+  "source": "author_preflight_not_human_acceptance",
+  "as_of": "2026-11-17",
+  "structure_errors": [],
+  "weights_and_environment_present": true,
+  "main_tests": 157,
+  "test_log": "results/learning-lab-full-tests.log",
+  "real_training": "evidence/learning-episode-benchmark.json",
+  "runtime_pilot": "evidence/learning-lab-controller-pilot.json",
+  "real_terminal_pilot": "evidence/learning-lab-terminal-pilot.json",
+  "teacher_closed_window_regression": "results/learning-teacher-closed-regression.json",
+  "new_human_understanding": "not_assessed",
+  "previous_human_session_untouched": "lesson-04-9b8f25a127b7"
+}

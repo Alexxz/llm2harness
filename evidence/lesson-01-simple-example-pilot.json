@@ -1,0 +1,73 @@
+{
+  "evidence": "author_real_model_example_pilot_not_learner",
+  "results": [
+    {
+      "name": "soup",
+      "prompt": "Список ингредиентов для супа:\n1.",
+      "text": " 100 граммов свежих помидоров\n2. 100 граммов свежих огурчиков\n3. 100 граммов свежих помидоров\n4. 100 граммов св",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 2.843161,
+        "prompt_sha256": "b47489cf18e4d2c067d58da5a34db8ac2e61ea7d64024ed91a41c1bb47acabc4",
+        "settings": {
+          "n_predict": 64,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 16,
+            "prompt_ms": 104.05,
+            "prompt_per_token_ms": 6.503125,
+            "prompt_per_second": 153.77222489187892,
+            "predicted_n": 64,
+            "predicted_ms": 2662.081,
+            "predicted_per_token_ms": 42.25525396825397,
+            "predicted_per_second": 23.66569612269499
+          },
+          "tokens_predicted": 64,
+          "tokens_evaluated": 16,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "salad",
+      "prompt": "Список ингредиентов для салата:\n1.",
+      "text": " 100 г соленого копчёного мяса\n2. 100 г соленого копчёного мяса\n3. 100 г соленого копчёного мяса\n4. 100 г сол",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 5.567998,
+        "prompt_sha256": "392eeb57e31e4ecd494104f826abb9ba7be01da74465355b75470d0c7381c4e7",
+        "settings": {
+          "n_predict": 64,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 16,
+            "prompt_ms": 114.527,
+            "prompt_per_token_ms": 7.1579375,
+            "prompt_per_second": 139.70504771800535,
+            "predicted_n": 64,
+            "predicted_ms": 5358.681,
+            "predicted_per_token_ms": 85.05842857142856,
+            "predicted_per_second": 11.756624437991366
+          },
+          "tokens_predicted": 64,
+          "tokens_evaluated": 16,
+          "truncated": false
+        }
+      }
+    }
+  ]
+}

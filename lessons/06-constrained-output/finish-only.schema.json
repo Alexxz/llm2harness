@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": [
+    "action",
+    "arguments"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "const": "finish"
+    },
+    "arguments": {
+      "type": "object",
+      "required": [
+        "answer"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "answer": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

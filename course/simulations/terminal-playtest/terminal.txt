@@ -1,0 +1,406 @@
+SYNTHETIC LOCAL HTTP FIXTURE; NO REAL MODEL. The schema checker is a separate trusted harness check, available after run as read validator.json.
+Учебная сессия: lesson-03-3bb350f4b203
+Рабочие файлы: /tmp/course-terminal-teaching-7c4jkokm/work/classroom/lesson-03-3bb350f4b203
+Преподавателю: ./lab classroom observe lesson-03-3bb350f4b203
+Режим: open. Введи help. Пауза снимается преподавателем через resume.
+
+[УПРАВЛЕНИЕ ПРЕПОДАВАТЕЛЯ]
+| {
+|   "event": "control_requested",
+|   "request_id": "8a6ce327fea94f77b5cecaa37e499cb1",
+|   "action": "resume",
+|   "requested_at": "2026-11-16T09:01:42.051Z",
+|   "target_run_id": null,
+|   "status": "requested",
+|   "outcome": "gate_or_permissions_updated"
+| }
+
+[УПРАВЛЕНИЕ ПРЕПОДАВАТЕЛЯ]
+| {
+|   "event": "control_applied",
+|   "request_id": "8a6ce327fea94f77b5cecaa37e499cb1",
+|   "action": "resume",
+|   "requested_at": "2026-11-16T09:01:42.051Z",
+|   "target_run_id": null,
+|   "status": "applied",
+|   "outcome": "gate_or_permissions_updated"
+| }
+ученик> show
+
+[ТЕКУЩИЙ ТЕКСТ]
+| Преобразуй учебную заявку на напиток в один JSON-объект.
+| Поля и правила:
+| - drink: "tea" для чая, "coffee" для кофе; null, если указан другой напиток или напиток не указан.
+| - cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.
+| - urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.
+| Всегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.
+| 
+| Текущая заявка: Две чашки чая, обычный заказ
+| Ответ:
+ученик> run
+
+[ХОД ОПЫТА]
+| {
+|   "event": "run_started",
+|   "data": {
+|     "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+|     "kind": "complete",
+|     "prompt": "Преобразуй учебную заявку на напиток в один JSON-объект.\nПоля и правила:\n- drink: \"tea\" для чая, \"coffee\" для кофе; null, если указан другой напиток или напиток не указан.\n- cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.\n- urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.\nВсегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.\n\nТекущая заявка: Две чашки чая, обычный заказ\nОтвет:\n",
+|     "settings": {
+|       "temperature": 0.0,
+|       "max_tokens": 256,
+|       "seed": 42,
+|       "timeout": 60.0,
+|       "max_steps": 8,
+|       "max_requests": 8,
+|       "deadline_seconds": 180.0,
+|       "tools": [
+|         "read_file",
+|         "write_file"
+|       ],
+|       "skill": false
+|     },
+|     "capabilities": [
+|       "doctor",
+|       "complete"
+|     ],
+|     "schema": null
+|   }
+| }
+
+[ХОД ОПЫТА]
+| {
+|   "event": "worker_phase",
+|   "data": {
+|     "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+|     "phase": "started",
+|     "parent_death_signal": true
+|   }
+| }
+
+[ХОД ОПЫТА]
+| {
+|   "event": "worker_phase",
+|   "data": {
+|     "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+|     "phase": "completed",
+|     "status": "completed"
+|   }
+| }
+
+[ХОД ОПЫТА]
+| {
+|   "event": "run_completed",
+|   "data": {
+|     "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+|     "kind": "complete",
+|     "status": "completed",
+|     "cleanup": "confirmed"
+|   }
+| }
+
+[РЕЗУЛЬТАТ ОПЫТА]
+| {
+|   "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+|   "kind": "complete",
+|   "status": "completed",
+|   "cleanup": "confirmed",
+|   "result": {
+|     "text": "{\"drink\":\"coffee\",\"cups\":2,\"urgent\":false}",
+|     "metadata": {
+|       "endpoint": "http://127.0.0.1:37761",
+|       "elapsed_seconds": 0.048121,
+|       "prompt_sha256": "0e94a060054c18af70300097509113cf20d5424ff259372ceeb7b37b099a19d3",
+|       "settings": {
+|         "n_predict": 256,
+|         "temperature": 0.0,
+|         "seed": 42,
+|         "stream": false,
+|         "cache_prompt": false
+|       },
+|       "server": {
+|         "model": "SYNTHETIC_FIXED_FIXTURE_NO_MODEL",
+|         "tokens_predicted": 0
+|       }
+|     }
+|   }
+| }
+ученик> read validator.json
+
+[УЧЕБНЫЙ ФАЙЛ]
+| {
+|   "source": "trusted_test_harness_on_synthetic_http_response",
+|   "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+|   "command": [
+|     "/path/to/local-tool",
+|     "-m",
+|     "coursekit",
+|     "check-json",
+|     "--schema",
+|     "/tmp/course-terminal-teaching-7c4jkokm/lessons/03-structured-prompts/schema.json",
+|     "--input",
+|     "/path/to/llm2harnes/course/simulations/terminal-playtest/ebfeaaa7bf204366877c059d8e12dceb-raw-response.txt"
+|   ],
+|   "exit_code": 2,
+|   "stdout": "{\n  \"ok\": false,\n  \"error\": \"No module named 'jsonschema'\",\n  \"error_type\": \"ModuleNotFoundError\"\n}\n",
+|   "stderr": "",
+|   "response_sha256": "65ce3e1e9d2595fdab0855858be9b825e363fc8cf3d7e40b6eb2a5a02a234768",
+|   "scope": "syntax_and_schema_only; no semantic result inferred"
+| }
+ученик> ask Для заявки «Две чашки чая, обычный заказ» синтетический стенд вернул {"drink":"coffee","cups":2,"urgent":false}. Проверка схемы не выполнилась: No module named 'jsonschema'. Исходно я считаю, что успешного принятия схемой достаточно для правильности ответа и отдельная проверка содержания лишняя. Но coffee вместо чая меня смущает: я ожидал, что схема должна это отклонить.
+Вопрос записан для преподавателя. Он ответит через advice во время совместного занятия.
+ученик> 
+[ПРЕПОДАВАТЕЛЬ]
+| Сначала выполни `read validator.json`: в журнале появилась исправленная проверка того же необработанного ответа, без нового HTTP-запроса. Найди `exit_code`, `stdout` и `scope` и объясни через `ask`, что проверка действительно проверила. Затем сам запиши ожидаемые `drink`, `cups`, `urgent` из исходной заявки и сопоставь с ответом. Отдельно вынеси три вердикта с основаниями: разбирается ли JSON, соответствует ли схеме, верно ли содержание. Для расходящегося поля покажи правило заявки и фактическое значение ответа. Сохрани исходный ответ без правок и пересмотри свой вывод о достаточности схемы, опираясь на эти свидетельства. Это разбор синтетической фикстуры, а не измерение качества модели.
+read validator.json
+write original-response.txt
+{"drink":"coffee","cups":2,"urgent":false}
+::end
+
+[УЧЕБНЫЙ ФАЙЛ]
+| {
+|   "source": "trusted_test_harness_on_synthetic_http_response",
+|   "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+|   "command": [
+|     "/usr/bin/python3",
+|     "-m",
+|     "coursekit",
+|     "check-json",
+|     "--schema",
+|     "/tmp/course-terminal-teaching-7c4jkokm/lessons/03-structured-prompts/schema.json",
+|     "--input",
+|     "/path/to/llm2harnes/course/simulations/terminal-playtest/ebfeaaa7bf204366877c059d8e12dceb-raw-response.txt"
+|   ],
+|   "exit_code": 0,
+|   "stdout": "{\n  \"valid\": true,\n  \"check\": \"syntax_and_schema_only\",\n  \"errors\": []\n}\n",
+|   "stderr": "",
+|   "response_sha256": "65ce3e1e9d2595fdab0855858be9b825e363fc8cf3d7e40b6eb2a5a02a234768",
+|   "scope": "syntax_and_schema_only; no semantic result inferred",
+|   "setup_correction": "Documented /usr/bin/python3 has jsonschema; original pyenv attempt retained unchanged. No HTTP request was repeated.",
+|   "timestamp": "2026-11-16T09:06:03.647062+00:00"
+| }
+ученик> Текст учебного файла original-response.txt
+Закончить: отдельная строка ::end. Отмена: ::cancel.
+... ... Учебный файл сохранён.
+ученик> ask Исправленная проверка того же ответа дала exit_code=0; в stdout указаны valid=true, check="syntax_and_schema_only", errors=[]; scope="syntax_and_schema_only; no semantic result inferred". Поэтому мои вердикты: JSON разбирается — да; схеме соответствует — да; содержание верно — нет. Из заявки «Две чашки чая, обычный заказ» ожидаю {"drink":"tea","cups":2,"urgent":false}, а получено {"drink":"coffee","cups":2,"urgent":false}. Расходится drink: правило требует "tea" для чая, ответ содержит "coffee". cups и urgent совпадают с заявкой. Исходный ответ сохранён в original-response.txt без исправлений. Я пересматриваю своё мнение: прохождение схемы подтверждает допустимость структуры и значений по схеме, но не правильность извлечения из заявки; её надо проверять отдельно. Это наблюдение на синтетической фикстуре, а не оценка качества модели.
+Вопрос записан для преподавателя. Он ответит через advice во время совместного занятия.
+ученик> 
+[ПРЕПОДАВАТЕЛЬ]
+| Теперь сравни исходный вход с входом, в который добавлены только два примера. До запуска через `ask` запиши прогноз для трёх отдельных проверок и укажи исследуемый фактор. Составь два примера на других заявках; текущую заявку и её эталон в примеры не включай. Сохрани оба точных промпта; исходные правила, текущую заявку, настройки и `schema off` оставь прежними. Сам внеси изменение, покажи вход и выполни один `run`. Затем прочитай `validator.json`, сохрани необработанный ответ и сопоставь оба запуска по синтаксису, схеме и содержанию. Объясни по наблюдаемому входу, чем добавление примеров отличается от изменения весов и ограничения генерации. Если результат не улучшится, сохрани его тоже; вывод ограничь этим синтетическим стендом.
+ask Исследуемый фактор — добавление двух примеров на других заявках; вход при этом станет длиннее. Прогноз для следующего ответа: JSON будет разбираться, схема его примет, содержание будет соответствовать текущей заявке. Последний прогноз менее уверен: примеры могут помочь с выбором напитка, но гарантии нет. Правила и текущую заявку оставляю прежними, temperature=0, max_tokens=256, seed=42 и schema off не меняю. Это эксперимент на синтетическом стенде, не оценка модели.
+Вопрос записан для преподавателя. Он ответит через advice во время совместного занятия.
+ученик> write baseline-prompt.txt
+Преобразуй учебную заявку на напиток в один JSON-объект.
+Поля и правила:
+- drink: "tea" для чая, "coffee" для кофе; null, если указан другой напиток или напиток не указан.
+- cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.
+- urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.
+Всегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.
+
+Текущая заявка: Две чашки чая, обычный заказ
+Ответ:
+::end
+Текст учебного файла baseline-prompt.txt
+Закончить: отдельная строка ::end. Отмена: ::cancel.
+... ... ... ... ... ... ... ... ... ... Учебный файл сохранён.
+ученик> write examples-prompt.txt
+Преобразуй учебную заявку на напиток в один JSON-объект.
+Поля и правила:
+Текст учебного файла examples-prompt.txt
+Закончить: отдельная строка ::end. Отмена: ::cancel.
+- drink: "tea" для чая, "coffee" для кофе; null, если указан другой напиток или напиток не указан.
+- cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.
+- urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.
+... Всегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.
+
+Пример заявки: Пять чашек чая, срочно
+... Ответ: {"drink":"tea","cups":5,"urgent":true}
+
+... Пример заявки: Одну чашку какао, не срочно
+Ответ: {"drink":null,"cups":1,"urgent":false}
+... 
+Текущая заявка: Две чашки чая, обычный заказ
+Ответ:
+... ::end
+... ... ... ... ... ... ... ... ... ... ... Учебный файл сохранён.
+ученик> edit
+Преобразуй учебную заявку на напиток в один JSON-объект.
+Поля и правила:
+- drink: "tea" для чая, "coffee" для кофе; null, если указан другой напиток или напиток не указан.
+- cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.
+Введи новый промпт или задачу
+Закончить: отдельная строка ::end. Отмена: ::cancel.
+- urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.
+Всегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.
+
+Пример заявки: Пять чашек чая, срочно
+Ответ: {"drink":"tea","cups":5,"urgent":true}
+... 
+Пример заявки: Одну чашку какао, не срочно
+Ответ: {"drink":null,"cups":1,"urgent":false}
+... 
+Текущая заявка: Две чашки чая, обычный заказ
+Ответ:
+... ::end
+... ... ... ... ... ... ... ... ... ... ... ... ... Текст сохранён. Он попадёт только в следующий явно запущенный опыт.
+ученик> show
+
+[ТЕКУЩИЙ ТЕКСТ]
+| Преобразуй учебную заявку на напиток в один JSON-объект.
+| Поля и правила:
+| - drink: "tea" для чая, "coffee" для кофе; null, если указан другой напиток или напиток не указан.
+| - cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.
+| - urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.
+| Всегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.
+| 
+| Пример заявки: Пять чашек чая, срочно
+| Ответ: {"drink":"tea","cups":5,"urgent":true}
+| 
+| Пример заявки: Одну чашку какао, не срочно
+| Ответ: {"drink":null,"cups":1,"urgent":false}
+| 
+| Текущая заявка: Две чашки чая, обычный заказ
+| Ответ:
+ученик> run
+
+[ХОД ОПЫТА]
+| {
+|   "event": "run_started",
+|   "data": {
+|     "run_id": "a4fdcefeb8d645e6bdc6922f1ccbf715",
+|     "kind": "complete",
+|     "prompt": "Преобразуй учебную заявку на напиток в один JSON-объект.\nПоля и правила:\n- drink: \"tea\" для чая, \"coffee\" для кофе; null, если указан другой напиток или напиток не указан.\n- cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.\n- urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.\nВсегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.\n\nПример заявки: Пять чашек чая, срочно\nОтвет: {\"drink\":\"tea\",\"cups\":5,\"urgent\":true}\n\nПример заявки: Одну чашку какао, не срочно\nОтвет: {\"drink\":null,\"cups\":1,\"urgent\":false}\n\nТекущая заявка: Две чашки чая, обычный заказ\nОтвет:\n",
+|     "settings": {
+|       "temperature": 0.0,
+|       "max_tokens": 256,
+|       "seed": 42,
+|       "timeout": 60.0,
+|       "max_steps": 8,
+|       "max_requests": 8,
+|       "deadline_seconds": 180.0,
+|       "tools": [
+|         "read_file",
+|         "write_file"
+|       ],
+|       "skill": false
+|     },
+|     "capabilities": [
+|       "doctor",
+|       "complete"
+|     ],
+|     "schema": null
+|   }
+| }
+
+[ХОД ОПЫТА]
+| {
+|   "event": "worker_phase",
+|   "data": {
+|     "run_id": "a4fdcefeb8d645e6bdc6922f1ccbf715",
+|     "phase": "started",
+|     "parent_death_signal": true
+|   }
+| }
+
+[ХОД ОПЫТА]
+| {
+|   "event": "worker_phase",
+|   "data": {
+|     "run_id": "a4fdcefeb8d645e6bdc6922f1ccbf715",
+|     "phase": "completed",
+|     "status": "completed"
+|   }
+| }
+
+[ХОД ОПЫТА]
+| {
+|   "event": "run_completed",
+|   "data": {
+|     "run_id": "a4fdcefeb8d645e6bdc6922f1ccbf715",
+|     "kind": "complete",
+|     "status": "completed",
+|     "cleanup": "confirmed"
+|   }
+| }
+
+[РЕЗУЛЬТАТ ОПЫТА]
+| {
+|   "run_id": "a4fdcefeb8d645e6bdc6922f1ccbf715",
+|   "kind": "complete",
+|   "status": "completed",
+|   "cleanup": "confirmed",
+|   "result": {
+|     "text": "{\"drink\":\"coffee\",\"cups\":2,\"urgent\":false}",
+|     "metadata": {
+|       "endpoint": "http://127.0.0.1:37761",
+|       "elapsed_seconds": 0.046411,
+|       "prompt_sha256": "bed931675bb8c0c02483d7ef40aa22512a6fe452104e8d039d45f6d55ea30e3c",
+|       "settings": {
+|         "n_predict": 256,
+|         "temperature": 0.0,
+|         "seed": 42,
+|         "stream": false,
+|         "cache_prompt": false
+|       },
+|       "server": {
+|         "model": "SYNTHETIC_FIXED_FIXTURE_NO_MODEL",
+|         "tokens_predicted": 0
+|       }
+|     }
+|   }
+| }
+ученик> read validator.json
+
+[УЧЕБНЫЙ ФАЙЛ]
+| {
+|   "source": "trusted_test_harness_on_synthetic_http_response",
+|   "run_id": "a4fdcefeb8d645e6bdc6922f1ccbf715",
+|   "command": [
+|     "/usr/bin/python3",
+|     "-m",
+|     "coursekit",
+|     "check-json",
+|     "--schema",
+|     "/tmp/course-terminal-teaching-7c4jkokm/lessons/03-structured-prompts/schema.json",
+|     "--input",
+|     "/path/to/llm2harnes/course/simulations/terminal-playtest/a4fdcefeb8d645e6bdc6922f1ccbf715-raw-response.txt"
+|   ],
+|   "exit_code": 0,
+|   "stdout": "{\n  \"valid\": true,\n  \"check\": \"syntax_and_schema_only\",\n  \"errors\": []\n}\n",
+|   "stderr": "",
+|   "response_sha256": "65ce3e1e9d2595fdab0855858be9b825e363fc8cf3d7e40b6eb2a5a02a234768",
+|   "scope": "syntax_and_schema_only; no semantic result inferred",
+|   "setup_correction": "Documented /usr/bin/python3 has jsonschema; original pyenv attempt retained unchanged. No HTTP request was repeated.",
+|   "timestamp": "2026-11-16T09:18:35.074016+00:00"
+| }
+ученик> write examples-response.txt
+{"drink":"coffee","cups":2,"urgent":false}
+::end
+Текст учебного файла examples-response.txt
+Закончить: отдельная строка ::end. Отмена: ::cancel.
+... ... Учебный файл сохранён.
+ученик> ask Сравнение двух запусков: без примеров и с двумя примерами JSON разбирается — да, схема пройдена — да, содержание правильно — нет. Для второго запуска a4fdcefeb8d645e6bdc6922f1ccbf715 проверка дала exit_code=0, valid=true, errors=[], scope="syntax_and_schema_only; no semantic result inferred". В обоих ответах {"drink":"coffee","cups":2,"urgent":false}; по неизменной заявке нужен drink="tea", остальные два поля совпадают. Прогноз об улучшении содержания не подтвердился. Второй необработанный ответ сохраняю в examples-response.txt, первый — в original-response.txt; точные входы — baseline-prompt.txt и examples-prompt.txt. По показанному входу добавлены только два примера на других заявках, правила и текущая заявка прежние; настройки обоих запусков совпадают. Это добавление текста в контекст, а не обновление весов. В обоих запусках schema=null: ограничение генерации схемой не включалось. Отдельный проверяющий инструмент проверил уже полученный ответ и не исправил его. Здесь синтетическая фикстура без модели: наблюдаю отсутствие улучшения только на этой паре, о пользе примеров для настоящей модели вывод сделать нельзя.
+Вопрос записан для преподавателя. Он ответит через advice во время совместного занятия.
+ученик> 
+[УПРАВЛЕНИЕ ПРЕПОДАВАТЕЛЯ]
+| {
+|   "event": "control_requested",
+|   "request_id": "73bb1b1452e742d3a0cad8855edd67e1",
+|   "action": "close",
+|   "requested_at": "2026-11-16T09:21:45.310Z",
+|   "target_run_id": null,
+|   "status": "requested",
+|   "outcome": "no_active_run"
+| }
+
+[УПРАВЛЕНИЕ ПРЕПОДАВАТЕЛЯ]
+| {
+|   "event": "control_applied",
+|   "request_id": "73bb1b1452e742d3a0cad8855edd67e1",
+|   "action": "close",
+|   "requested_at": "2026-11-16T09:21:45.310Z",
+|   "target_run_id": null,
+|   "status": "applied",
+|   "outcome": "no_active_run"
+| }
+Учебная консоль закрыта; журнал и файлы сохранены.

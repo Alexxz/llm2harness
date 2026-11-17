@@ -1,0 +1,30 @@
+{
+  "course/METHODOLOGY.md": {
+    "sha256": "57401a54eca3c018baf62047c2cd38caa24af2f81fce26a09caa8bc4b7693b20",
+    "bytes": 10839
+  },
+  "course/TERMINAL_CLASSROOM.md": {
+    "sha256": "5b12d12c1fe6b8b67ddc62d9386c84fcc4c081300f84acc167162d77425936eb",
+    "bytes": 13112
+  },
+  "lessons/03-structured-prompts/INSTRUCTOR.md": {
+    "sha256": "b5530096cec4fdc855888764afd6d327124926a6e0541bd2baaa095d60ba4b27",
+    "bytes": 10507
+  },
+  "lessons/03-structured-prompts/README.md": {
+    "sha256": "a69e4f272aaa68a2e65bb51635a539dea1e37e7780c0781f9e92f9daae7a20d8",
+    "bytes": 16009
+  },
+  "lessons/03-structured-prompts/schema.json": {
+    "sha256": "9e9fc78ae96d12b423b02fe489d28baf4a4b82ef10fa79b4f46a1d6c694a64f6",
+    "bytes": 399
+  },
+  "lessons/03-structured-prompts/prompts/baseline.txt": {
+    "sha256": "5b99806f38d63e686b08ea26c8e22b8f431f86b264939d9939dfb2664b4c0c15",
+    "bytes": 858
+  },
+  "lessons/03-structured-prompts/prompts/variation.txt": {
+    "sha256": "4cca4a1dd915701ae0d6402ccad0c5ee625d8e946f3606be3e527b18332b8776",
+    "bytes": 1173
+  }
+}

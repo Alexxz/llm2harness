@@ -1,0 +1,7 @@
+{
+  "episode-01": {
+    "source": "course/simulations/runs/v2/schema-versus-meaning.json",
+    "case_id": "schema-versus-meaning",
+    "variant": "v2"
+  }
+}

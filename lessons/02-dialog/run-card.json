@@ -1,0 +1,20 @@
+{
+  "model_name": "Qwen/Qwen2.5-1.5B",
+  "model_revision": "4d8150eba159047c0ad5f72a8473e4ad60419c4a",
+  "model_variant": "base",
+  "weights_checksum": "ea47cef917fa77a3458206d0848f81dd033dfb859bbb3b176bf6006d3b620814",
+  "quantization": "Q4_K_M",
+  "runtime_version": "llama.cpp b12380 e3483e40b",
+  "hardware": "Intel i7-1165G7, CPU, threads=4; Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "endpoint": "http://127.0.0.1:8088",
+  "generation": {
+    "max_tokens": 24,
+    "temperature": 0,
+    "seed": 42
+  },
+  "note": "Тот же проверенный локальный профиль, что в уроке01; результат подготовки урока02 — evidence/lesson-02-preflight.json. Авторский пилот не является практикой ученика.",
+  "weights_repository": "mradermacher/Qwen2.5-1.5B-GGUF",
+  "weights_filename": "Qwen2.5-1.5B.Q4_K_M.gguf",
+  "weights_bytes": 986048544,
+  "publication_note": "Historical author profile; does not establish current server availability."
+}

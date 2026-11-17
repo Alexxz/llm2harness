@@ -1,0 +1,69 @@
+{
+  "id": "09",
+  "slug": "agent-loop",
+  "title": "Ограниченный цикл агента",
+  "duration_minutes": 80,
+  "depends_on": [
+    "08"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Ручная диспетчеризация заменена ограниченным автоматическим циклом",
+      "observe": "Действия, решения политики, наблюдения, последующие запросы и созданный файл",
+      "acceptance": "Настоящий запуск создал report.json, проходящий check_report.py, и сохранил трассу"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Только max_steps уменьшается с 6 до 1; задача и исходные данные одинаковы",
+      "observe": "Техническая остановка отделена от успеха прикладной задачи",
+      "acceptance": "Не более одного фактического запроса; недостающий артефакт не объявлен успешным результатом"
+    },
+    {
+      "id": "changed-data",
+      "mode": "manual",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Ученик готовит новый каталог, меняя reserved с 15 на 24",
+      "observe": "Физический остаток прежний, доступный меняется при одинаковом harness",
+      "acceptance": "Сохранён новый настоящий запуск; ожидаемые числа 159 и 135 проверены по фактическому источнику"
+    },
+    {
+      "id": "missing-source",
+      "mode": "manual",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Ученик готовит пустой каталог без stock.json",
+      "observe": "Ошибка чтения возвращается модели; отсутствие результата не заменяется выдуманными числами",
+      "acceptance": "Нет выдуманного отчёта; цикл ограничен, журнал содержит фактическую ошибку и причину завершения"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "fixtures/stock.json",
+    "prepare_workspace.py",
+    "check_report.py",
+    "check_stand.py"
+  ],
+  "completion_criteria": [
+    "Настоящий автономный запуск создал независимо проверенный отчёт",
+    "Наблюдение инструмента прослежено в следующем входе модели",
+    "Ограничение одним шагом соблюдено",
+    "Смена исходных данных не спутана со сменой модели или harness",
+    "Причина остановки отделена от успешной приёмки задачи"
+  ],
+  "sources": [
+    "https://arxiv.org/abs/2210.03629"
+  ]
+}

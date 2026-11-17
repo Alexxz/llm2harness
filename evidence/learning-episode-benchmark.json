@@ -1,0 +1,100 @@
+{
+  "before": {
+    "request": "Две чашки чая.",
+    "prompt": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+    "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+    "adapter": false,
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "settings": {
+      "seed": 42,
+      "do_sample": false,
+      "max_new_tokens": 64,
+      "dtype": "float32",
+      "device": "cpu"
+    },
+    "seconds": 3.897,
+    "tokens": 22
+  },
+  "train": {
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "float32",
+    "device": "cpu",
+    "seed": 42,
+    "steps": 12,
+    "pairs": [
+      {
+        "request": "Две чашки чая.",
+        "answer": "{\"drink\":\"tea\",\"cups\":2}"
+      },
+      {
+        "request": "Три чашки кофе.",
+        "answer": "{\"drink\":\"coffee\",\"cups\":3}"
+      },
+      {
+        "request": "Одна чашка чая.",
+        "answer": "{\"drink\":\"tea\",\"cups\":1}"
+      },
+      {
+        "request": "Одна чашка кофе.",
+        "answer": "{\"drink\":\"coffee\",\"cups\":1}"
+      }
+    ],
+    "losses": [
+      0.814159095287323,
+      0.17117387056350708,
+      0.01720208302140236,
+      0.01306347269564867,
+      0.003541498212143779,
+      0.002217692555859685,
+      0.0013299253769218922,
+      0.000692056433763355,
+      0.0007345672347582877,
+      0.0006147696985863149,
+      0.00190730148460716,
+      0.0004075649194419384
+    ],
+    "parameter_digest_before": "e673346c121dbfb403b6e1a8157d35c8ee672b4f4da34abf4434f18cff3e1522",
+    "parameter_digest_after": "480007286b71c9fcf680e289bec83f807fcb322a3553ba4827dd7cbf07c4203a",
+    "adapter_weights_sha256": "824113c4887b46d953d7339e522d43bf35a886c8a15a5c8e33b118182d2586ba",
+    "trainable_parameters": 270336,
+    "seconds": 20.025,
+    "training_seconds": 18.651,
+    "completed": true
+  },
+  "after": {
+    "request": "Две чашки чая.",
+    "prompt": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+    "text": "{\"drink\":\"tea\",\"cups\":2}",
+    "adapter": true,
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "settings": {
+      "seed": 42,
+      "do_sample": false,
+      "max_new_tokens": 64,
+      "dtype": "float32",
+      "device": "cpu"
+    },
+    "seconds": 3.854,
+    "tokens": 11
+  },
+  "off": {
+    "request": "Две чашки чая.",
+    "prompt": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+    "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+    "adapter": false,
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "settings": {
+      "seed": 42,
+      "do_sample": false,
+      "max_new_tokens": 64,
+      "dtype": "float32",
+      "device": "cpu"
+    },
+    "seconds": 4.327,
+    "tokens": 22
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "id": "03",
+  "slug": "structured-prompts",
+  "title": "Структурированный ответ через инструкции и примеры",
+  "duration_minutes": 70,
+  "depends_on": [
+    "01",
+    "02"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "passed"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Просьба вернуть drink и cups без примера",
+      "observe": "Полный настоящий ответ и три уровня локальной проверки",
+      "acceptance": "Ответ сохранён; форма и смысл обсуждены без исправления исходного текста"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Добавлен один пример при той же заявке и настройках",
+      "observe": "Фактическое сравнение входов, ответов и проверок",
+      "acceptance": "Оба завершённых опыта сопоставимы; отсутствие улучшения допустимо"
+    },
+    {
+      "id": "own_change",
+      "mode": "manual",
+      "change": "Ученик в F10 меняет одну текущую заявку и сохраняет F5",
+      "observe": "Самостоятельный реальный запрос и его проверка",
+      "acceptance": "Сохранены собственный вход и ответ; ученик объяснил наблюдение"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "schema.json",
+    "fixtures/evaluation-cases.json",
+    "fixtures/README.md",
+    "fixtures/responses/c01.json",
+    "fixtures/responses/c02.json",
+    "fixtures/responses/c03.json",
+    "fixtures/responses/c04.json",
+    "fixtures/responses/c05.json",
+    "render_cases.py",
+    "score.py",
+    "TEACHER_START.md",
+    "AFTER_SHOW.md",
+    "EXPLANATIONS.md",
+    "core-schema.json",
+    "prompts/extended-baseline.txt",
+    "prompts/extended-variation.txt",
+    "PLAN.md"
+  ],
+  "completion_criteria": [
+    "Есть два настоящих сопоставимых ответа baseline и variation и одна собственная вариация заявки",
+    "Ученик различает читаемый JSON, нужные поля и правильные сведения на своих наблюдениях",
+    "Пример меняет вход, проверка оценивает выход; веса и схема генерации не меняются",
+    "Нет требования получить успешный JSON в каждой попытке или вручную копировать результаты"
+  ],
+  "sources": [
+    "https://json-schema.org/understanding-json-schema/reference/object",
+    "https://www.rfc-editor.org/rfc/rfc8259",
+    "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md"
+  ],
+  "delivery_contract": "interactive-v1",
+  "initial_generation": {
+    "temperature": 0,
+    "seed": 42,
+    "max_tokens": 96
+  },
+  "preparation": {
+    "profile": "same_local_base",
+    "example_selection": "evidence/lesson-03-example-selection.json",
+    "human_validation": "not_run",
+    "extended_materials": "Необязательные fixtures/schema.json/render_cases/score с тремя полями; отдельные extended-промпты.",
+    "full_console_and_terminal_pilot": "evidence/lesson-03-live-pilot.json",
+    "preflight": "evidence/lesson-03-preflight.json",
+    "teacher_transport": "configured_teacher",
+    "teacher_model": "неуказанная модель преподавателя",
+    "tests": 137,
+    "note": "Три настоящих запроса к локальной Qwen base; check и compare без модельных вызовов, F4 сравнение и F10 редактирование в настоящем tmux. Два настоящих ответа преподавателя через отдельное подключение: объяснение затруднения, затем приёмка после синтетического объяснения ученика. Это авторский пилот, не прохождение пользователя."
+  }
+}

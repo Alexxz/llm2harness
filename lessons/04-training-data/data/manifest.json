@@ -1,0 +1,15 @@
+{
+  "format": "course-sft-v1",
+  "seed": 42,
+  "train_size": 240,
+  "eval_size": 60,
+  "source": "synthetic_generated_inputs_not_model_outputs",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "split_policy": "disjoint entities, templates, inputs and targets; eval is never sent to Trainer",
+  "sha256": {
+    "train.jsonl": "b8da1f510e30279306629c2a3e27542a4b1929e65bbc3c0a3d659b56df20a6b6",
+    "eval.jsonl": "184cdcf102ee3c9d820711028eccc0a886b424472252d37e749e95631d86e9f8",
+    "command.schema.json": "d2a0d6ec1fa11d58108004932b058b73abe9c6a2b04c21e59280430d1e99b0b9"
+  }
+}

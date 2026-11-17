@@ -1,0 +1,457 @@
+{
+  "evidence": "author_real_model_candidate_pilot_not_learner",
+  "settings": {
+    "max_tokens": 24,
+    "temperature": 0,
+    "seed": 42
+  },
+  "results": [
+    {
+      "name": "cat_with",
+      "prompt": "Имя кота: Плюш.\nВопрос: Как зовут кота?\nОтвет:",
+      "text": " Кота зовут Плюш.\nВопрос: Как зовут собаку?\nОтвет:",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 3.019996,
+        "prompt_sha256": "857fff7f9e79a16159d61c08b780eeaec37786c8170e737775250e2340cea4e1",
+        "settings": {
+          "n_predict": 24,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 25,
+            "prompt_ms": 1008.446,
+            "prompt_per_token_ms": 40.33784,
+            "prompt_per_second": 24.79061843668377,
+            "predicted_n": 24,
+            "predicted_ms": 1859.762,
+            "predicted_per_token_ms": 80.85921739130434,
+            "predicted_per_second": 12.367173864182622
+          },
+          "tokens_predicted": 24,
+          "tokens_evaluated": 25,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "cat_without",
+      "prompt": "Вопрос: Как зовут кота?\nОтвет:",
+      "text": " Кота зовут Котик.\nВопрос: Как зовут собаку?\nОтвет:",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 2.726332,
+        "prompt_sha256": "e4d1cd572d1efc3c092e2d2e4f41de6a8c5c54813a61612066e39405fbc6889f",
+        "settings": {
+          "n_predict": 24,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 15,
+            "prompt_ms": 443.575,
+            "prompt_per_token_ms": 29.571666666666665,
+            "prompt_per_second": 33.816152849010884,
+            "predicted_n": 24,
+            "predicted_ms": 2066.112,
+            "predicted_per_token_ms": 89.83095652173914,
+            "predicted_per_second": 11.132019948579748
+          },
+          "tokens_predicted": 24,
+          "tokens_evaluated": 15,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "cat_changed",
+      "prompt": "Имя кота: Бублик.\nВопрос: Как зовут кота?\nОтвет:",
+      "text": " Кота зовут Бублик.\nВопрос: Как зовут собаку?\nОтвет:",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 3.213434,
+        "prompt_sha256": "8dea00591a4656ead042699b2ec8fb5299442b144bee903515069937bccbb4d1",
+        "settings": {
+          "n_predict": 24,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 25,
+            "prompt_ms": 713.818,
+            "prompt_per_token_ms": 28.55272,
+            "prompt_per_second": 35.022933016539234,
+            "predicted_n": 24,
+            "predicted_ms": 2275.922,
+            "predicted_per_token_ms": 98.95313043478261,
+            "predicted_per_second": 10.105794486805788
+          },
+          "tokens_predicted": 24,
+          "tokens_evaluated": 25,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "drink_with",
+      "prompt": "Клиент: Я хочу чай.\nОфициант: Хорошо.\nВопрос: Какой напиток заказал клиент?\nОтвет:",
+      "text": " Клиент заказал чай.\nВопрос: Какой напиток заказал клиент?\nОтвет:",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 2.802694,
+        "prompt_sha256": "21786332a21e8ba14ac2f54c1517e9be16ec13c4de0029461e0b054335e3d80a",
+        "settings": {
+          "n_predict": 24,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 35,
+            "prompt_ms": 695.533,
+            "prompt_per_token_ms": 19.87237142857143,
+            "prompt_per_second": 50.32112063697912,
+            "predicted_n": 24,
+            "predicted_ms": 1861.507,
+            "predicted_per_token_ms": 80.93508695652174,
+            "predicted_per_second": 12.355580720351842
+          },
+          "tokens_predicted": 24,
+          "tokens_evaluated": 35,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "drink_without",
+      "prompt": "Вопрос: Какой напиток заказал клиент?\nОтвет:",
+      "text": " Клиент заказал кофе с молоком.\nВопрос: Какой напиток заказал",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 2.275824,
+        "prompt_sha256": "1d4059df3a2d7e7717c020f2999612518c960e45dd9cb7e248caa739c5784947",
+        "settings": {
+          "n_predict": 24,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 16,
+            "prompt_ms": 297.614,
+            "prompt_per_token_ms": 18.600875,
+            "prompt_per_second": 53.76091178506388,
+            "predicted_n": 24,
+            "predicted_ms": 1742.282,
+            "predicted_per_token_ms": 75.75139130434782,
+            "predicted_per_second": 13.201077667105556
+          },
+          "tokens_predicted": 24,
+          "tokens_evaluated": 16,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "drink_changed",
+      "prompt": "Клиент: Я хочу кофе.\nОфициант: Хорошо.\nВопрос: Какой напиток заказал клиент?\nОтвет:",
+      "text": " Кофе.\nВопрос: Какой напиток заказал клиент?\nОтвет: Кофе.\nВоп",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 2.734067,
+        "prompt_sha256": "8aafcdb672d50b5edcb91dfb1ef06e87834b7dd704f685ec8e3ac55b7f1bd760",
+        "settings": {
+          "n_predict": 24,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 35,
+            "prompt_ms": 718.025,
+            "prompt_per_token_ms": 20.515,
+            "prompt_per_second": 48.74482086278333,
+            "predicted_n": 24,
+            "predicted_ms": 1820.613,
+            "predicted_per_token_ms": 79.15708695652174,
+            "predicted_per_second": 12.633107640119015
+          },
+          "tokens_predicted": 24,
+          "tokens_evaluated": 35,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "create_cat",
+      "prompt": "Придуманный персонаж\nВид: кот\nИмя:",
+      "text": " Котик\nРод: кот\nВозраст: 10 лет\nСемья: одна",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 2.357156,
+        "prompt_sha256": "8b94f25db4d1c54aacc6af3b6c0f908b03625b90750c42fb3808db3faac2f78e",
+        "settings": {
+          "n_predict": 24,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 18,
+            "prompt_ms": 363.974,
+            "prompt_per_token_ms": 20.220777777777776,
+            "prompt_per_second": 49.45408188496981,
+            "predicted_n": 24,
+            "predicted_ms": 1787.244,
+            "predicted_per_token_ms": 77.70626086956521,
+            "predicted_per_second": 12.868975920467491
+          },
+          "tokens_predicted": 24,
+          "tokens_evaluated": 18,
+          "truncated": false
+        }
+      }
+    }
+  ],
+  "two_turn_candidates": [
+    {
+      "name": "ginger",
+      "first_prompt": "Придуманный персонаж\nВид: рыжий кот\nИмя:",
+      "first": {
+        "text": " Котик\nРод: Кот\nСемья: Собака\nРодители: С",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.554746,
+          "prompt_sha256": "32e6630f67fea5c732092455dcd61736c0adbd9b9553a4c44811289731ebc38d",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 21,
+              "prompt_ms": 180.392,
+              "prompt_per_token_ms": 8.590095238095238,
+              "prompt_per_second": 116.41314470708235,
+              "predicted_n": 24,
+              "predicted_ms": 1287.435,
+              "predicted_per_token_ms": 55.975434782608694,
+              "predicted_per_second": 17.864979591202665
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 21,
+            "truncated": false
+          }
+        }
+      },
+      "second_prompt": "Придуманный персонаж\nВид: рыжий кот\nИмя: Котик\nРод: Кот\nСемья: Собака\nРодители: С\n\nВопрос: Как зовут кота?\nОтвет:",
+      "second": {
+        "text": " Котик",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.42608,
+          "prompt_sha256": "285e5270d7456c2dcbc1c2fb82b52cf2bd8466989d902681b2b16205e179aa27",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 61,
+              "prompt_ms": 1002.513,
+              "prompt_per_token_ms": 16.434639344262294,
+              "prompt_per_second": 60.84709125966446,
+              "predicted_n": 4,
+              "predicted_ms": 188.539,
+              "predicted_per_token_ms": 62.84633333333333,
+              "predicted_per_second": 15.911827261203253
+            },
+            "tokens_predicted": 4,
+            "tokens_evaluated": 61,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "blue",
+      "first_prompt": "Придуманный персонаж\nВид: синий кот\nИмя:",
+      "first": {
+        "text": " Котик\nРод: Коты\nСемья: Собака\nПол: М",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 2.154876,
+          "prompt_sha256": "d1cb6f3f9d4abfe3f4cec8c4b96693b5e5e90d799074a9d5f0265b34e0e58776",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 21,
+              "prompt_ms": 413.847,
+              "prompt_per_token_ms": 19.707,
+              "prompt_per_second": 50.74339067336479,
+              "predicted_n": 24,
+              "predicted_ms": 1529.762,
+              "predicted_per_token_ms": 66.51139130434782,
+              "predicted_per_second": 15.035018519220637
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 21,
+            "truncated": false
+          }
+        }
+      },
+      "second_prompt": "Придуманный персонаж\nВид: синий кот\nИмя: Котик\nРод: Коты\nСемья: Собака\nПол: М\n\nВопрос: Как зовут кота?\nОтвет:",
+      "second": {
+        "text": " Котик",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.541192,
+          "prompt_sha256": "863439073a2127ddf28fec816a38dd7ef58c03047edf912b37cdb1b90b66fffe",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 61,
+              "prompt_ms": 1128.366,
+              "prompt_per_token_ms": 18.497803278688526,
+              "prompt_per_second": 54.060473286150064,
+              "predicted_n": 4,
+              "predicted_ms": 180.284,
+              "predicted_per_token_ms": 60.09466666666666,
+              "predicted_per_second": 16.64041179472388
+            },
+            "tokens_predicted": 4,
+            "tokens_evaluated": 61,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "start_story",
+      "first_prompt": "В сказочном лесу жил кот по имени",
+      "first": {
+        "text": " Котя. Он был очень любезен и всегда помогал людям. Однажды Кот",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.886831,
+          "prompt_sha256": "bd896da83cc7d95001494fdfe8683e0179e4957ec2f9530e89cf5c0ea620e9ce",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 14,
+              "prompt_ms": 322.493,
+              "prompt_per_token_ms": 23.035214285714286,
+              "prompt_per_second": 43.411794984697345,
+              "predicted_n": 24,
+              "predicted_ms": 1363.998,
+              "predicted_per_token_ms": 59.30426086956522,
+              "predicted_per_second": 16.862194812602365
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 14,
+            "truncated": false
+          }
+        }
+      },
+      "second_prompt": "В сказочном лесу жил кот по имени Котя. Он был очень любезен и всегда помогал людям. Однажды Кот\n\nВопрос: Как зовут кота?\nОтвет:",
+      "second": {
+        "text": " Кота зовут Котя.\nВопрос: Как зовут леса?\nОтвет",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 2.440095,
+          "prompt_sha256": "443ec9ac536044862e211e1782c7b2d881eb4a73819a5493968862b40c21f582",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 54,
+              "prompt_ms": 801.404,
+              "prompt_per_token_ms": 14.840814814814815,
+              "prompt_per_second": 67.38174503745925,
+              "predicted_n": 24,
+              "predicted_ms": 1442.374,
+              "predicted_per_token_ms": 62.71191304347826,
+              "predicted_per_second": 15.94593357894693
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 54,
+            "truncated": false
+          }
+        }
+      }
+    }
+  ]
+}

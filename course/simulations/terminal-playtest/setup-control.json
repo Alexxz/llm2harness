@@ -1,0 +1,11 @@
+{
+  "actor": "test_harness_administrative_setup",
+  "receipt": {
+    "request_id": "8a6ce327fea94f77b5cecaa37e499cb1",
+    "action": "resume",
+    "requested_at": "2026-11-16T09:01:42.051Z",
+    "target_run_id": null,
+    "status": "applied",
+    "outcome": "gate_or_permissions_updated"
+  }
+}

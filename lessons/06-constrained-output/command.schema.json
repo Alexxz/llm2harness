@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "action",
+        "arguments"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "read_file"
+        },
+        "arguments": {
+          "type": "object",
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "action",
+        "arguments"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "write_file"
+        },
+        "arguments": {
+          "type": "object",
+          "required": [
+            "path",
+            "content"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "content": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "action",
+        "arguments"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "finish"
+        },
+        "arguments": {
+          "type": "object",
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "answer": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

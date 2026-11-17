@@ -1,0 +1,29 @@
+{
+  "evidence_type": "offline_fixture",
+  "description": "Сконструированные записи для разбора, не ответы модели.",
+  "records": [
+    {
+      "id": "waiting-round",
+      "action": "ask_user",
+      "status": "waiting_for_user",
+      "questions": "Q1: Размер поля? Рекомендую небольшой фиксированный размер. Q2: Управление? Рекомендую WASD и q.",
+      "next_model_call_before_answer": false
+    },
+    {
+      "id": "finished-with-questions",
+      "action": "finish",
+      "status": "completed",
+      "answer": "Какое поле и управление вы хотите?",
+      "next_model_call_before_answer": false
+    },
+    {
+      "id": "continued-without-answer",
+      "action": "ask_user",
+      "status": "waiting_for_user",
+      "questions": "Нужен ли бесконечный переход через границу?",
+      "next_model_call_before_answer": true,
+      "assumed_answer": "Да"
+    }
+  ]
+}
+

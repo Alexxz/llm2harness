@@ -1,0 +1,8 @@
+{
+  "source_root": "/path/to/llm2harnes",
+  "temporary_root": "/tmp/course-terminal-teaching-7c4jkokm",
+  "session_id": "lesson-03-3bb350f4b203",
+  "endpoint": "http://127.0.0.1:37761",
+  "synthetic": true,
+  "maximum_teacher_advice": 3
+}

@@ -1,0 +1,5 @@
+{
+  "fixture_kind": "offline_fixture",
+  "description": "Заданное корректное предложение для проверки инструмента. Не ответ модели.",
+  "model_response": {"action": "read_file", "arguments": {"path": "stock.json"}}
+}

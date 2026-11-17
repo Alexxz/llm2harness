@@ -1,0 +1,20 @@
+[
+  {
+    "case": "schema-versus-meaning-pre",
+    "evidence_type": "offline_fixture",
+    "schema_valid": true,
+    "meaning_correct": false,
+    "mismatched_fields": [
+      "drink"
+    ]
+  },
+  {
+    "case": "schema-versus-meaning-transfer",
+    "evidence_type": "offline_fixture",
+    "schema_valid": true,
+    "meaning_correct": false,
+    "mismatched_fields": [
+      "urgent"
+    ]
+  }
+]

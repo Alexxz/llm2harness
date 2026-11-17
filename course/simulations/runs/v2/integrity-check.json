@@ -1,0 +1,60 @@
+{
+  "evidence_type": "agent_pedagogy_simulation",
+  "version": "v2",
+  "run_kind": "targeted_recheck",
+  "checked_at": "2026-11-16T09:38:49.108704+00:00",
+  "structural_check": "passed",
+  "grading_performed": false,
+  "source_documents_unchanged": true,
+  "source_checks": [
+    {
+      "path": "course/TEACHER_GUIDE.md",
+      "recorded_sha256": "90ec775675449789aa0973e95cc3d454c1c9c7673dd1ffd37edba8bf3966967a",
+      "current_sha256": "90ec775675449789aa0973e95cc3d454c1c9c7673dd1ffd37edba8bf3966967a",
+      "snapshot_sha256": "90ec775675449789aa0973e95cc3d454c1c9c7673dd1ffd37edba8bf3966967a",
+      "unchanged": true
+    },
+    {
+      "path": "course/METHODOLOGY.md",
+      "recorded_sha256": "73727174aa28af5c72cb8b79327880eaa4f65366fa05b17c1504288b6c3cff6b",
+      "current_sha256": "73727174aa28af5c72cb8b79327880eaa4f65366fa05b17c1504288b6c3cff6b",
+      "snapshot_sha256": "73727174aa28af5c72cb8b79327880eaa4f65366fa05b17c1504288b6c3cff6b",
+      "unchanged": true
+    },
+    {
+      "path": "course/TERMINAL_CLASSROOM.md",
+      "recorded_sha256": "02dc3c7c1aae5098bbae29df503f1e0ffa321c0f9d7a4f751949038deb62d66b",
+      "current_sha256": "02dc3c7c1aae5098bbae29df503f1e0ffa321c0f9d7a4f751949038deb62d66b",
+      "snapshot_sha256": "02dc3c7c1aae5098bbae29df503f1e0ffa321c0f9d7a4f751949038deb62d66b",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/03-structured-prompts/INSTRUCTOR.md",
+      "recorded_sha256": "fbbbd4f9d0377255ab00feb69cd3ac50b1d10140f849d1435e3a0fb60ed2bcbf",
+      "current_sha256": "fbbbd4f9d0377255ab00feb69cd3ac50b1d10140f849d1435e3a0fb60ed2bcbf",
+      "snapshot_sha256": "fbbbd4f9d0377255ab00feb69cd3ac50b1d10140f849d1435e3a0fb60ed2bcbf",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/03-structured-prompts/README.md",
+      "recorded_sha256": "a69e4f272aaa68a2e65bb51635a539dea1e37e7780c0781f9e92f9daae7a20d8",
+      "current_sha256": "a69e4f272aaa68a2e65bb51635a539dea1e37e7780c0781f9e92f9daae7a20d8",
+      "snapshot_sha256": "a69e4f272aaa68a2e65bb51635a539dea1e37e7780c0781f9e92f9daae7a20d8",
+      "unchanged": true
+    }
+  ],
+  "case_files": [
+    {
+      "artifact": "schema-versus-meaning",
+      "case_id": "schema-versus-meaning",
+      "variant": "v2",
+      "rounds": 3,
+      "raw_messages": 11,
+      "teacher_word_counts": [
+        189,
+        171,
+        178
+      ]
+    }
+  ]
+}

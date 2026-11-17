@@ -1,0 +1,53 @@
+{
+  "description": "Заполняет человек после настоящей игры. Пустые поля не являются успешной приёмкой.",
+  "model_run_id": null,
+  "artifact_revision": null,
+  "checks": [
+    {
+      "id": "visible_board",
+      "description": "Поле и счёт видны, движение читаемо",
+      "passed": null,
+      "evidence": null
+    },
+    {
+      "id": "keys",
+      "description": "Согласованные клавиши поворачивают змейку",
+      "passed": null,
+      "evidence": null
+    },
+    {
+      "id": "growth",
+      "description": "При поедании видны рост и изменение счёта",
+      "passed": null,
+      "evidence": null
+    },
+    {
+      "id": "collision",
+      "description": "Столкновение завершает игру по согласованным правилам",
+      "passed": null,
+      "evidence": null
+    },
+    {
+      "id": "quit",
+      "description": "q завершает игру и возвращает управление",
+      "passed": null,
+      "evidence": null
+    },
+    {
+      "id": "interrupt",
+      "description": "Отдельный запуск корректно завершается после прерывания",
+      "passed": null,
+      "evidence": null
+    },
+    {
+      "id": "terminal",
+      "description": "stty -g до/после совпадает; курсор и вывод восстановлены",
+      "passed": null,
+      "evidence": null
+    }
+  ],
+  "overall_accepted": null,
+  "runner_uid": null,
+  "runner_gid": null,
+  "runtime_image": "llm-course-sandbox:1.0"
+}

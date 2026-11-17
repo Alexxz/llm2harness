@@ -1,0 +1,37 @@
+{
+  "episode-01": {
+    "source": "course/simulations/runs/v1/confounded-comparison.json",
+    "case_id": "confounded-comparison",
+    "variant": "v1"
+  },
+  "episode-02": {
+    "source": "course/simulations/runs/v1/schema-versus-meaning.json",
+    "case_id": "schema-versus-meaning",
+    "variant": "v1"
+  },
+  "episode-03": {
+    "source": "course/simulations/runs/v1/repair-environment.json",
+    "case_id": "repair-environment",
+    "variant": "v1"
+  },
+  "episode-04": {
+    "source": "course/simulations/runs/v1/prompt-versus-training.json",
+    "case_id": "prompt-versus-training",
+    "variant": "v1"
+  },
+  "episode-05": {
+    "source": "course/simulations/runs/v1/readiness.json",
+    "case_id": "readiness",
+    "variant": "v1"
+  },
+  "episode-06": {
+    "source": "course/simulations/runs/v1/unknown-side-effect.json",
+    "case_id": "unknown-side-effect",
+    "variant": "v1"
+  },
+  "episode-07": {
+    "source": "course/simulations/runs/v1/negative-control.json",
+    "case_id": "confounded-comparison",
+    "variant": "negative-control"
+  }
+}

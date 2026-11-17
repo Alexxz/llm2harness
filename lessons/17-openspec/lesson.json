@@ -1,0 +1,60 @@
+{
+  "id": "17",
+  "slug": "openspec",
+  "title": "Спецификация игры через OpenSpec",
+  "duration_minutes": 80,
+  "depends_on": [
+    "15",
+    "16"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Согласованные решения превращаются в OpenSpec артефакты реальными вызовами CLI",
+      "observe": "Разделение модели, CLI и подтверждения человека",
+      "acceptance": "Есть трасса OpenSpec 1.16.0, артефакты, validate и запрос согласования"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Одно решение пользователя изменено до реализации",
+      "observe": "Согласованность требований, сценариев и задач после изменения",
+      "acceptance": "Изменение отражено во всех затронутых артефактах и повторно представлено пользователю"
+    },
+    {
+      "id": "mapping-fixture",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/incomplete-mapping.json",
+      "change": "У одного требования нет проверки",
+      "observe": "Структура документов не гарантирует полноту поведения",
+      "acceptance": "Ученик находит пропущенную проверку восстановления терминала"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "requirements-template.md",
+    "fixtures/incomplete-mapping.json"
+  ],
+  "completion_criteria": [
+    "Наш агент использует настоящий OpenSpec внутри контролируемого контейнера",
+    "Артефакты покрывают согласованные требования и независимую приёмку",
+    "Изменение одного решения обновило зависимые артефакты",
+    "Пользователь подтвердил актуальную спецификацию до реализации"
+  ],
+  "sources": [
+    "https://github.com/Fission-AI/OpenSpec/blob/main/docs/cli.md",
+    "https://github.com/Fission-AI/OpenSpec/blob/main/docs/workflows.md"
+  ]
+}

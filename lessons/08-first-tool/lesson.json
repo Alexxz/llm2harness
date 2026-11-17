@@ -1,0 +1,81 @@
+{
+  "id": "08",
+  "slug": "first-tool",
+  "title": "Первый инструмент и ручная обратная связь",
+  "duration_minutes": 80,
+  "depends_on": [
+    "07"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Модели описано одно разрешённое действие, но содержимое файла не передано",
+      "observe": "Предложение read_file является текстом до диспетчеризации",
+      "acceptance": "Сохранено настоящее предложение, соответствующее action.schema.json"
+    },
+    {
+      "id": "manual-dispatch",
+      "mode": "manual",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Человек запускает готовый read-only диспетчер и возвращает фактическое наблюдение",
+      "observe": "Данные появляются в следующем входе модели",
+      "acceptance": "Сохранена цепочка предложение, наблюдение, вход с наблюдением, ответ и независимая проверка"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Завершение задачи запрашивается без наблюдения",
+      "observe": "Наличие имени инструмента не даёт числовых данных",
+      "acceptance": "Зафиксирован статус недостатка данных либо неподтверждённое утверждение модели"
+    },
+    {
+      "id": "missing-observation",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/not_executed.json",
+      "change": "Одинаковый конструктор промпта получает подписанное синтетическое отсутствие наблюдения",
+      "observe": "Сравнение двух входов различается только блоком наблюдения",
+      "acceptance": "Фикстура отдельно помечена; реальный следующий ответ не выдаётся за успешное чтение"
+    },
+    {
+      "id": "policy-denial",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/denied_proposal.json",
+      "change": "Заданный путь не равен единственному разрешённому логическому имени",
+      "observe": "Диспетчер отклоняет действие до чтения источника",
+      "acceptance": "ok=false, error=policy_denied, код завершения 1"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "fixtures/stock.json",
+    "fixtures/read_proposal.json",
+    "fixtures/denied_proposal.json",
+    "fixtures/not_executed.json",
+    "action.schema.json",
+    "manual_tool.py",
+    "make_feedback.py"
+  ],
+  "completion_criteria": [
+    "Получено настоящее предложение действия",
+    "Человек выполнил ограниченный инструмент и вернул реальный результат",
+    "Ответ проверен независимо",
+    "Проведён контроль без наблюдения",
+    "Отрицательная фикстура отклоняется до чтения",
+    "Различены предложение, исполнение и обратная связь"
+  ],
+  "sources": [
+    "https://arxiv.org/abs/2210.03629"
+  ]
+}

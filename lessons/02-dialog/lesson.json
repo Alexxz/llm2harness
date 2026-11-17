@@ -1,0 +1,108 @@
+{
+  "id": "02",
+  "slug": "dialog",
+  "title": "Контекст и явно передаваемая история",
+  "duration_minutes": 75,
+  "depends_on": [
+    "01"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "passed"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Исходный вход содержит имя Плюш и вопрос о коте",
+      "observe": "Согласованность имени в реальном ответе с переданной строкой",
+      "acceptance": "Сохранены точный вход, реальные выход и настройки; источник факта указан"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Удалена только строка с именем, вопрос и начало ответа сохранены",
+      "observe": "Ответ при отсутствии источника имени в текущем входе",
+      "acceptance": "Ученик отделяет отсутствие факта во входе от сгенерированного ответа; НЕИЗВЕСТНО не является обязательным эталоном"
+    },
+    {
+      "id": "replace_fact",
+      "mode": "live_model",
+      "prompt_file": "prompts/replaced-fact.txt",
+      "change": "В исходном полном входе заменено только Плюш на Бублик",
+      "observe": "Использование нового имени либо ошибка следования контексту",
+      "acceptance": "Сопоставлены входы и реальные ответы при неизменных настройках"
+    },
+    {
+      "id": "first_turn",
+      "mode": "live_model",
+      "prompt_file": "prompts/first-turn.txt",
+      "change": "Модель сама продолжает начало рассказа о коте",
+      "observe": "Фактический первый выход для включения в следующий запрос",
+      "acceptance": "Есть настоящий сохранённый первый ответ, не подменённый авторским образцом"
+    },
+    {
+      "id": "assemble",
+      "mode": "manual",
+      "change": "Ученик в редакторе F10 кнопкой F6 собирает полный настоящий первый выход и вопрос, проверяет и сохраняет F5",
+      "observe": "Явная цепочка первый вход → первый выход → второй вход → второй выход",
+      "acceptance": "Во втором model_request находится точный полный first_response.text, новый вопрос и исходный префикс; затем выполнен реальный запрос"
+    },
+    {
+      "id": "remove_history",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Из второго входа убраны первый ход и его ответ, последний вопрос сохранён",
+      "observe": "Ответ без переданной истории и его поддержанность входом",
+      "acceptance": "Есть сопоставимый реальный запрос без истории и объяснение, кто формировал предыдущий вход"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "TEACHER_START.md",
+    "AFTER_SHOW.md",
+    "EXPLANATIONS.md",
+    "SETUP.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "prompts/replaced-fact.txt",
+    "prompts/first-turn.txt",
+    "second-turn-template.txt",
+    "fixtures/messages.json",
+    "fixtures/start.json",
+    "fixtures/README.md",
+    "dialog.py",
+    "run-card.json"
+  ],
+  "completion_criteria": [
+    "Есть реальные сопоставимые ответы с фактом, без факта и после замены одного факта",
+    "Получен собственный настоящий первый ход; полный первый выход включён во второй фактический model_request",
+    "После собранного второго запроса выполнен запрос с тем же вопросом без ранней истории",
+    "Ученик по журналу показывает переданный источник факта и отделяет его от выдумки или совпадения",
+    "После объяснения различает сохранённую программой историю, текущий контекст и обучение весов"
+  ],
+  "sources": [
+    "https://huggingface.co/docs/transformers/chat_templating",
+    "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md"
+  ],
+  "delivery_contract": "interactive-v1",
+  "initial_generation": {
+    "temperature": 0,
+    "seed": 42,
+    "max_tokens": 24
+  },
+  "preparation": {
+    "profile": "base",
+    "example_selection": "evidence/lesson-02-example-selection.json",
+    "full_terminal_pilot": "results/lesson-02-terminal-pilot.json",
+    "human_retest": "not_run",
+    "note": "Шесть реальных запросов через StudentConsole, точная сборка edit и сопоставимость суффикса проверены. Отдельно пройдено начало настоящего tmux с настоящим ядром и синтетическим преподавателем для проверки UI; два объяснения проверены через настоящий codex. Это авторские пилоты, не прохождение ученика.",
+    "full_console_pilot": "evidence/lesson-02-live-pilot.json",
+    "teacher_replay": "results/lesson-02-teacher-review.json"
+  }
+}

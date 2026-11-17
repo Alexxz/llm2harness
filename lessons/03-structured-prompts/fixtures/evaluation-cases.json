@@ -1,0 +1,8 @@
+[
+  {"id": "c01", "request": "Нужно 3 чашки кофе, срочно.", "expected": {"drink": "coffee", "cups": 3, "urgent": true}},
+  {"id": "c02", "request": "Две чашки чая, обычный заказ.", "expected": {"drink": "tea", "cups": 2, "urgent": false}},
+  {"id": "c03", "request": "Кофе, пожалуйста. Обычный заказ.", "expected": {"drink": "coffee", "cups": null, "urgent": false}},
+  {"id": "c04", "request": "Одну чашку какао, обычный заказ.", "expected": {"drink": null, "cups": 1, "urgent": false}},
+  {"id": "c05", "request": "Нужно 25 чашек чая, обычный заказ.", "expected": {"drink": "tea", "cups": null, "urgent": false}},
+  {"id": "c06", "request": "Нужно пять чашек кофе. Срочная доставка не нужна.", "expected": {"drink": "coffee", "cups": 5, "urgent": false}}
+]

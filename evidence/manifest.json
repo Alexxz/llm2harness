@@ -1,0 +1,90 @@
+{
+  "kind": "published_author_evidence",
+  "note": "Editorial publication copies: local paths and teacher transport metadata may be omitted. Public model inputs and outputs retained. Historical status is not current availability.",
+  "files": [
+    {
+      "path": "learning-episode-benchmark.json",
+      "sha256": "6e599246e0cfc0e72bcd84987f773c0a8ca829b68af495cdc0a902c82c9abd7e"
+    },
+    {
+      "path": "learning-lab-controller-pilot.json",
+      "sha256": "2445b650e0cae5cabefaf95994efc14fe1bbd264b34393d81e003f9032669110"
+    },
+    {
+      "path": "learning-lab-preflight.json",
+      "sha256": "b8cf95f0d8ee2e36fb53e4fc759d93a5807ce63cbd2a66d5e90706ed7e07d97a"
+    },
+    {
+      "path": "learning-lab-terminal-pilot.json",
+      "sha256": "fba3b443addfbe7253ca4f6b0a351c4e8a462e29d84b4107cd6a84bbe541ca40"
+    },
+    {
+      "path": "lesson-01-example-candidates.json",
+      "sha256": "f4798e05fee598a5eefaab7881de2954a66cc32e63494e578c49248605c6efa2"
+    },
+    {
+      "path": "lesson-01-live-pilot-v2.json",
+      "sha256": "6cd85362257db3543d21bb6a787be9d17b7e80ae67ebe9f5371efc7cce5a21a5"
+    },
+    {
+      "path": "lesson-01-live-pilot.json",
+      "sha256": "f66ae4b9ccfd98c43faac9d596dcaac17ea13bb582388694cfaeb6a86f5e7922"
+    },
+    {
+      "path": "lesson-01-preflight-v2.json",
+      "sha256": "881c28d961c79f2e6167b6a5c7f8002c78a4623f0dc8444bbe76fbcfc14b04fc"
+    },
+    {
+      "path": "lesson-01-preflight.json",
+      "sha256": "a20675600758fca0a4d2603a2e8ad5fbd4177f6f570121fe928baf426b87b17f"
+    },
+    {
+      "path": "lesson-01-repair-preflight-20261117.json",
+      "sha256": "56997aa6383ea5d8747ea25e5bbd50efa630e3ffdc3fd9bed7f354a08d71c9b2"
+    },
+    {
+      "path": "lesson-01-simple-example-pilot.json",
+      "sha256": "2d112082756fa00003fc266ef3baa8bc9beb91214c3bbd4a1794dae105262063"
+    },
+    {
+      "path": "lesson-02-example-selection.json",
+      "sha256": "96f59a4d9d791ec37000bfb8cbc8de4a00a398af749a3517f84de410770191b8"
+    },
+    {
+      "path": "lesson-02-live-pilot.json",
+      "sha256": "926388afa87db8e9d5980d9ed83db3a64b1e3db4598d57fe6552515c04889f3b"
+    },
+    {
+      "path": "lesson-02-preflight.json",
+      "sha256": "d11539847891fb84b1e92c90dc97980d9bc6511fb73f1324aeb3cda560fde5fb"
+    },
+    {
+      "path": "lesson-03-example-selection.json",
+      "sha256": "39ec868b002034c54860ab3a9f8364a3a971316a6d61b624a3d08e0d6c76e08a"
+    },
+    {
+      "path": "lesson-03-live-pilot.json",
+      "sha256": "5507176fd879d38365f3dd5b93202fd75393fe61e4ec4be2a6de8697f3a73042"
+    },
+    {
+      "path": "lesson-03-preflight.json",
+      "sha256": "6358710d0a428aab2e202b6be8c36cb680a508e8d0adb520e843676bc54d1415"
+    },
+    {
+      "path": "lesson-04-live-pilot.json",
+      "sha256": "7bf129bc1096e043005e4422b9746c538d8c150f4048a5bac8110dc660584c3c"
+    },
+    {
+      "path": "lesson-04-preflight.json",
+      "sha256": "c13bf8bd6dee38b971edb2cab993927dbe4746dd62aa942a30e742d27a1634a5"
+    },
+    {
+      "path": "playground-live-smoke.json",
+      "sha256": "8d8bb45982ac63f91fe9e0b0e248f97d168a05f45a65e88eb973a7a831eb77f3"
+    },
+    {
+      "path": "playground-repeated-live-smoke.json",
+      "sha256": "5eb6c991b5453be1b9bfd36ba258cf89212900f29a104f370cda62356e4f69c7"
+    }
+  ]
+}

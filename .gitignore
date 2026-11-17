@@ -1,0 +1,25 @@
+/models/
+/runtime/
+/downloads/
+/results/
+/work/
+__pycache__/
+
+# Local and editor files
+.env
+.env.*
+.idea/
+.vscode/
+# The source manifest is tracked; the compressed copy stays local.
+/checkpoints/*/*.tar.gz
+
+# Transient terminal captures from synthetic playtests
+/course/simulations/terminal-playtest/*.raw
+/course/simulations/terminal-playtest/session-data/*.lock
+
+# Personal instructions and credentials never belong to the distribution.
+/AGENTS.private.md
+*.pem
+*.key
+*.p12
+*.pfx

@@ -1,0 +1,54 @@
+{
+  "id": "00",
+  "slug": "interface",
+  "title": "Знакомство с интерфейсом",
+  "duration_minutes": 10,
+  "depends_on": [],
+  "requires_model": false,
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "navigation",
+      "mode": "manual",
+      "change": "F3 выбирает терминал ученика, F2 возвращает к материалам",
+      "observe": "Курсор и рамка меняют выбранное окно",
+      "acceptance": "Ученик различает назначения окон и сообщает о результате в обычном чате"
+    },
+    {
+      "id": "help",
+      "mode": "manual",
+      "change": "Помощь по Ctrl+h и возврат по Esc",
+      "observe": "Справка появляется и закрывается, ввод сохраняется",
+      "acceptance": "Есть interface_help_opened/closed, нет запроса модели"
+    },
+    {
+      "id": "show",
+      "mode": "manual",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Показ подготовленного учебного текста",
+      "observe": "Две строки в подписанном блоке входа",
+      "acceptance": "Есть show без model_request; ученик отличает вход от ответа в обычном чате"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt"
+  ],
+  "completion_criteria": [
+    "Выбор окон F2/F3 и понимание их назначения",
+    "Помощь Ctrl+h и возврат Esc",
+    "Выполненный show и объяснение подготовленного текста",
+    "Преподаватель явно объявил завершение фиксированного плана из трёх шагов"
+  ],
+  "sources": [
+    "https://github.com/tmux/tmux/wiki/Getting-Started",
+    "https://man.openbsd.org/tmux.1"
+  ]
+}

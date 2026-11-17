@@ -1,0 +1,58 @@
+{
+  "id": "05",
+  "slug": "fine-tuning",
+  "title": "Настоящее дообучение и сравнение до и после",
+  "duration_minutes": 75,
+  "depends_on": [
+    "04"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Повтор исходного измерения без изменения промптов; реальные входы берутся из eval.jsonl",
+      "observe": "Ответы фиксированной исходной версии без адаптера",
+      "acceptance": "Использован неизменный настоящий отчёт занятия 04 с теми же настройками"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Подключается реально обученный LoRA-адаптер; входы и параметры оценки неизменны",
+      "observe": "Изменение адаптера, метрики формата и смысла, отдельные ответы до/после",
+      "acceptance": "Digest обучаемых параметров изменился; --compare подтвердил сопоставимость; улучшение не предполагается заранее"
+    },
+    {
+      "id": "disable-adapter",
+      "mode": "manual",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Ученик запускает evaluator снова без --adapter",
+      "observe": "Возвращение к исходной конфигурации",
+      "acceptance": "Сохранён отдельный base-recheck отчёт; возможные различия разобраны"
+    }
+  ],
+  "artifacts": [
+    "INSTRUCTOR.md",
+    "INTRO.md",
+    "README.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt"
+  ],
+  "completion_criteria": [
+    "Настоящее обучение изменило параметры и сохранило адаптер с manifest",
+    "До и после измерены на одной ревизии, одном стеке, одинаковых промптах и eval-идентификаторах",
+    "Ученик интерпретировал эффект и ограничения, не заменяя измерение снижением training loss"
+  ],
+  "sources": [
+    "https://huggingface.co/docs/peft/v0.15.0/tutorial/peft_model_config",
+    "https://huggingface.co/docs/peft/v0.15.0/package_reference/lora",
+    "https://huggingface.co/docs/transformers/v4.51.3/main_classes/trainer",
+    "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
+  ]
+}

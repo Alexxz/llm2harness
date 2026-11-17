@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "slug", "title", "duration_minutes", "depends_on", "status", "experiments", "artifacts", "completion_criteria", "sources"],
+  "properties": {
+    "delivery_contract": {"enum": ["interactive-v1"]},
+    "initial_generation": {
+      "type": "object", "required": ["temperature", "seed", "max_tokens"],
+      "properties": {
+        "temperature": {"type": "number", "minimum": 0, "maximum": 2},
+        "seed": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+        "max_tokens": {"type": "integer", "minimum": 1, "maximum": 4096}
+      },
+      "additionalProperties": false
+    },
+    "id": {"type": "string", "pattern": "^(0[0-9]|1[0-8])$"},
+    "slug": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "title": {"type": "string", "minLength": 5},
+    "duration_minutes": {"type": "integer", "minimum": 10, "maximum": 90},
+    "depends_on": {"type": "array", "items": {"type": "string", "pattern": "^[0-9]{2}$"}, "uniqueItems": true},
+    "status": {
+      "type": "object",
+      "required": ["specification", "offline_validation", "live_validation"],
+      "properties": {
+        "specification": {"enum": ["draft", "reviewed"]},
+        "offline_validation": {"enum": ["not_run", "passed", "failed"]},
+        "live_validation": {"enum": ["not_run", "passed", "failed"]}
+      },
+      "additionalProperties": false
+    },
+    "experiments": {
+      "type": "array", "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "mode", "change", "observe", "acceptance"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9_-]+$"},
+          "mode": {"enum": ["live_model", "offline_fixture", "manual"]},
+          "prompt_file": {"type": "string", "minLength": 1},
+          "fixture_file": {"type": "string", "minLength": 1},
+          "change": {"type": "string", "minLength": 5},
+          "observe": {"type": "string", "minLength": 5},
+          "acceptance": {"type": "string", "minLength": 5}
+        },
+        "allOf": [
+          {"if": {"properties": {"mode": {"const": "offline_fixture"}}}, "then": {"required": ["fixture_file"]}},
+          {"if": {"properties": {"mode": {"const": "live_model"}}}, "then": {"required": ["prompt_file"]}}
+        ],
+        "additionalProperties": true
+      }
+    },
+    "artifacts": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "completion_criteria": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 5}},
+    "sources": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^https://"}}
+  },
+  "allOf": [
+    {"if": {"properties": {"id": {"const": "00"}}},
+     "then": {"properties": {"duration_minutes": {"maximum": 15}}},
+     "else": {"properties": {"duration_minutes": {"minimum": 60}}}},
+    {"if": {"required": ["delivery_contract"], "properties": {"delivery_contract": {"const": "interactive-v1"}}},
+     "then": {
+       "required": ["initial_generation"],
+       "properties": {"artifacts": {"allOf": [
+         {"contains": {"const": "TEACHER_START.md"}},
+         {"contains": {"const": "EXPLANATIONS.md"}}
+       ]}}
+     }}
+  ],
+  "additionalProperties": true
+}

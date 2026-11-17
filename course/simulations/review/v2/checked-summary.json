@@ -1,0 +1,20 @@
+{
+  "evidence_type": "agent_pedagogy_simulation_review",
+  "judgment_consistent": true,
+  "exact_quotes_checked": 23,
+  "episodes": [
+    {
+      "source": "course/simulations/runs/v2/schema-versus-meaning.json",
+      "case_id": "schema-versus-meaning",
+      "variant": "v2",
+      "episode": "episode-01",
+      "score": 12,
+      "accepted": true,
+      "critical_failures": []
+    }
+  ],
+  "accepted_regular_episodes": 1,
+  "regular_episode_count": 1,
+  "negative_control_rejected": null,
+  "human_learning_measured": false
+}

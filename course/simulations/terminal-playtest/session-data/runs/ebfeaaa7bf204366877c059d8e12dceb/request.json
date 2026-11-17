@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "root": "/tmp/course-terminal-teaching-7c4jkokm",
+  "session_id": "lesson-03-3bb350f4b203",
+  "run_id": "ebfeaaa7bf204366877c059d8e12dceb",
+  "kind": "complete",
+  "prompt": "Преобразуй учебную заявку на напиток в один JSON-объект.\nПоля и правила:\n- drink: \"tea\" для чая, \"coffee\" для кофе; null, если указан другой напиток или напиток не указан.\n- cups: целое число от 1 до 20; null, если количество не указано или выходит за диапазон. Числа словами тоже учитывай.\n- urgent: true, только если заявка явно срочная; иначе false. Отрицание срочности означает false.\nВсегда включай ровно эти три поля. Верни только JSON без пояснений и Markdown.\n\nТекущая заявка: Две чашки чая, обычный заказ\nОтвет:\n",
+  "settings": {
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "seed": 42,
+    "timeout": 60.0,
+    "max_steps": 8,
+    "max_requests": 8,
+    "deadline_seconds": 180.0,
+    "tools": [
+      "read_file",
+      "write_file"
+    ],
+    "skill": false
+  },
+  "schema": null,
+  "endpoint": "http://127.0.0.1:37761",
+  "allow_remote": false,
+  "sandbox_image": "bash:5.2",
+  "capabilities": [
+    "doctor",
+    "complete"
+  ],
+  "workspace": "/tmp/course-terminal-teaching-7c4jkokm/work/classroom/lesson-03-3bb350f4b203",
+  "skills": [],
+  "agent_state_path": "/tmp/course-terminal-teaching-7c4jkokm/results/classroom/lesson-03-3bb350f4b203/runs/ebfeaaa7bf204366877c059d8e12dceb/agent-state.json"
+}

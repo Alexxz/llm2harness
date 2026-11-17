@@ -1,0 +1,79 @@
+{
+  "id": "14",
+  "slug": "state",
+  "title": "Состояние задачи и возобновление агента",
+  "duration_minutes": 75,
+  "depends_on": [
+    "09",
+    "12",
+    "13"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "passed",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Полный вход с явным фактом",
+      "observe": "Источник ответа находится в переданном тексте",
+      "acceptance": "Сохранены запрос и исходный ответ; ожидается MINT-472"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Удалена ровно строка с меткой",
+      "observe": "Модель должна признать отсутствие факта; возможную выдумку разбираем отдельно",
+      "acceptance": "В запросе факта нет; ожидается НЕТ_ДАННЫХ либо сохранена и объяснена ошибка"
+    },
+    {
+      "id": "recovery-decisions",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/states.json",
+      "change": "Разные заданные точки остановки при одной политике",
+      "observe": "Завершение, ожидание, неизвестный эффект и исчерпанный бюджет различаются",
+      "acceptance": "checkpoint_experiment.py --self-test проходит без модели и инструментов"
+    },
+    {
+      "id": "pause-resume",
+      "mode": "live_model",
+      "prompt_file": "prompts/ask-name.txt",
+      "change": "После waiting_for_user добавлен явный ответ пользователя",
+      "observe": "Возобновление сохраняет run_id, конфигурацию и кумулятивные счётчики",
+      "acceptance": "Сохранены реальный вопрос, ответ человека, создание и чтение названного файла; управляющее состояние вне workspace"
+    },
+    {
+      "id": "state-boundary",
+      "mode": "manual",
+      "change": "Человек указывает --state внутри workspace в отрицательной проверке",
+      "observe": "Runtime отклоняет доверенный управляющий файл в области записи агента",
+      "acceptance": "Отказ происходит до запроса модели и действий инструментов"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "prompts/ask-name.txt",
+    "fixtures/states.json",
+    "checkpoint_experiment.py"
+  ],
+  "completion_criteria": [
+    "Различены вход модели, файлы проекта, журнал событий и checkpoint",
+    "Сокращение истории проверено по фактически переданному тексту",
+    "Неизвестное действие не повторяется при восстановлении",
+    "Пауза и продолжение сохраняют счётчики и конфигурацию",
+    "Доверенное состояние недоступно инструментам агента"
+  ],
+  "sources": [
+    "https://docs.python.org/3.12/library/json.html",
+    "https://docs.python.org/3.12/library/os.html#os.replace",
+    "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2"
+  ]
+}

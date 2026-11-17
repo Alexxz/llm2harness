@@ -1,0 +1,74 @@
+{
+  "evidence_type": "agent_pedagogy_simulation_review",
+  "judgment_consistent": true,
+  "exact_quotes_checked": 82,
+  "episodes": [
+    {
+      "source": "course/simulations/runs/v1/confounded-comparison.json",
+      "case_id": "confounded-comparison",
+      "variant": "v1",
+      "episode": "episode-01",
+      "score": 12,
+      "accepted": true,
+      "critical_failures": []
+    },
+    {
+      "source": "course/simulations/runs/v1/schema-versus-meaning.json",
+      "case_id": "schema-versus-meaning",
+      "variant": "v1",
+      "episode": "episode-02",
+      "score": 11,
+      "accepted": true,
+      "critical_failures": []
+    },
+    {
+      "source": "course/simulations/runs/v1/repair-environment.json",
+      "case_id": "repair-environment",
+      "variant": "v1",
+      "episode": "episode-03",
+      "score": 12,
+      "accepted": true,
+      "critical_failures": []
+    },
+    {
+      "source": "course/simulations/runs/v1/prompt-versus-training.json",
+      "case_id": "prompt-versus-training",
+      "variant": "v1",
+      "episode": "episode-04",
+      "score": 12,
+      "accepted": true,
+      "critical_failures": []
+    },
+    {
+      "source": "course/simulations/runs/v1/readiness.json",
+      "case_id": "readiness",
+      "variant": "v1",
+      "episode": "episode-05",
+      "score": 12,
+      "accepted": true,
+      "critical_failures": []
+    },
+    {
+      "source": "course/simulations/runs/v1/unknown-side-effect.json",
+      "case_id": "unknown-side-effect",
+      "variant": "v1",
+      "episode": "episode-06",
+      "score": 12,
+      "accepted": true,
+      "critical_failures": []
+    },
+    {
+      "source": "course/simulations/runs/v1/negative-control.json",
+      "case_id": "confounded-comparison",
+      "variant": "negative-control",
+      "episode": "episode-07",
+      "score": 3,
+      "accepted": false,
+      "critical_failures": []
+    }
+  ],
+  "accepted_regular_episodes": 6,
+  "regular_episode_count": 6,
+  "negative_control_rejected": true,
+  "human_learning_measured": false
+}

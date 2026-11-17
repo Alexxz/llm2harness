@@ -1,0 +1,295 @@
+{
+  "as_of": "2026-11-17",
+  "release": "0.1.0",
+  "readiness": "lesson_04_new_learning_lab_ready_for_human_trial",
+  "specifications_reviewed": 19,
+  "course_structure": {
+    "passed": true,
+    "lesson_count": 19,
+    "main_lessons": 18,
+    "orientation_lessons": 1
+  },
+  "helper_checks_report": "results/course-helper-validation-20261116.json",
+  "live_model_acceptance": "not_run",
+  "real_training": "real_local_lora_episode_completed_author_pilot",
+  "real_container_isolation": "not_run",
+  "image_build": "not_run",
+  "manual_game_acceptance": "not_run",
+  "api_pro_budget": "deferred_by_user",
+  "model_downloads_started": true,
+  "paid_training_or_api_jobs_started": false,
+  "finished_snake_game_included": false,
+  "pedagogical_validation": {
+    "evidence_type": "agent_role_play",
+    "report": "course/PEDAGOGICAL_EVALUATION.md",
+    "artifact_checks_report": "results/course-pedagogy-validation-20261116.json",
+    "baseline": {
+      "regular_episodes": 6,
+      "accepted_regular_episodes": 6,
+      "negative_control_episodes": 1,
+      "negative_control_rejected": true,
+      "critical_failures": 0,
+      "review": "course/simulations/review/v1/judgment.json",
+      "protocol_and_judgment_consistency": "passed"
+    },
+    "terminal_playtest": {
+      "status": "accepted_by_rubric",
+      "real_pty": true,
+      "completion_source": "constant_synthetic_http_fixture",
+      "learner_selected_commands": 16,
+      "teacher_advices_delivered": 2,
+      "http_requests": 2,
+      "manual_original_case_analysis": true,
+      "written_transfer_question": true,
+      "semantic_checker_executed": false,
+      "coordinator_checker_preparation_required": true,
+      "owned_processes_closed": true,
+      "reviewer_already_familiar_with_v1": true,
+      "report": "course/simulations/terminal-playtest/report.json",
+      "review": "course/simulations/terminal-playtest/judgment.json",
+      "judgment_consistency_and_exact_quotes": "passed"
+    },
+    "instruction_gap": "return_to_original_case_after_explanation",
+    "instruction_gap_status": "addressed_and_targeted_recheck_accepted",
+    "targeted_recheck": {
+      "case": "schema-versus-meaning",
+      "status": "accepted_by_rubric",
+      "new_role_agents": true,
+      "teacher_interventions": 3,
+      "original_case_explicitly_revisited": true,
+      "written_transfer_question": true,
+      "protocol_and_judgment_consistency": "passed",
+      "report": "course/simulations/runs/v2/schema-versus-meaning.json",
+      "review": "course/simulations/review/v2/judgment.json",
+      "new_independent_task_sample": false,
+      "reviewer_already_familiar_with_v1": true
+    },
+    "teacher_guide": "course/TEACHER_GUIDE.md",
+    "instructor_guides_linked": 19,
+    "full_lessons_simulated": 0,
+    "human_learning_acceptance": "not_run",
+    "causal_teaching_effect_measured": false,
+    "human_interface_pilot": {
+      "status": "interrupted_before_model_call",
+      "session": "lesson-01-b5f6715e7387",
+      "observed_gap": "commands_and_prediction_before_interface_and_task_explanation",
+      "revision": "orientation_lesson_00_and_subject_specific_intros",
+      "revised_human_acceptance": "not_run"
+    },
+    "human_board_layout_feedback": {
+      "session": "lesson-00-5529a609a50b",
+      "observed_gap": "raw_quote_markers_and_mid_word_wrap",
+      "fix": "plain_prose_after_final_tmux_client_size",
+      "technical_regression": "passed",
+      "human_recheck": "not_run",
+      "prior_readability_report": "student_reported_much_better"
+    },
+    "single_channel_revision": {
+      "reason": "real_learner_confused_by_duplicate_chat_and_special_ready_signal",
+      "design": "one_ordinary_chat_and_terminal_experiments",
+      "human_acceptance": "not_run"
+    }
+  },
+  "classroom": {
+    "managed_terminal": "implemented",
+    "teacher_observation_advice_controls": "implemented",
+    "real_pty_synthetic_http_test": "passed",
+    "core_tests": 24,
+    "console_tests": 11,
+    "terminal_e2e_tests": 1,
+    "main_test_log": "results/course-single-chat-tests-20261116.log",
+    "observation_scope": "explicit classroom session during active joint lesson",
+    "unmanaged_training_or_external_shell_capture": false,
+    "real_model_acceptance": "not_run",
+    "real_docker_acceptance": "not_run",
+    "tmux_tests": 7,
+    "split_backend": "tmux",
+    "tmux_version_verified": "3.4",
+    "real_tmux_pty_fixture_test": "passed",
+    "personal_tmux_configuration_used": false,
+    "orientation_lesson": "00",
+    "orientation_requires_model": false,
+    "interface_validation_report": "results/course-single-chat-validation-20261116.json",
+    "actual_orientation_screen_preview": "results/course-single-chat-preview-20261116.json",
+    "word_wrapping_and_layout_readiness": "passed",
+    "board_rendering": "rich_colored_markdown",
+    "rich_version_verified": "13.7.1",
+    "persistent_help_key": "Ctrl+h",
+    "close_help_key": "Esc",
+    "switch_terminals_key": "F2 / F3",
+    "help_preserves_unfinished_input": "passed",
+    "teacher_key": "F2",
+    "student_key": "F3",
+    "conversation_channel": "ordinary_chat_only",
+    "terminal_message_delivery": false,
+    "orientation_fixed_steps": 3
+  },
+  "teacher_role": {
+    "roles_contract": "course/ROLES.md",
+    "course_participants": [
+      "teacher",
+      "learner"
+    ],
+    "author_is_course_participant": false,
+    "backends": [
+      "codex",
+      "api",
+      "command"
+    ],
+    "default": "codex",
+    "source_of_historical_teacher_intelligence": "unspecified",
+    "public_transport_live_acceptance": "not_run",
+    "development_method": "course/TEACHER_DEVELOPMENT.md"
+  },
+  "lesson_01_preparation": {
+    "materials": "prepared",
+    "startup_task": "lessons/01-black-box/TEACHER_START.md",
+    "setup": "lessons/01-black-box/SETUP.md",
+    "structure_validation": "passed",
+    "regression_tests": 113,
+    "test_log": "results/lesson-01-example-v2-tests.log",
+    "weights_ready": true,
+    "real_core_pilot": "passed_8_requests",
+    "downloads_started": true,
+    "note": "Базовая модель подготовлена; сервер запущен на localhost:8088; 8 реальных авторских запросов выполнены через Session. Это не прохождение ученика.",
+    "pilot_report": "evidence/lesson-01-live-pilot-v2.json",
+    "preflight": "evidence/lesson-01-preflight-v2.json",
+    "pedagogy_revision": {
+      "reason": "Первый человеческий проход: параметры введены до понимания операции, затруднение встречено повторным вопросом.",
+      "approach": "Первое наблюдение на готовых настройках до управления параметрами; необязательный прогноз; объяснение вместо загадки.",
+      "replay": "results/lesson-01-onboarding-recheck.json",
+      "regression_tests": "results/lesson-01-observation-first-tests.log",
+      "preset_terminal_tests": "results/lesson-01-preset-terminal-tests.log",
+      "human_retest": "not_run",
+      "current_session_reset": false
+    },
+    "example": "Одна образцовая пара dog — собака, затем cat; variation меняет cat на house",
+    "example_selection": "evidence/lesson-01-example-candidates.json",
+    "teaching_order": [
+      "first_example",
+      "optional_play",
+      "max_tokens",
+      "temperature"
+    ],
+    "explanation_revision": {
+      "review": "course/reviews/lesson-01-explanation-gaps.md",
+      "teacher_material": "lessons/01-black-box/EXPLANATIONS.md",
+      "runtime_tests": "results/teacher-explanation-context-tests.log",
+      "prospective_replay": "results/lesson-01-explanation-replay.json",
+      "replay_review": "В первом ответе объяснены выбор по вероятностям и псевдослучайность с фактической таблицей; во втором веса объяснены до вопроса о них.",
+      "human_retest": "not_run",
+      "completed_learner_work_preserved": true
+    }
+  },
+  "playground": {
+    "key": "F9",
+    "implemented": true,
+    "tests": "results/playground-repeat-all-tests.log",
+    "real_model_smoke": "evidence/playground-live-smoke.json",
+    "lesson_state_isolated": true,
+    "draft_persists": true,
+    "human_validation": "accepted_by_user",
+    "repeated_requests_verified": true,
+    "repeated_live_smoke": "evidence/playground-repeated-live-smoke.json",
+    "prompt_shortcut": "F7",
+    "parameters_shortcut": "F8",
+    "keeps_edit_focus_after_request": true,
+    "human_feedback": "да. стало хорошо"
+  },
+  "checkpoint": {
+    "record": "course/CHECKPOINT.md",
+    "history": "new_public_snapshot"
+  },
+  "lesson_02_preparation": {
+    "materials": "prepared",
+    "delivery_contract": "interactive-v1",
+    "structure_validation": "passed",
+    "regression_tests": 116,
+    "test_log": "results/lesson-02-integration-tests.log",
+    "example_selection": "evidence/lesson-02-example-selection.json",
+    "live_console_pilot": "evidence/lesson-02-live-pilot.json",
+    "terminal_pilot": "results/lesson-02-terminal-pilot.json",
+    "preflight": "evidence/lesson-02-preflight.json",
+    "teacher_replay": "results/lesson-02-teacher-review.json",
+    "settings": {
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 24
+    },
+    "human_validation": "completed",
+    "exact_history_suffix_verified": true,
+    "full_real_first_reply_in_second_request": true,
+    "entry_without_teacher_calls": true,
+    "human_session": "lesson-02-fcf02ac866b1",
+    "human_review": "course/reviews/lesson-02-human-experience.md"
+  },
+  "lesson_03_preparation": {
+    "status": "prepared_author_pilot_passed",
+    "plan": "lessons/03-structured-prompts/PLAN.md",
+    "primary_model": "same_local_base",
+    "human_validation": "completed",
+    "teacher_model": "неуказанная модель преподавателя",
+    "live_pilot": "evidence/lesson-03-live-pilot.json",
+    "preflight": "evidence/lesson-03-preflight.json",
+    "regression_tests": 137,
+    "test_log": "results/lesson-03-final-tests.log",
+    "human_session": "lesson-03-a1bd652322c1",
+    "human_acceptance_sequence": 112,
+    "human_review": "course/reviews/lesson-03-human-experience.md",
+    "human_feedback": "мне очень понравилось",
+    "saved_commit": "259f5e3"
+  },
+  "prompt_editor": {
+    "key": "F10",
+    "assembly_key": "F6",
+    "save_key": "F5",
+    "tests": 127,
+    "test_log": "results/prompt-editor-tests.log",
+    "human_usage": "confirmed_in_lesson_02"
+  },
+  "lesson_04_preparation": {
+    "status": "ready_for_human_trial_not_pedagogically_accepted",
+    "practice_mode": "learning-lab-v1",
+    "student_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "human_validation": "not_run_new_approach",
+    "prior_human_attempt": {
+      "session": "lesson-04-9b8f25a127b7",
+      "status": "not_completed_pedagogical_block",
+      "review": "course/reviews/lesson-04-human-onboarding-failure.md"
+    },
+    "runtime_pilot": "evidence/learning-lab-controller-pilot.json",
+    "terminal_pilot": "evidence/learning-lab-terminal-pilot.json",
+    "training_benchmark": "evidence/learning-episode-benchmark.json",
+    "real_training_steps": 12,
+    "training_seconds_reference": 18.651,
+    "peak_training_rss_mib": 3167.3,
+    "teacher_state_regression": "results/learning-teacher-state-regression.json",
+    "teacher_closed_regression": "results/learning-teacher-closed-regression.json",
+    "understanding_not_proven_by_authored_tests": true,
+    "preflight": "evidence/learning-lab-preflight.json"
+  },
+  "publication": {
+    "stage": "partial_experimental_course",
+    "license": "0BSD",
+    "public_model_evidence": "evidence/manifest.json",
+    "historical_records": "edited_publication_copies",
+    "current_environment_ready": false
+  },
+  "historical_offline_tests": {
+    "main_suite": 157,
+    "passed": true,
+    "test_log": "results/learning-lab-full-tests.log",
+    "historical_helpers": {
+      "repair_helpers": 4,
+      "snake_checker": 13,
+      "rerun_now": false
+    }
+  },
+  "offline_tests": {
+    "main_suite": 156,
+    "passed": true,
+    "repair_helpers": 4,
+    "snake_checker": 13,
+    "report": "docs/PUBLIC_CHECKS.md"
+  }
+}

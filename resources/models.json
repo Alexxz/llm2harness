@@ -1,0 +1,39 @@
+{
+  "status": "pinned_public_profiles_historical_pilots_in_evidence",
+  "base": {
+    "upstream": "Qwen/Qwen2.5-1.5B",
+    "repository": "mradermacher/Qwen2.5-1.5B-GGUF",
+    "revision": "4d8150eba159047c0ad5f72a8473e4ad60419c4a",
+    "filename": "Qwen2.5-1.5B.Q4_K_M.gguf",
+    "local_name": "qwen2.5-1.5b-base-q4_k_m.gguf",
+    "bytes": 986048544,
+    "sha256": "ea47cef917fa77a3458206d0848f81dd033dfb859bbb3b176bf6006d3b620814",
+    "source": "https://huggingface.co/mradermacher/Qwen2.5-1.5B-GGUF",
+    "license": "Apache-2.0"
+  },
+  "instruct": {
+    "upstream": "Qwen/Qwen2.5-1.5B-Instruct",
+    "repository": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+    "revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+    "filename": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+    "local_name": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+    "bytes": 1117320736,
+    "sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+    "source": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+    "license": "Apache-2.0"
+  },
+  "training": {
+    "upstream": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "filename": "model.safetensors",
+    "bytes": 988097824,
+    "sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+    "cache_directory": "work/model-cache",
+    "dtype": "float32",
+    "device": "cpu",
+    "endpoint": "http://127.0.0.1:8089",
+    "source": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct",
+    "role": "Explicit separate local profile for same-checkpoint before/after in lessons 04–05",
+    "license": "Apache-2.0"
+  }
+}

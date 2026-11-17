@@ -1,0 +1,179 @@
+{
+  "evidence_type": "agent_pedagogy_simulation",
+  "checked_at": "2026-11-16T09:00:52.604252+00:00",
+  "structural_check": "passed",
+  "grading_performed": false,
+  "source_documents_unchanged": true,
+  "source_checks": [
+    {
+      "path": "course/METHODOLOGY.md",
+      "recorded_sha256": "57401a54eca3c018baf62047c2cd38caa24af2f81fce26a09caa8bc4b7693b20",
+      "current_sha256": "57401a54eca3c018baf62047c2cd38caa24af2f81fce26a09caa8bc4b7693b20",
+      "snapshot_sha256": "57401a54eca3c018baf62047c2cd38caa24af2f81fce26a09caa8bc4b7693b20",
+      "unchanged": true
+    },
+    {
+      "path": "course/TERMINAL_CLASSROOM.md",
+      "recorded_sha256": "5b12d12c1fe6b8b67ddc62d9386c84fcc4c081300f84acc167162d77425936eb",
+      "current_sha256": "5b12d12c1fe6b8b67ddc62d9386c84fcc4c081300f84acc167162d77425936eb",
+      "snapshot_sha256": "5b12d12c1fe6b8b67ddc62d9386c84fcc4c081300f84acc167162d77425936eb",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/01-black-box/INSTRUCTOR.md",
+      "recorded_sha256": "6d40218d405ac446370af56b7190b8701385e759d38df94b7cd8eb4021a7d3ed",
+      "current_sha256": "6d40218d405ac446370af56b7190b8701385e759d38df94b7cd8eb4021a7d3ed",
+      "snapshot_sha256": "6d40218d405ac446370af56b7190b8701385e759d38df94b7cd8eb4021a7d3ed",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/01-black-box/README.md",
+      "recorded_sha256": "04f1da3d4e1d288da849dbe7e6e50132bf6676f54592dc00679041955880c236",
+      "current_sha256": "04f1da3d4e1d288da849dbe7e6e50132bf6676f54592dc00679041955880c236",
+      "snapshot_sha256": "04f1da3d4e1d288da849dbe7e6e50132bf6676f54592dc00679041955880c236",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/03-structured-prompts/INSTRUCTOR.md",
+      "recorded_sha256": "b5530096cec4fdc855888764afd6d327124926a6e0541bd2baaa095d60ba4b27",
+      "current_sha256": "b5530096cec4fdc855888764afd6d327124926a6e0541bd2baaa095d60ba4b27",
+      "snapshot_sha256": "b5530096cec4fdc855888764afd6d327124926a6e0541bd2baaa095d60ba4b27",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/03-structured-prompts/README.md",
+      "recorded_sha256": "a69e4f272aaa68a2e65bb51635a539dea1e37e7780c0781f9e92f9daae7a20d8",
+      "current_sha256": "a69e4f272aaa68a2e65bb51635a539dea1e37e7780c0781f9e92f9daae7a20d8",
+      "snapshot_sha256": "a69e4f272aaa68a2e65bb51635a539dea1e37e7780c0781f9e92f9daae7a20d8",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/05-fine-tuning/INSTRUCTOR.md",
+      "recorded_sha256": "0c342639f637b5c779051d5aa41786aeec2d60bf3147fe44013443814ce1708e",
+      "current_sha256": "0c342639f637b5c779051d5aa41786aeec2d60bf3147fe44013443814ce1708e",
+      "snapshot_sha256": "0c342639f637b5c779051d5aa41786aeec2d60bf3147fe44013443814ce1708e",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/05-fine-tuning/README.md",
+      "recorded_sha256": "31e0127c2a07da087bf1cac16dc398b7fc2e1c810e7ef583d7fb89c2d46cbf33",
+      "current_sha256": "31e0127c2a07da087bf1cac16dc398b7fc2e1c810e7ef583d7fb89c2d46cbf33",
+      "snapshot_sha256": "31e0127c2a07da087bf1cac16dc398b7fc2e1c810e7ef583d7fb89c2d46cbf33",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/11-repair/INSTRUCTOR.md",
+      "recorded_sha256": "5ec54dbb0dc0630e33e2baedb56baa2bdfe4ac2431cc90773854f594262c9bb3",
+      "current_sha256": "5ec54dbb0dc0630e33e2baedb56baa2bdfe4ac2431cc90773854f594262c9bb3",
+      "snapshot_sha256": "5ec54dbb0dc0630e33e2baedb56baa2bdfe4ac2431cc90773854f594262c9bb3",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/11-repair/README.md",
+      "recorded_sha256": "8084b9748c6b4807d80fc249ba93608169fc0589e9be41f158e195ad3b4e0d79",
+      "current_sha256": "8084b9748c6b4807d80fc249ba93608169fc0589e9be41f158e195ad3b4e0d79",
+      "snapshot_sha256": "8084b9748c6b4807d80fc249ba93608169fc0589e9be41f158e195ad3b4e0d79",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/13-retries/INSTRUCTOR.md",
+      "recorded_sha256": "e184b460e919892ecfe473d69f3ac82b87ea920b48c140bf7718ece3a6bb88c2",
+      "current_sha256": "e184b460e919892ecfe473d69f3ac82b87ea920b48c140bf7718ece3a6bb88c2",
+      "snapshot_sha256": "e184b460e919892ecfe473d69f3ac82b87ea920b48c140bf7718ece3a6bb88c2",
+      "unchanged": true
+    },
+    {
+      "path": "lessons/13-retries/README.md",
+      "recorded_sha256": "ce29aa8bdf5106c48534ae85a928cd28f436aa017d65efde7868d30442e62c4c",
+      "current_sha256": "ce29aa8bdf5106c48534ae85a928cd28f436aa017d65efde7868d30442e62c4c",
+      "snapshot_sha256": "ce29aa8bdf5106c48534ae85a928cd28f436aa017d65efde7868d30442e62c4c",
+      "unchanged": true
+    }
+  ],
+  "case_files": [
+    {
+      "artifact": "readiness",
+      "case_id": "readiness",
+      "variant": "v1",
+      "rounds": 3,
+      "raw_messages": 11,
+      "teacher_word_counts": [
+        193,
+        180,
+        179
+      ]
+    },
+    {
+      "artifact": "confounded-comparison",
+      "case_id": "confounded-comparison",
+      "variant": "v1",
+      "rounds": 3,
+      "raw_messages": 11,
+      "teacher_word_counts": [
+        191,
+        183,
+        177
+      ]
+    },
+    {
+      "artifact": "schema-versus-meaning",
+      "case_id": "schema-versus-meaning",
+      "variant": "v1",
+      "rounds": 3,
+      "raw_messages": 11,
+      "teacher_word_counts": [
+        187,
+        180,
+        192
+      ]
+    },
+    {
+      "artifact": "prompt-versus-training",
+      "case_id": "prompt-versus-training",
+      "variant": "v1",
+      "rounds": 3,
+      "raw_messages": 11,
+      "teacher_word_counts": [
+        199,
+        188,
+        179
+      ]
+    },
+    {
+      "artifact": "repair-environment",
+      "case_id": "repair-environment",
+      "variant": "v1",
+      "rounds": 3,
+      "raw_messages": 11,
+      "teacher_word_counts": [
+        187,
+        178,
+        181
+      ]
+    },
+    {
+      "artifact": "unknown-side-effect",
+      "case_id": "unknown-side-effect",
+      "variant": "v1",
+      "rounds": 3,
+      "raw_messages": 11,
+      "teacher_word_counts": [
+        191,
+        193,
+        180
+      ]
+    },
+    {
+      "artifact": "negative-control",
+      "case_id": "confounded-comparison",
+      "variant": "negative-control",
+      "rounds": 3,
+      "raw_messages": 10,
+      "teacher_word_counts": [
+        6,
+        3,
+        3
+      ]
+    }
+  ]
+}

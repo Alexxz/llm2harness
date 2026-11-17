@@ -1,0 +1,213 @@
+{
+  "source": "author_runtime_pilot_not_learner",
+  "parent": "lesson-04-ea0a72f2113a",
+  "child": "lesson-04-2e87f326f156",
+  "state": {
+    "version": 1,
+    "stage": 6,
+    "config": {
+      "version": 1,
+      "instruction": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.",
+      "request": "Две чашки чая.",
+      "pairs": [
+        {
+          "request": "Две чашки чая.",
+          "answer": "{\"drink\":\"tea\",\"cups\":2}"
+        },
+        {
+          "request": "Три чашки кофе.",
+          "answer": "{\"drink\":\"coffee\",\"cups\":3}"
+        },
+        {
+          "request": "Одна чашка чая.",
+          "answer": "{\"drink\":\"tea\",\"cups\":1}"
+        },
+        {
+          "request": "Одна чашка кофе.",
+          "answer": "{\"drink\":\"coffee\",\"cups\":1}"
+        }
+      ],
+      "new_request": "Четыре чашки кофе.",
+      "steps": 12,
+      "learning_rate": 0.001,
+      "rank": 4,
+      "max_new_tokens": 64,
+      "max_seconds": 120
+    },
+    "before": {
+      "request": "Две чашки чая.",
+      "prompt": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+      "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+      "adapter": false,
+      "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "settings": {
+        "seed": 42,
+        "do_sample": false,
+        "max_new_tokens": 64,
+        "dtype": "float32",
+        "device": "cpu"
+      },
+      "seconds": 7.418,
+      "tokens": 22,
+      "adapter_id": "0d8b7bcd08a14210b691647403fdd6db",
+      "check": {
+        "json_valid": false,
+        "schema_valid": null,
+        "content_correct": null,
+        "expected": {
+          "drink": "tea",
+          "cups": 2
+        },
+        "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+      }
+    },
+    "training": {
+      "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "float32",
+      "device": "cpu",
+      "seed": 42,
+      "steps": 12,
+      "pairs": [
+        {
+          "request": "Две чашки чая.",
+          "answer": "{\"drink\":\"tea\",\"cups\":2}"
+        },
+        {
+          "request": "Три чашки кофе.",
+          "answer": "{\"drink\":\"coffee\",\"cups\":3}"
+        },
+        {
+          "request": "Одна чашка чая.",
+          "answer": "{\"drink\":\"tea\",\"cups\":1}"
+        },
+        {
+          "request": "Одна чашка кофе.",
+          "answer": "{\"drink\":\"coffee\",\"cups\":1}"
+        }
+      ],
+      "losses": [
+        0.814159095287323,
+        0.17117387056350708,
+        0.01720208302140236,
+        0.01306347269564867,
+        0.003541498212143779,
+        0.002217692555859685,
+        0.0013299253769218922,
+        0.000692056433763355,
+        0.0007345672347582877,
+        0.0006147696985863149,
+        0.00190730148460716,
+        0.0004075649194419384
+      ],
+      "parameter_digest_before": "e673346c121dbfb403b6e1a8157d35c8ee672b4f4da34abf4434f18cff3e1522",
+      "parameter_digest_after": "480007286b71c9fcf680e289bec83f807fcb322a3553ba4827dd7cbf07c4203a",
+      "adapter_weights_sha256": "824113c4887b46d953d7339e522d43bf35a886c8a15a5c8e33b118182d2586ba",
+      "trainable_parameters": 270336,
+      "seconds": 28.811,
+      "training_seconds": 26.619,
+      "completed": true,
+      "adapter_id": "8d49ed1d18004337831fac3c2b447fdb"
+    },
+    "after": {
+      "request": "Две чашки чая.",
+      "prompt": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+      "text": "{\"drink\":\"tea\",\"cups\":2}",
+      "adapter": true,
+      "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "settings": {
+        "seed": 42,
+        "do_sample": false,
+        "max_new_tokens": 64,
+        "dtype": "float32",
+        "device": "cpu"
+      },
+      "seconds": 3.668,
+      "tokens": 11,
+      "adapter_id": "8d49ed1d18004337831fac3c2b447fdb",
+      "check": {
+        "json_valid": true,
+        "schema_valid": true,
+        "content_correct": true,
+        "expected": {
+          "drink": "tea",
+          "cups": 2
+        },
+        "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+      }
+    },
+    "probe": {
+      "request": "Четыре чашки кофе.",
+      "prompt": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nЧетыре чашки кофе.<|im_end|>\n<|im_start|>assistant\n",
+      "text": "{\"drink\":\"coffee\",\"cups\":4}",
+      "adapter": true,
+      "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "settings": {
+        "seed": 42,
+        "do_sample": false,
+        "max_new_tokens": 64,
+        "dtype": "float32",
+        "device": "cpu"
+      },
+      "seconds": 3.471,
+      "tokens": 11,
+      "adapter_id": "8d49ed1d18004337831fac3c2b447fdb",
+      "check": {
+        "json_valid": true,
+        "schema_valid": true,
+        "content_correct": true,
+        "expected": {
+          "drink": "coffee",
+          "cups": 4
+        },
+        "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+      }
+    },
+    "off": {
+      "request": "Две чашки чая.",
+      "prompt": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+      "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+      "adapter": false,
+      "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "settings": {
+        "seed": 42,
+        "do_sample": false,
+        "max_new_tokens": 64,
+        "dtype": "float32",
+        "device": "cpu"
+      },
+      "seconds": 4.425,
+      "tokens": 22,
+      "adapter_id": "8d49ed1d18004337831fac3c2b447fdb",
+      "check": {
+        "json_valid": false,
+        "schema_valid": null,
+        "content_correct": null,
+        "expected": {
+          "drink": "tea",
+          "cups": 2
+        },
+        "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+      }
+    },
+    "child": "lesson-04-2e87f326f156",
+    "finished": true
+  },
+  "teacher_lost_reply": {
+    "control": "resume",
+    "note": "Объяснено: текущий экран — результат before и список пар; обучение ещё не началось; F5 на «Обучение» запустит обновление LoRA. Подтверждено: before получен, ответ содержит Markdown, json_valid=false. Осталось: завершить обучение, повторить тот же вход с добавкой, затем новую заявку и обсуждение.",
+    "reply": "Сейчас шагов оказалось слишком много. Вернёмся к одной заявке. Уже реально произошло: на шаге «до» модель дала настоящий ответ без добавки — текст с Markdown-ограждением вокруг JSON, поэтому проверка json_valid=false. Учебные пары, которые ты видишь, пока не обучают: это просто данные, слева просьба, справа желаемый ответ; первая пара — та же заявка. Обучение начнётся отдельным запуском. Ближайшее действие: нажать F5 на шаге «Обучение». Тогда программа пройдёт 12 шагов обновления небольшой LoRA-добавки по этим парам, и ты увидишь шаги и время."
+  },
+  "teacher_usage": {
+    "prompt_tokens": 4499,
+    "completion_tokens": 2049,
+    "total_tokens": 6548
+  },
+  "pedagogical_effect_not_proven": true,
+  "adapter_off_reproduced_before": true,
+  "same_prompt_and_settings": true
+}

@@ -1,0 +1,250 @@
+{
+  "evidence": "author_real_model_console_pilot_not_learner",
+  "session": "lesson-02-3b4f83b74026",
+  "prepared_entry_teacher_calls": 0,
+  "exact_suffix_equal": true,
+  "full_first_response_in_second_request": true,
+  "settings_identical": true,
+  "results": [
+    {
+      "name": "with_fact",
+      "prompt": "Имя кота: Плюш.\nВопрос: Как зовут кота?\nОтвет:\n",
+      "run_id": "3a30875f2e944e08b79016357e3f0987",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": "Кота зовут Плюш. Он очень любит играть и лазить по всему дому",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.478991,
+          "prompt_sha256": "5bf89f3db2e5a41131279fe4cebf150062c689086d08e4d96556ce98c0be278c",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 25,
+              "prompt_ms": 315.106,
+              "prompt_per_token_ms": 12.604239999999999,
+              "prompt_per_second": 79.33838137007864,
+              "predicted_n": 24,
+              "predicted_ms": 1008.625,
+              "predicted_per_token_ms": 43.85326086956522,
+              "predicted_per_second": 22.80332135332755
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 25,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "without_fact",
+      "prompt": "Вопрос: Как зовут кота?\nОтвет:\n",
+      "run_id": "61d150ba9c814583937099370113705b",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": "Кота зовут Котик. Котик - это кот, который любит лазать",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.448539,
+          "prompt_sha256": "5a4e6f1b6e4d01f75d0db12fddc7fe57ef3abee5edbf8c213859e0e36b898e9c",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 15,
+              "prompt_ms": 247.949,
+              "prompt_per_token_ms": 16.529933333333336,
+              "prompt_per_second": 60.496311741527485,
+              "predicted_n": 24,
+              "predicted_ms": 1019.212,
+              "predicted_per_token_ms": 44.31356521739131,
+              "predicted_per_second": 22.56645329921547
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 15,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "replaced_fact",
+      "prompt": "Имя кота: Бублик.\nВопрос: Как зовут кота?\nОтвет:\n",
+      "run_id": "4e39b434a50443f58e04f8371b4c85ca",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": "Кота зовут Бублик.\nВопрос: Как зовут собаку?\nОтвет:\n",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.539281,
+          "prompt_sha256": "d53aa57cd2efdc3316b5362c97fb37eeb9f397d1b31125998492de32f531b419",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 25,
+              "prompt_ms": 273.869,
+              "prompt_per_token_ms": 10.95476,
+              "prompt_per_second": 91.28451924095096,
+              "predicted_n": 24,
+              "predicted_ms": 1106.631,
+              "predicted_per_token_ms": 48.114391304347826,
+              "predicted_per_second": 20.783802369534197
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 25,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "real_first_turn",
+      "prompt": "В сказочном лесу жил кот по имени",
+      "run_id": "f4b13148f1e5488385963c43b3e285a6",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": " Котя. Он был очень любезен и всегда помогал людям. Однажды Кот",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.430625,
+          "prompt_sha256": "bd896da83cc7d95001494fdfe8683e0179e4957ec2f9530e89cf5c0ea620e9ce",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 14,
+              "prompt_ms": 196.724,
+              "prompt_per_token_ms": 14.051714285714285,
+              "prompt_per_second": 71.16569406884773,
+              "predicted_n": 24,
+              "predicted_ms": 1079.906,
+              "predicted_per_token_ms": 46.95243478260869,
+              "predicted_per_second": 21.29815002416877
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 14,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "second_turn_from_real_output",
+      "prompt": "В сказочном лесу жил кот по имени Котя. Он был очень любезен и всегда помогал людям. Однажды Кот\n\nВопрос: Как зовут кота?\nОтвет:\n",
+      "run_id": "e98757d0694840a1aaa97747d3b2ac8b",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": "Кота зовут Котя.",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.168944,
+          "prompt_sha256": "e9cd2345b917e6f6ad82208602d7895f29df646bdcf54011a93e65880bc81c9a",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 54,
+              "prompt_ms": 554.735,
+              "prompt_per_token_ms": 10.27287037037037,
+              "prompt_per_second": 97.34377675827197,
+              "predicted_n": 11,
+              "predicted_ms": 495.755,
+              "predicted_per_token_ms": 49.5755,
+              "predicted_per_second": 20.171253946001553
+            },
+            "tokens_predicted": 11,
+            "tokens_evaluated": 54,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "without_assembled_history",
+      "prompt": "Вопрос: Как зовут кота?\nОтвет:\n",
+      "run_id": "b7ff6b6092874a6dabcdd22cc296ebc2",
+      "kind": "complete",
+      "status": "completed",
+      "cleanup": "confirmed",
+      "result": {
+        "text": "Кота зовут Котик. Котик - это кот, который любит лазать",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.437828,
+          "prompt_sha256": "5a4e6f1b6e4d01f75d0db12fddc7fe57ef3abee5edbf8c213859e0e36b898e9c",
+          "settings": {
+            "n_predict": 24,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 15,
+              "prompt_ms": 250.428,
+              "prompt_per_token_ms": 16.6952,
+              "prompt_per_second": 59.897455556087976,
+              "predicted_n": 24,
+              "predicted_ms": 1027.471,
+              "predicted_per_token_ms": 44.67265217391304,
+              "predicted_per_second": 22.38506001629243
+            },
+            "tokens_predicted": 24,
+            "tokens_evaluated": 15,
+            "truncated": false
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,490 @@
+{
+  "source": "author_pilot_not_learner",
+  "root": "/path/to/llm2harnes/results/lesson-04-author-pilot-root",
+  "session": "lesson-04-beba95d133ed",
+  "student_endpoint": "http://127.0.0.1:8089",
+  "baseline": {
+    "format": "course-evaluation-v1",
+    "adapter": null,
+    "settings": {
+      "model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "float32",
+      "device": "cpu",
+      "threads": 4,
+      "seed": 42,
+      "do_sample": false,
+      "max_new_tokens": 128,
+      "eval_sha256": "184cdcf102ee3c9d820711028eccc0a886b424472252d37e749e95631d86e9f8",
+      "schema_sha256": "d2a0d6ec1fa11d58108004932b058b73abe9c6a2b04c21e59280430d1e99b0b9",
+      "example_ids": [
+        "eval-0057",
+        "eval-0034",
+        "eval-0041",
+        "eval-0020",
+        "eval-0003",
+        "eval-0052"
+      ],
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "versions": {
+        "torch": "2.6.0+cpu",
+        "transformers": "4.51.3",
+        "peft": "0.15.2"
+      }
+    },
+    "metrics": {
+      "valid_json": {
+        "count": 1,
+        "total": 6,
+        "rate": 0.16666666666666666
+      },
+      "schema_valid": {
+        "count": 0,
+        "total": 6,
+        "rate": 0.0
+      },
+      "semantic_correct": {
+        "count": 0,
+        "total": 6,
+        "rate": 0.0
+      }
+    },
+    "examples": [
+      {
+        "id": "eval-0057",
+        "action": "read_file",
+        "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nВыполни чтение документа с именем «note-5c9d927d84b871bb.txt».<|im_end|>\n<|im_start|>assistant\n",
+        "expected": {
+          "action": "read_file",
+          "arguments": {
+            "path": "note-5c9d927d84b871bb.txt"
+          }
+        },
+        "output": "```json\n{\n  \"action\": \"read_file\",\n  \"arguments\": {\n    \"path\": \"note-5c9d927d84b871bb.txt\"\n  }\n}\n```",
+        "generated_tokens": 46,
+        "valid_json": false,
+        "schema_valid": false,
+        "semantic_correct": false
+      },
+      {
+        "id": "eval-0034",
+        "action": "write_file",
+        "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nПусть файл «note-1497d6587010f719.txt» содержит ровно «Маяк 1497d6587010f719 готов»: предложи запись.<|im_end|>\n<|im_start|>assistant\n",
+        "expected": {
+          "action": "write_file",
+          "arguments": {
+            "content": "Маяк 1497d6587010f719 готов",
+            "path": "note-1497d6587010f719.txt"
+          }
+        },
+        "output": "```json\n{\n  \"action\": \"write_file\",\n  \"arguments\": {\n    \"path\": \"note-1497d6587010f719.txt\",\n    \"content\": \"Маяк 1497d6587010f719 готов\"\n  }\n}\n```",
+        "generated_tokens": 74,
+        "valid_json": false,
+        "schema_valid": false,
+        "semantic_correct": false
+      },
+      {
+        "id": "eval-0041",
+        "action": "finish",
+        "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nРабота завершена. Итоговый ответ должен быть ровно «Маяк 473544f9ea83bf00 готов».<|im_end|>\n<|im_start|>assistant\n",
+        "expected": {
+          "action": "finish",
+          "arguments": {
+            "answer": "Маяк 473544f9ea83bf00 готов"
+          }
+        },
+        "output": "```json\n{\n  \"action\": \"finish\",\n  \"arguments\": {\n    \"answer\": \"Маяк 473544f9ea83bf00 готов\"\n  }\n}\n```",
+        "generated_tokens": 46,
+        "valid_json": false,
+        "schema_valid": false,
+        "semantic_correct": false
+      },
+      {
+        "id": "eval-0020",
+        "action": "finish",
+        "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nБольше действий не требуется; верни окончательное сообщение «Маяк b07aa066735435ea готов».<|im_end|>\n<|im_start|>assistant\n",
+        "expected": {
+          "action": "finish",
+          "arguments": {
+            "answer": "Маяк b07aa066735435ea готов"
+          }
+        },
+        "output": "{\n  \"answer\": \"Маяк b07aa066735435ea готов\"\n}",
+        "generated_tokens": 27,
+        "valid_json": true,
+        "schema_valid": false,
+        "semantic_correct": false
+      },
+      {
+        "id": "eval-0003",
+        "action": "read_file",
+        "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nМне нужно увидеть текст из «note-d2762bdc1d34d08e.txt»: запроси чтение этого файла.<|im_end|>\n<|im_start|>assistant\n",
+        "expected": {
+          "action": "read_file",
+          "arguments": {
+            "path": "note-d2762bdc1d34d08e.txt"
+          }
+        },
+        "output": "```json\n{\n  \"action\": \"read_file\",\n  \"arguments\": {\n    \"path\": \"note-d2762bdc1d34d08e.txt\"\n  }\n}\n```",
+        "generated_tokens": 45,
+        "valid_json": false,
+        "schema_valid": false,
+        "semantic_correct": false
+      },
+      {
+        "id": "eval-0052",
+        "action": "write_file",
+        "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nПусть файл «note-52c21221409d3602.txt» содержит ровно «Маяк 52c21221409d3602 готов»: предложи запись.<|im_end|>\n<|im_start|>assistant\n",
+        "expected": {
+          "action": "write_file",
+          "arguments": {
+            "content": "Маяк 52c21221409d3602 готов",
+            "path": "note-52c21221409d3602.txt"
+          }
+        },
+        "output": "```json\n{\n  \"action\": \"write_file\",\n  \"arguments\": {\n    \"path\": \"note-52c21221409d3602.txt\",\n    \"content\": \"Маяк 52c21221409d3602 готов\"\n  }\n}\n```",
+        "generated_tokens": 74,
+        "valid_json": false,
+        "schema_valid": false,
+        "semantic_correct": false
+      }
+    ],
+    "seconds": 43.01
+  },
+  "output": [
+    {
+      "label": null,
+      "value": "Ниже текст, подготовленный для следующего запроса. Команда show только показывает его; запрос к модели будет отдельным действием run."
+    },
+    {
+      "label": "ТЕКСТ ДЛЯ МОДЕЛИ — ВХОД",
+      "value": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nВыполни чтение документа с именем «note-5c9d927d84b871bb.txt».<|im_end|>\n<|im_start|>assistant\n"
+    },
+    {
+      "label": "СЕССИЯ",
+      "value": "Запуск опытов разрешён."
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_started",
+        "data": {
+          "run_id": "1b285282199a4f099a6f1a689aa66561",
+          "kind": "complete",
+          "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nВыполни чтение документа с именем «note-5c9d927d84b871bb.txt».<|im_end|>\n<|im_start|>assistant\n",
+          "settings": {
+            "temperature": 0,
+            "max_tokens": 128,
+            "seed": 42,
+            "timeout": 60.0,
+            "max_steps": 8,
+            "max_requests": 8,
+            "deadline_seconds": 180.0,
+            "tools": [
+              "read_file",
+              "write_file"
+            ],
+            "skill": false
+          },
+          "capabilities": [
+            "doctor",
+            "complete"
+          ],
+          "schema": null
+        }
+      }
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_completed",
+        "data": {
+          "run_id": "1b285282199a4f099a6f1a689aa66561",
+          "kind": "complete",
+          "status": "completed",
+          "cleanup": "confirmed"
+        }
+      }
+    },
+    {
+      "label": "РЕЗУЛЬТАТ ОПЫТА",
+      "value": {
+        "run_id": "1b285282199a4f099a6f1a689aa66561",
+        "kind": "complete",
+        "status": "completed",
+        "cleanup": "confirmed",
+        "result": {
+          "text": "```json\n{\n  \"action\": \"read_file\",\n  \"arguments\": {\n    \"path\": \"note-5c9d927d84b871bb.txt\"\n  }\n}\n```",
+          "metadata": {
+            "endpoint": "http://127.0.0.1:8089",
+            "elapsed_seconds": 5.323824,
+            "prompt_sha256": "5c6a37b60433113c90184c94942a9b85af9c31c08ab33d1cabfc68d1d02b15b7",
+            "settings": {
+              "n_predict": 128,
+              "temperature": 0,
+              "seed": 42,
+              "stream": false,
+              "cache_prompt": false
+            },
+            "server": {
+              "model": "Qwen/Qwen2.5-0.5B-Instruct@7ae557604adf67be50417f59c2c2f167def9a775",
+              "timings": {
+                "elapsed_seconds": 5.26
+              },
+              "tokens_predicted": 46,
+              "tokens_evaluated": 128,
+              "stopped_limit": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "УЧЕБНЫЕ ДАННЫЕ",
+      "value": "train №1, train-0028\nВходная просьба: Создай файл «note-ab9099a435a240ae.txt» с содержимым «Маяк ab9099a435a240ae готов».\nПравильный учебный ответ: {\"action\": \"write_file\", \"arguments\": {\"content\": \"Маяк ab9099a435a240ae готов\", \"path\": \"note-ab9099a435a240ae.txt\"}}\nОн станет ответом для обучения, а не скрытой частью проверочного запроса.\nДАЛЬШЕ: data eval 1 — посмотреть отдельный проверочный вход."
+    },
+    {
+      "label": "УЧЕБНЫЕ ДАННЫЕ",
+      "value": "eval №1, eval-0057\nВходная просьба: Выполни чтение документа с именем «note-5c9d927d84b871bb.txt».\nЭталон не добавляется в запрос модели. Его сравним с ответом после генерации.\nДАЛЬШЕ: data verify — проверить разбиение и неизменность данных."
+    },
+    {
+      "label": "УЧЕБНЫЕ ДАННЫЕ",
+      "value": "Хеши неизменны. Совпадений сущностей, формулировок, входов и готовых ответов между train и eval нет. Это проверка нашего набора, а не доказательство независимости от всех данных предобучения.\nДАЛЬШЕ: data leak покажет, что произойдёт при попадании учебной записи в проверку."
+    },
+    {
+      "label": "УЧЕБНЫЕ ДАННЫЕ",
+      "value": "СИНТЕТИЧЕСКИЙ ОПЫТ: в копию eval подставили сущность из train. Проверка отклонила пересечение. Исходные данные не менялись. Проверять на знакомых учебных примерах — не то же, что на новых.\nДАЛЬШЕ: вернись в F2 обсудить, зачем разделение; затем преподаватель разрешит baseline — серию из 6 настоящих запросов."
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_started",
+        "data": {
+          "run_id": "6b13b79263c44c71a8e232eb84a4336c",
+          "kind": "baseline",
+          "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nВыполни чтение документа с именем «note-5c9d927d84b871bb.txt».<|im_end|>\n<|im_start|>assistant\n",
+          "settings": {
+            "temperature": 0,
+            "max_tokens": 128,
+            "seed": 42,
+            "timeout": 60.0,
+            "max_steps": 8,
+            "max_requests": 8,
+            "deadline_seconds": 180.0,
+            "tools": [
+              "read_file",
+              "write_file"
+            ],
+            "skill": false
+          },
+          "capabilities": [
+            "doctor",
+            "complete"
+          ],
+          "schema": null
+        }
+      }
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_completed",
+        "data": {
+          "run_id": "6b13b79263c44c71a8e232eb84a4336c",
+          "kind": "baseline",
+          "status": "completed",
+          "cleanup": "confirmed"
+        }
+      }
+    },
+    {
+      "label": "РЕЗУЛЬТАТ ОПЫТА",
+      "value": {
+        "run_id": "6b13b79263c44c71a8e232eb84a4336c",
+        "kind": "baseline",
+        "status": "completed",
+        "cleanup": "confirmed",
+        "result": {
+          "format": "course-evaluation-v1",
+          "adapter": null,
+          "settings": {
+            "model": "Qwen/Qwen2.5-0.5B-Instruct",
+            "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+            "dtype": "float32",
+            "device": "cpu",
+            "threads": 4,
+            "seed": 42,
+            "do_sample": false,
+            "max_new_tokens": 128,
+            "eval_sha256": "184cdcf102ee3c9d820711028eccc0a886b424472252d37e749e95631d86e9f8",
+            "schema_sha256": "d2a0d6ec1fa11d58108004932b058b73abe9c6a2b04c21e59280430d1e99b0b9",
+            "example_ids": [
+              "eval-0057",
+              "eval-0034",
+              "eval-0041",
+              "eval-0020",
+              "eval-0003",
+              "eval-0052"
+            ],
+            "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+            "versions": {
+              "torch": "2.6.0+cpu",
+              "transformers": "4.51.3",
+              "peft": "0.15.2"
+            }
+          },
+          "metrics": {
+            "valid_json": {
+              "count": 1,
+              "total": 6,
+              "rate": 0.16666666666666666
+            },
+            "schema_valid": {
+              "count": 0,
+              "total": 6,
+              "rate": 0.0
+            },
+            "semantic_correct": {
+              "count": 0,
+              "total": 6,
+              "rate": 0.0
+            }
+          },
+          "examples": [
+            {
+              "id": "eval-0057",
+              "action": "read_file",
+              "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nВыполни чтение документа с именем «note-5c9d927d84b871bb.txt».<|im_end|>\n<|im_start|>assistant\n",
+              "expected": {
+                "action": "read_file",
+                "arguments": {
+                  "path": "note-5c9d927d84b871bb.txt"
+                }
+              },
+              "output": "```json\n{\n  \"action\": \"read_file\",\n  \"arguments\": {\n    \"path\": \"note-5c9d927d84b871bb.txt\"\n  }\n}\n```",
+              "generated_tokens": 46,
+              "valid_json": false,
+              "schema_valid": false,
+              "semantic_correct": false
+            },
+            {
+              "id": "eval-0034",
+              "action": "write_file",
+              "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nПусть файл «note-1497d6587010f719.txt» содержит ровно «Маяк 1497d6587010f719 готов»: предложи запись.<|im_end|>\n<|im_start|>assistant\n",
+              "expected": {
+                "action": "write_file",
+                "arguments": {
+                  "content": "Маяк 1497d6587010f719 готов",
+                  "path": "note-1497d6587010f719.txt"
+                }
+              },
+              "output": "```json\n{\n  \"action\": \"write_file\",\n  \"arguments\": {\n    \"path\": \"note-1497d6587010f719.txt\",\n    \"content\": \"Маяк 1497d6587010f719 готов\"\n  }\n}\n```",
+              "generated_tokens": 74,
+              "valid_json": false,
+              "schema_valid": false,
+              "semantic_correct": false
+            },
+            {
+              "id": "eval-0041",
+              "action": "finish",
+              "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nРабота завершена. Итоговый ответ должен быть ровно «Маяк 473544f9ea83bf00 готов».<|im_end|>\n<|im_start|>assistant\n",
+              "expected": {
+                "action": "finish",
+                "arguments": {
+                  "answer": "Маяк 473544f9ea83bf00 готов"
+                }
+              },
+              "output": "```json\n{\n  \"action\": \"finish\",\n  \"arguments\": {\n    \"answer\": \"Маяк 473544f9ea83bf00 готов\"\n  }\n}\n```",
+              "generated_tokens": 46,
+              "valid_json": false,
+              "schema_valid": false,
+              "semantic_correct": false
+            },
+            {
+              "id": "eval-0020",
+              "action": "finish",
+              "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nБольше действий не требуется; верни окончательное сообщение «Маяк b07aa066735435ea готов».<|im_end|>\n<|im_start|>assistant\n",
+              "expected": {
+                "action": "finish",
+                "arguments": {
+                  "answer": "Маяк b07aa066735435ea готов"
+                }
+              },
+              "output": "{\n  \"answer\": \"Маяк b07aa066735435ea готов\"\n}",
+              "generated_tokens": 27,
+              "valid_json": true,
+              "schema_valid": false,
+              "semantic_correct": false
+            },
+            {
+              "id": "eval-0003",
+              "action": "read_file",
+              "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nМне нужно увидеть текст из «note-d2762bdc1d34d08e.txt»: запроси чтение этого файла.<|im_end|>\n<|im_start|>assistant\n",
+              "expected": {
+                "action": "read_file",
+                "arguments": {
+                  "path": "note-d2762bdc1d34d08e.txt"
+                }
+              },
+              "output": "```json\n{\n  \"action\": \"read_file\",\n  \"arguments\": {\n    \"path\": \"note-d2762bdc1d34d08e.txt\"\n  }\n}\n```",
+              "generated_tokens": 45,
+              "valid_json": false,
+              "schema_valid": false,
+              "semantic_correct": false
+            },
+            {
+              "id": "eval-0052",
+              "action": "write_file",
+              "prompt": "<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nПусть файл «note-52c21221409d3602.txt» содержит ровно «Маяк 52c21221409d3602 готов»: предложи запись.<|im_end|>\n<|im_start|>assistant\n",
+              "expected": {
+                "action": "write_file",
+                "arguments": {
+                  "content": "Маяк 52c21221409d3602 готов",
+                  "path": "note-52c21221409d3602.txt"
+                }
+              },
+              "output": "```json\n{\n  \"action\": \"write_file\",\n  \"arguments\": {\n    \"path\": \"note-52c21221409d3602.txt\",\n    \"content\": \"Маяк 52c21221409d3602 готов\"\n  }\n}\n```",
+              "generated_tokens": 74,
+              "valid_json": false,
+              "schema_valid": false,
+              "semantic_correct": false
+            }
+          ],
+          "seconds": 43.01
+        }
+      }
+    },
+    {
+      "label": "ИСХОДНОЕ ИЗМЕРЕНИЕ",
+      "value": "ИСХОДНОЕ ИЗМЕРЕНИЕ: Qwen/Qwen2.5-0.5B-Instruct (отдельный локальный профиль, без адаптера).\nvalid_json: 1/6\nschema_valid: 0/6\nsemantic_correct: 0/6\nЭто шесть задач, не общая оценка возможностей модели.\nДАЛЬШЕ: report 1 — разобрать первый ответ; report freeze — сохранить исходный отчёт для следующего урока."
+    },
+    {
+      "label": "ИСХОДНОЕ ИЗМЕРЕНИЕ",
+      "value": "Сохранённый настоящий ответ №1\nВход:\n<|im_start|>system\nПреобразуй запрос в один объект JSON без пояснений и Markdown. Для чтения: action=read_file, arguments содержит только path. Для записи: action=write_file, arguments содержит только path и content. Для завершения: action=finish, arguments содержит только answer. Сохраняй имена файлов и текст из запроса точно. Никакие действия не выполняй.<|im_end|>\n<|im_start|>user\nВыполни чтение документа с именем «note-5c9d927d84b871bb.txt».<|im_end|>\n<|im_start|>assistant\n\nОтвет модели:\n```json\n{\n  \"action\": \"read_file\",\n  \"arguments\": {\n    \"path\": \"note-5c9d927d84b871bb.txt\"\n  }\n}\n```\nЭталон только для проверки:\n{\"action\": \"read_file\", \"arguments\": {\"path\": \"note-5c9d927d84b871bb.txt\"}}\nПроверки: {\"valid_json\": false, \"schema_valid\": false, \"semantic_correct\": false}"
+    },
+    {
+      "label": "ИСХОДНОЕ ИЗМЕРЕНИЕ",
+      "value": "Исходный отчёт заморожен для урока 05. Веса не менялись.\nДАЛЬШЕ: F2 — обсудить, какие записи пойдут в обучение и почему eval нельзя подмешать ради красивой оценки."
+    }
+  ],
+  "teacher_backend": "direct_преподаватель",
+  "teacher_model": "неуказанная модель преподавателя",
+  "teacher_seconds": 23.77,
+  "teacher_explanation": {
+    "control": "none",
+    "note": "Объяснено: eval не добавляется в train, target не входит в проверочный запрос, независимость оценки и ограничение из-за неизвестных данных предобучения. Подтверждено: baseline и freeze уже выполнены в журнале. Осталось: короткий ответ ученика своими словами; затем можно завершить урок.",
+    "reply": "Потому что eval — это независимая проверка, а не учебник. Если добавить eval-записи в обучение, модель сможет выучить именно эти пары и потом показать хороший результат на них. Но это будет доказательством запоминания, а не того, что она лучше решает новые похожие задачи. В eval-запросе нет готового ответа; target используется только после генерации, чтобы сравнить. data leak показала: если учебная запись попадает в проверку, проверка отклоняет пересечение. Точнее: мы не можем утверждать, что модель никогда не видела похожие тексты в предобучении, но готовые ответы этих eval-задач не подаются в наше обучение и не входят в проверочный вход. Поэтому добавление eval в train ломает честное сравнение до/после.\n\nСкажи одним предложением: что мы сможем и не сможем сказать после обучения, если добавить eval в train?"
+  },
+  "teacher_final": {
+    "control": "none",
+    "note": "Объяснено: eval не добавляется в train, target используется только после генерации, baseline/freeze фиксируют условия. Подтверждено: ученик различает train/eval, понимает независимость проверки, что веса не менялись и прошлый профиль не сравнивается как эффект обучения. Осталось: ничего; урок завершён.",
+    "reply": "Да, это достаточно. Урок 04 завершён: есть настоящий run, осмотр train/eval, verify/leak, завершённый baseline и freeze. Исходный отчёт: 1/6 valid_json, 0/6 schema_valid, 0/6 semantic_correct; веса не менялись, условия зафиксированы для сравнения в уроке 05."
+  },
+  "teacher_usage": {
+    "prompt_tokens": 15778,
+    "completion_tokens": 953,
+    "total_tokens": 16731
+  },
+  "freeze_path": "/path/to/llm2harnes/results/lesson-04-author-pilot-root/work/training-before.json",
+  "user_baseline_not_written": true
+}

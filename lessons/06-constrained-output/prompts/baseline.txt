@@ -1,0 +1,3 @@
+Преобразуй запрос в один JSON-объект без пояснений и Markdown. Для чтения используй action=read_file и arguments.path. Для завершения используй action=finish и arguments.answer. Никаких действий не выполняй.
+
+Запрос: Прочитай файл «report.txt».

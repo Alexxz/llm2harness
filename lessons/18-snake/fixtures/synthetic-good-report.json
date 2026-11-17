@@ -1,0 +1,111 @@
+{
+  "evidence_type": "offline_fixture",
+  "description": "Искусственные результаты для проверки checker; не запуск игры, не ответы модели.",
+  "runs": {
+    "syntax": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "move": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":8,\"height\":6,\"snake\":[[3,1],[3,2],[2,2]],\"direction\":\"U\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "growth": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[4,2],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":8,\"height\":6,\"snake\":[[4,2],[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":1,\"status\":\"running\",\"reason\":null}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "wall": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":5,\"height\":5,\"snake\":[[4,2],[3,2],[2,2]],\"direction\":\"R\",\"food\":[0,0],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":5,\"height\":5,\"snake\":[[4,2],[3,2],[2,2]],\"direction\":\"R\",\"food\":[0,0],\"score\":0,\"status\":\"game_over\",\"reason\":\"wall\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "self_collision": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":6,\"height\":5,\"snake\":[[2,2],[2,3],[1,3],[1,2],[1,1],[2,1],[3,1],[3,2]],\"direction\":\"U\",\"food\":[4,4],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":6,\"height\":5,\"snake\":[[2,2],[2,3],[1,3],[1,2],[1,1],[2,1],[3,1],[3,2]],\"direction\":\"L\",\"food\":[4,4],\"score\":0,\"status\":\"game_over\",\"reason\":\"self\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "tail_freed": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":6,\"height\":5,\"snake\":[[1,1],[1,2],[2,2],[2,1]],\"direction\":\"U\",\"food\":[4,4],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":6,\"height\":5,\"snake\":[[2,1],[1,1],[1,2],[2,2]],\"direction\":\"R\",\"food\":[4,4],\"score\":0,\"status\":\"running\",\"reason\":null}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "reverse_ignored": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":8,\"height\":6,\"snake\":[[4,2],[3,2],[2,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "quit": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"quit\",\"reason\":\"quit\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "filled": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":2,\"height\":2,\"snake\":[[1,0],[0,0],[0,1]],\"direction\":\"D\",\"food\":[1,1],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":2,\"height\":2,\"snake\":[[1,1],[1,0],[0,0],[0,1]],\"direction\":\"D\",\"food\":null,\"score\":1,\"status\":\"won\",\"reason\":\"filled\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "zero_ticks": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "invalid_width": {
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "invalid width\n",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "stop_after_quit": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"quit\",\"reason\":\"quit\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "stop_after_wall": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":5,\"height\":5,\"snake\":[[4,2],[3,2],[2,2]],\"direction\":\"R\",\"food\":[0,0],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":5,\"height\":5,\"snake\":[[4,2],[3,2],[2,2]],\"direction\":\"R\",\"food\":[0,0],\"score\":0,\"status\":\"game_over\",\"reason\":\"wall\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "two_turns": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":8,\"height\":6,\"snake\":[[3,1],[3,2],[2,2]],\"direction\":\"U\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":2,\"width\":8,\"height\":6,\"snake\":[[2,1],[3,1],[3,2]],\"direction\":\"L\",\"food\":[6,3],\"score\":0,\"status\":\"running\",\"reason\":null}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    },
+    "food_queue_exhausted": {
+      "exit_code": 0,
+      "stdout": "{\"tick\":0,\"width\":8,\"height\":6,\"snake\":[[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[4,2],\"score\":0,\"status\":\"running\",\"reason\":null}\n{\"tick\":1,\"width\":8,\"height\":6,\"snake\":[[4,2],[3,2],[2,2],[1,2]],\"direction\":\"R\",\"food\":[0,0],\"score\":1,\"status\":\"running\",\"reason\":null}\n",
+      "stderr": "",
+      "timed_out": false,
+      "source_unchanged": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "coursekit/classroom.py": "6d4f69ddf014943b59eea3e9fa7fcb7556ebdf30962efaafaa6d36feb6a26118",
+  "coursekit/classroom_console.py": "6fba8638015beb43910046dbc038e22747559aaedd25311f1134e7aef65c14ed",
+  "coursekit/classroom_worker.py": "42cabc40024e087c3477c2b600a4db0be5cbc70c9cffbaad36ab85c137d47f12",
+  "coursekit/model.py": "eff0f372fe75ff58b0cda36d92b42acd99b0995e49ebc87131c94e74be958106",
+  "coursekit/model_http_worker.py": "20f65156e5afe5af46d7108e545c0b412103a3caf1ebbc2f605c0263d00af26a",
+  "coursekit/__main__.py": "ced5ab52e15862c5d54bbfc47be97e20a5cb4fee97dba69e42b8a295bfbe8951"
+}

@@ -1,0 +1,32 @@
+{
+  "text": "Кота зовут Плюш. Он очень любит играть и лазить по всему дому",
+  "metadata": {
+    "endpoint": "http://127.0.0.1:8088",
+    "elapsed_seconds": 1.478991,
+    "prompt_sha256": "5bf89f3db2e5a41131279fe4cebf150062c689086d08e4d96556ce98c0be278c",
+    "settings": {
+      "n_predict": 24,
+      "temperature": 0,
+      "seed": 42,
+      "stream": false,
+      "cache_prompt": false
+    },
+    "server": {
+      "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 25,
+        "prompt_ms": 315.106,
+        "prompt_per_token_ms": 12.604239999999999,
+        "prompt_per_second": 79.33838137007864,
+        "predicted_n": 24,
+        "predicted_ms": 1008.625,
+        "predicted_per_token_ms": 43.85326086956522,
+        "predicted_per_second": 22.80332135332755
+      },
+      "tokens_predicted": 24,
+      "tokens_evaluated": 25,
+      "truncated": false
+    }
+  }
+}

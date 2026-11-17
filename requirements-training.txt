@@ -1,0 +1,8 @@
+# Optional isolated environment for lessons 04–05. No TRL or agent framework.
+# The pinned APIs are documented in the matching HF documentation versions.
+torch==2.6.0
+transformers==4.51.3
+peft==0.15.2
+accelerate==1.6.0
+safetensors==0.5.3
+jsonschema==4.23.0

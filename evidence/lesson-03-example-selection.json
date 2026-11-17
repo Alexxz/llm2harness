@@ -1,0 +1,89 @@
+{
+  "session": "lesson-03-04d92eb78256",
+  "reports": [
+    {
+      "mode": "baseline",
+      "prompt": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nТекущая заявка: Две чашки чая.\nОтвет:\n",
+      "result": {
+        "run_id": "3a3b8a4c1b374642b5ebe8851cf9c6ae",
+        "kind": "complete",
+        "status": "completed",
+        "cleanup": "confirmed",
+        "result": {
+          "text": "{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}",
+          "metadata": {
+            "endpoint": "http://127.0.0.1:8088",
+            "elapsed_seconds": 3.00446,
+            "prompt_sha256": "564c63bd754c5cad504a910fd71473921bfc3e59fb7965503b7446e59f6d804e",
+            "settings": {
+              "n_predict": 96,
+              "temperature": 0,
+              "seed": 42,
+              "stream": false,
+              "cache_prompt": false
+            },
+            "server": {
+              "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+              "timings": {
+                "cache_n": 0,
+                "prompt_n": 71,
+                "prompt_ms": 1484.469,
+                "prompt_per_token_ms": 20.908014084507045,
+                "prompt_per_second": 47.828550141498404,
+                "predicted_n": 18,
+                "predicted_ms": 1371.065,
+                "predicted_per_token_ms": 80.65088235294118,
+                "predicted_per_second": 12.399120391812204
+              },
+              "tokens_predicted": 18,
+              "tokens_evaluated": 71,
+              "truncated": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "mode": "variation",
+      "prompt": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nПример заявки: Три чашки кофе.\nПример ответа: {\"drink\":\"coffee\",\"cups\":3}\n\nТекущая заявка: Две чашки чая.\nОтвет:\n",
+      "result": {
+        "run_id": "617acbae99184b29bc1a3a1dd6f49d6a",
+        "kind": "complete",
+        "status": "completed",
+        "cleanup": "confirmed",
+        "result": {
+          "text": "{\"drink\":\"tea\",\"cups\":2}",
+          "metadata": {
+            "endpoint": "http://127.0.0.1:8088",
+            "elapsed_seconds": 2.962038,
+            "prompt_sha256": "0db03bac25b1c1711c035087222da81dbc211fd3e3dd53e0dd922079d9ecb6f2",
+            "settings": {
+              "n_predict": 96,
+              "temperature": 0,
+              "seed": 42,
+              "stream": false,
+              "cache_prompt": false
+            },
+            "server": {
+              "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+              "timings": {
+                "cache_n": 0,
+                "prompt_n": 99,
+                "prompt_ms": 1933.257,
+                "prompt_per_token_ms": 19.527848484848487,
+                "prompt_per_second": 51.20891842108938,
+                "predicted_n": 11,
+                "predicted_ms": 829.8,
+                "predicted_per_token_ms": 82.97999999999999,
+                "predicted_per_second": 12.051096649795133
+              },
+              "tokens_predicted": 11,
+              "tokens_evaluated": 99,
+              "truncated": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

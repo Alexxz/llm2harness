@@ -1,0 +1,294 @@
+{
+  "evidence": "author_pilot_real_model_not_learner",
+  "session": "lesson-01-00f82e236fb0",
+  "results": [
+    {
+      "name": "baseline",
+      "run_id": "9aceae23649d4314a1e6cbff9901b89e",
+      "result": {
+        "text": " кошка\n\nАнглийское слово: horse\nРусский перевод: конь\n\nАнглийское слово: elephant",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 3.067657,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 32,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 294.546,
+              "prompt_per_token_ms": 8.4156,
+              "prompt_per_second": 118.82694044393746,
+              "predicted_n": 32,
+              "predicted_ms": 2657.984,
+              "predicted_per_token_ms": 85.74141935483871,
+              "predicted_per_second": 11.662974645445571
+            },
+            "tokens_predicted": 32,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "repeat",
+      "run_id": "9becfa073b7b42779500f19c562e4ccc",
+      "result": {
+        "text": " кошка\n\nАнглийское слово: horse\nРусский перевод: конь\n\nАнглийское слово: elephant",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 4.040142,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 32,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 1139.533,
+              "prompt_per_token_ms": 32.55808571428571,
+              "prompt_per_second": 30.7143364869644,
+              "predicted_n": 32,
+              "predicted_ms": 2683.547,
+              "predicted_per_token_ms": 86.56603225806451,
+              "predicted_per_second": 11.551875186087667
+            },
+            "tokens_predicted": 32,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "variation",
+      "run_id": "1ba0b494c1f0476e83eaf2fb2b4c426e",
+      "result": {
+        "text": " дом\n\nАнглийское слово: cat\nРусский перевод: кошка\n\nАнглийское слово: car\n",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 3.637169,
+          "prompt_sha256": "aa9fad294183d576f55a9435c9083ed5eda8958efa02c84d04135792ebaf8fc0",
+          "settings": {
+            "n_predict": 32,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 705.883,
+              "prompt_per_token_ms": 20.168085714285716,
+              "prompt_per_second": 49.5832878819861,
+              "predicted_n": 32,
+              "predicted_ms": 2729.009,
+              "predicted_per_token_ms": 88.03254838709678,
+              "predicted_per_second": 11.359434871779463
+            },
+            "tokens_predicted": 32,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t0s7",
+      "run_id": "bdc82b7060b142f482ad23ac4d0ddcf1",
+      "result": {
+        "text": " кошка\n\nАнглийское слово: horse\nРусский перевод: конь\n\nАнглийское слово: elephant\nРусский перевод: тигр\n\nАнглийское слово: monkey\nРусский перевод: монстр\n\nАн",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.931974,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0,
+            "seed": 7,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 749.167,
+              "prompt_per_token_ms": 21.40477142857143,
+              "prompt_per_second": 46.718555408874124,
+              "predicted_n": 64,
+              "predicted_ms": 4975.435,
+              "predicted_per_token_ms": 78.97515873015874,
+              "predicted_per_second": 12.662209434953928
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t9s7",
+      "run_id": "7ddf02de02904038ad3f31dc160499bc",
+      "result": {
+        "text": " кошка\n\nАнглийское слово: bird\nРусский перевод: птица\n\nАнглийское слово: plant\nРусский перевод: растение\n\nАнглийское слово: fruit\nРусский перевод: ягода\n\nА",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.923571,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0.9,
+            "seed": 7,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 607.239,
+              "prompt_per_token_ms": 17.349685714285716,
+              "prompt_per_second": 57.63793168752336,
+              "predicted_n": 64,
+              "predicted_ms": 5133.312,
+              "predicted_per_token_ms": 81.48114285714286,
+              "predicted_per_second": 12.27277827648115
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t0s42",
+      "run_id": "6186749ea5ce4ada8194755c9b5687c4",
+      "result": {
+        "text": " кошка\n\nАнглийское слово: horse\nРусский перевод: конь\n\nАнглийское слово: elephant\nРусский перевод: тигр\n\nАнглийское слово: monkey\nРусский перевод: монстр\n\nАн",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.438392,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 548.162,
+              "prompt_per_token_ms": 15.661771428571429,
+              "prompt_per_second": 63.84973785121916,
+              "predicted_n": 64,
+              "predicted_ms": 4705.72,
+              "predicted_per_token_ms": 74.69396825396827,
+              "predicted_per_second": 13.387961884685021
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "t9s42",
+      "run_id": "5ab28a176420455abd507a1606d21e24",
+      "result": {
+        "text": " кошка\n\nАнглийское слово: table\nРусский перевод: стол\n\nАнглийское слово: table\nРусский перевод: стол\n\nАнглийское слово: table\nРусский перевод: стол\n\nАнглийское слов",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 5.296288,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 64,
+            "temperature": 0.9,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 608.589,
+              "prompt_per_token_ms": 17.388257142857146,
+              "prompt_per_second": 57.51007658699056,
+              "predicted_n": 64,
+              "predicted_ms": 4513.68,
+              "predicted_per_token_ms": 71.64571428571429,
+              "predicted_per_second": 13.95756899026958
+            },
+            "tokens_predicted": 64,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "name": "short",
+      "run_id": "b3ae3b34f97c4ee4aca00f544f506aa3",
+      "result": {
+        "text": " кошка\n\nАнглий",
+        "metadata": {
+          "endpoint": "http://127.0.0.1:8088",
+          "elapsed_seconds": 1.253702,
+          "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+          "settings": {
+            "n_predict": 8,
+            "temperature": 0,
+            "seed": 42,
+            "stream": false,
+            "cache_prompt": false
+          },
+          "server": {
+            "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 35,
+              "prompt_ms": 599.543,
+              "prompt_per_token_ms": 17.1298,
+              "prompt_per_second": 58.37779775595745,
+              "predicted_n": 8,
+              "predicted_ms": 486.579,
+              "predicted_per_token_ms": 69.51128571428572,
+              "predicted_per_second": 14.3861531221035
+            },
+            "tokens_predicted": 8,
+            "tokens_evaluated": 35,
+            "truncated": false
+          }
+        }
+      }
+    }
+  ]
+}

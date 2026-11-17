@@ -1,0 +1,83 @@
+{
+  "text": "\"Вот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список\".\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список.\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите",
+  "metadata": {
+    "endpoint": "http://127.0.0.1:8088",
+    "elapsed_seconds": 8.750336,
+    "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+    "settings": {
+      "n_predict": 96,
+      "temperature": 0.0,
+      "seed": 42,
+      "stream": false,
+      "cache_prompt": false
+    },
+    "server": {
+      "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 41,
+        "prompt_ms": 331.742,
+        "prompt_per_token_ms": 8.091268292682928,
+        "prompt_per_second": 123.59001874951015,
+        "predicted_n": 96,
+        "predicted_ms": 8325.389,
+        "predicted_per_token_ms": 87.63567368421052,
+        "predicted_per_second": 11.41087821842319
+      },
+      "tokens_predicted": 96,
+      "tokens_evaluated": 41,
+      "truncated": false
+    }
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-11-16T13:24:26.021Z",
+      "event": "model_request",
+      "endpoint": "http://127.0.0.1:8088",
+      "request": {
+        "prompt": "Вчера я открыл старую записную книжку и нашёл в ней карту незнакомого города. На обороте карты было написано:\n",
+        "n_predict": 96,
+        "temperature": 0.0,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      }
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-11-16T13:24:34.772Z",
+      "event": "model_response",
+      "text": "\"Вот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список\".\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите мне, пожалуйста, и я добавлю в свой список.\nВот и всё, что я знаю о городе. Если кто-то знает больше, напишите",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 8.750336,
+        "prompt_sha256": "dc9fd1c08e097fd48d4b3819eab240c9ffdd11d345183258a6eb9f4b33bcdcd4",
+        "settings": {
+          "n_predict": 96,
+          "temperature": 0.0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 41,
+            "prompt_ms": 331.742,
+            "prompt_per_token_ms": 8.091268292682928,
+            "prompt_per_second": 123.59001874951015,
+            "predicted_n": 96,
+            "predicted_ms": 8325.389,
+            "predicted_per_token_ms": 87.63567368421052,
+            "predicted_per_second": 11.41087821842319
+          },
+          "tokens_predicted": 96,
+          "tokens_evaluated": 41,
+          "truncated": false
+        }
+      }
+    }
+  ]
+}

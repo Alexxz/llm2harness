@@ -1,0 +1,28 @@
+{
+  "kind": "author_preflight_not_learner",
+  "structure_errors": [],
+  "delivery_contract": "interactive-v1",
+  "teacher_backend": "подключение преподавателя",
+  "teacher_model": "неуказанная модель преподавателя",
+  "teacher_codex_process": false,
+  "student_endpoint": "http://127.0.0.1:8088",
+  "student_schema": null,
+  "student_settings": {
+    "temperature": 0,
+    "max_tokens": 96,
+    "seed": 42,
+    "timeout": 60.0,
+    "max_steps": 8,
+    "max_requests": 8,
+    "deadline_seconds": 180.0,
+    "tools": [
+      "read_file",
+      "write_file"
+    ],
+    "skill": false
+  },
+  "local_live_pilot": "evidence/lesson-03-live-pilot.json",
+  "test_count": 137,
+  "test_log": "results/lesson-03-final-tests.log",
+  "human_validation": "not_run"
+}

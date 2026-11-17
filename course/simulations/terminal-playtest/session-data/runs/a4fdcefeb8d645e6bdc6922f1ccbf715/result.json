@@ -1,0 +1,25 @@
+{
+  "run_id": "a4fdcefeb8d645e6bdc6922f1ccbf715",
+  "kind": "complete",
+  "status": "completed",
+  "cleanup": "confirmed",
+  "result": {
+    "text": "{\"drink\":\"coffee\",\"cups\":2,\"urgent\":false}",
+    "metadata": {
+      "endpoint": "http://127.0.0.1:37761",
+      "elapsed_seconds": 0.046411,
+      "prompt_sha256": "bed931675bb8c0c02483d7ef40aa22512a6fe452104e8d039d45f6d55ea30e3c",
+      "settings": {
+        "n_predict": 256,
+        "temperature": 0.0,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "server": {
+        "model": "SYNTHETIC_FIXED_FIXTURE_NO_MODEL",
+        "tokens_predicted": 0
+      }
+    }
+  }
+}

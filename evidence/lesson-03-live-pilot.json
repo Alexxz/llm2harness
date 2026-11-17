@@ -1,0 +1,378 @@
+{
+  "source": "author_real_console_curses_and_external_teacher",
+  "not_real_learner": true,
+  "session": "lesson-03-c037c709c4c0",
+  "commands": [
+    {
+      "label": null,
+      "value": "Ниже текст, подготовленный для следующего запроса. Команда show только показывает его; запрос к модели будет отдельным действием run."
+    },
+    {
+      "label": "ТЕКСТ ДЛЯ МОДЕЛИ — ВХОД",
+      "value": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nТекущая заявка: Две чашки чая.\nОтвет:\n"
+    },
+    {
+      "label": "СЕССИЯ",
+      "value": "Запуск опытов разрешён."
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_started",
+        "data": {
+          "run_id": "8f2eee7cf3d54db7bad6ec7b946f75c3",
+          "kind": "complete",
+          "prompt": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nТекущая заявка: Две чашки чая.\nОтвет:\n",
+          "settings": {
+            "temperature": 0,
+            "max_tokens": 96,
+            "seed": 42,
+            "timeout": 60.0,
+            "max_steps": 8,
+            "max_requests": 8,
+            "deadline_seconds": 180.0,
+            "tools": [
+              "read_file",
+              "write_file"
+            ],
+            "skill": false
+          },
+          "capabilities": [
+            "doctor",
+            "complete"
+          ],
+          "schema": null
+        }
+      }
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_completed",
+        "data": {
+          "run_id": "8f2eee7cf3d54db7bad6ec7b946f75c3",
+          "kind": "complete",
+          "status": "completed",
+          "cleanup": "confirmed"
+        }
+      }
+    },
+    {
+      "label": "РЕЗУЛЬТАТ ОПЫТА",
+      "value": {
+        "run_id": "8f2eee7cf3d54db7bad6ec7b946f75c3",
+        "kind": "complete",
+        "status": "completed",
+        "cleanup": "confirmed",
+        "result": {
+          "text": "{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}",
+          "metadata": {
+            "endpoint": "http://127.0.0.1:8088",
+            "elapsed_seconds": 1.318138,
+            "prompt_sha256": "564c63bd754c5cad504a910fd71473921bfc3e59fb7965503b7446e59f6d804e",
+            "settings": {
+              "n_predict": 96,
+              "temperature": 0,
+              "seed": 42,
+              "stream": false,
+              "cache_prompt": false
+            },
+            "server": {
+              "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+              "timings": {
+                "cache_n": 0,
+                "prompt_n": 71,
+                "prompt_ms": 458.316,
+                "prompt_per_token_ms": 6.455154929577464,
+                "prompt_per_second": 154.91494951081788,
+                "predicted_n": 18,
+                "predicted_ms": 778.128,
+                "predicted_per_token_ms": 45.77223529411765,
+                "predicted_per_second": 21.847305327658173
+              },
+              "tokens_predicted": 18,
+              "tokens_evaluated": 71,
+              "truncated": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "ПРОВЕРКА ОТВЕТА",
+      "value": "JSON читается: да\nПоля и типы подходят: да\nСведения совпадают с заявкой: да\nПоля и типы подходят. Сведения совпадают с заявкой.\nПроверка локальная: модель не вызывалась, ответ не исправлялся."
+    },
+    {
+      "label": null,
+      "value": "Ниже текст, подготовленный для следующего запроса. Команда show только показывает его; запрос к модели будет отдельным действием run."
+    },
+    {
+      "label": "ТЕКСТ ДЛЯ МОДЕЛИ — ВХОД",
+      "value": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nПример заявки: Три чашки кофе.\nПример ответа: {\"drink\":\"coffee\",\"cups\":3}\n\nТекущая заявка: Две чашки чая.\nОтвет:\n"
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_started",
+        "data": {
+          "run_id": "4f67c46f28ab420987846add9d392044",
+          "kind": "complete",
+          "prompt": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nПример заявки: Три чашки кофе.\nПример ответа: {\"drink\":\"coffee\",\"cups\":3}\n\nТекущая заявка: Две чашки чая.\nОтвет:\n",
+          "settings": {
+            "temperature": 0,
+            "max_tokens": 96,
+            "seed": 42,
+            "timeout": 60.0,
+            "max_steps": 8,
+            "max_requests": 8,
+            "deadline_seconds": 180.0,
+            "tools": [
+              "read_file",
+              "write_file"
+            ],
+            "skill": false
+          },
+          "capabilities": [
+            "doctor",
+            "complete"
+          ],
+          "schema": null
+        }
+      }
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_completed",
+        "data": {
+          "run_id": "4f67c46f28ab420987846add9d392044",
+          "kind": "complete",
+          "status": "completed",
+          "cleanup": "confirmed"
+        }
+      }
+    },
+    {
+      "label": "РЕЗУЛЬТАТ ОПЫТА",
+      "value": {
+        "run_id": "4f67c46f28ab420987846add9d392044",
+        "kind": "complete",
+        "status": "completed",
+        "cleanup": "confirmed",
+        "result": {
+          "text": "{\"drink\":\"tea\",\"cups\":2}",
+          "metadata": {
+            "endpoint": "http://127.0.0.1:8088",
+            "elapsed_seconds": 2.382021,
+            "prompt_sha256": "0db03bac25b1c1711c035087222da81dbc211fd3e3dd53e0dd922079d9ecb6f2",
+            "settings": {
+              "n_predict": 96,
+              "temperature": 0,
+              "seed": 42,
+              "stream": false,
+              "cache_prompt": false
+            },
+            "server": {
+              "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+              "timings": {
+                "cache_n": 0,
+                "prompt_n": 99,
+                "prompt_ms": 1476.6,
+                "prompt_per_token_ms": 14.915151515151514,
+                "prompt_per_second": 67.04591629418935,
+                "predicted_n": 11,
+                "predicted_ms": 770.603,
+                "predicted_per_token_ms": 77.0603,
+                "predicted_per_second": 12.9768505962214
+              },
+              "tokens_predicted": 11,
+              "tokens_evaluated": 99,
+              "truncated": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "ПРОВЕРКА ОТВЕТА",
+      "value": "JSON читается: да\nПоля и типы подходят: да\nСведения совпадают с заявкой: да\nПоля и типы подходят. Сведения совпадают с заявкой.\nПроверка локальная: модель не вызывалась, ответ не исправлялся."
+    },
+    {
+      "label": "СРАВНЕНИЕ ОПЫТОВ",
+      "value": "F4 — открыть это сравнение в большом окне.\nСРАВНЕНИЕ: настройки совпадают.\n\nБез примера\n\nВход:\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nТекущая заявка: Две чашки чая.\nОтвет:\n\n\nНастройки: {\"temperature\": 0, \"max_tokens\": 96, \"seed\": 42, \"timeout\": 60.0, \"max_steps\": 8, \"max_requests\": 8, \"deadline_seconds\": 180.0, \"tools\": [\"read_file\", \"write_file\"], \"skill\": false}\n\nМодель: models/qwen2.5-1.5b-base-q4_k_m.gguf; сервер: http://127.0.0.1:8088\n\nПолный ответ:\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n\nJSON читается: да\nПоля и типы подходят: да\nСведения совпадают с заявкой: да\nПоля и типы подходят. Сведения совпадают с заявкой.\nПроверка локальная: модель не вызывалась, ответ не исправлялся.\n\nС примером\n\nВход:\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nПример заявки: Три чашки кофе.\nПример ответа: {\"drink\":\"coffee\",\"cups\":3}\n\nТекущая заявка: Две чашки чая.\nОтвет:\n\n\nНастройки: {\"temperature\": 0, \"max_tokens\": 96, \"seed\": 42, \"timeout\": 60.0, \"max_steps\": 8, \"max_requests\": 8, \"deadline_seconds\": 180.0, \"tools\": [\"read_file\", \"write_file\"], \"skill\": false}\n\nМодель: models/qwen2.5-1.5b-base-q4_k_m.gguf; сервер: http://127.0.0.1:8088\n\nПолный ответ:\n{\"drink\":\"tea\",\"cups\":2}\n\nJSON читается: да\nПоля и типы подходят: да\nСведения совпадают с заявкой: да\nПоля и типы подходят. Сведения совпадают с заявкой.\nПроверка локальная: модель не вызывалась, ответ не исправлялся."
+    },
+    {
+      "label": null,
+      "value": "Ниже текст, подготовленный для следующего запроса. Команда show только показывает его; запрос к модели будет отдельным действием run."
+    },
+    {
+      "label": "ТЕКСТ ДЛЯ МОДЕЛИ — ВХОД",
+      "value": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nПример заявки: Три чашки кофе.\nПример ответа: {\"drink\":\"coffee\",\"cups\":3}\n\nТекущая заявка: Три чашки чая.\nОтвет:\n"
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_started",
+        "data": {
+          "run_id": "80b66e327533455babc65e9454187d37",
+          "kind": "complete",
+          "prompt": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений.\nПоля: drink — \"tea\" для чая или \"coffee\" для кофе; cups — количество чашек, целое число.\n\nПример заявки: Три чашки кофе.\nПример ответа: {\"drink\":\"coffee\",\"cups\":3}\n\nТекущая заявка: Три чашки чая.\nОтвет:\n",
+          "settings": {
+            "temperature": 0,
+            "max_tokens": 96,
+            "seed": 42,
+            "timeout": 60.0,
+            "max_steps": 8,
+            "max_requests": 8,
+            "deadline_seconds": 180.0,
+            "tools": [
+              "read_file",
+              "write_file"
+            ],
+            "skill": false
+          },
+          "capabilities": [
+            "doctor",
+            "complete"
+          ],
+          "schema": null
+        }
+      }
+    },
+    {
+      "label": "ХОД ОПЫТА",
+      "value": {
+        "event": "run_completed",
+        "data": {
+          "run_id": "80b66e327533455babc65e9454187d37",
+          "kind": "complete",
+          "status": "completed",
+          "cleanup": "confirmed"
+        }
+      }
+    },
+    {
+      "label": "РЕЗУЛЬТАТ ОПЫТА",
+      "value": {
+        "run_id": "80b66e327533455babc65e9454187d37",
+        "kind": "complete",
+        "status": "completed",
+        "cleanup": "confirmed",
+        "result": {
+          "text": "{\"drink\":\"tea\",\"cups\":3}",
+          "metadata": {
+            "endpoint": "http://127.0.0.1:8088",
+            "elapsed_seconds": 2.848992,
+            "prompt_sha256": "4c90251915a382ced80f62dcd4cd0fb2c2ef99ea7f7b43c4bf15af08a6fbeac4",
+            "settings": {
+              "n_predict": 96,
+              "temperature": 0,
+              "seed": 42,
+              "stream": false,
+              "cache_prompt": false
+            },
+            "server": {
+              "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+              "timings": {
+                "cache_n": 0,
+                "prompt_n": 99,
+                "prompt_ms": 1868.666,
+                "prompt_per_token_ms": 18.87541414141414,
+                "prompt_per_second": 52.97897002460579,
+                "predicted_n": 11,
+                "predicted_ms": 834.855,
+                "predicted_per_token_ms": 83.4855,
+                "predicted_per_second": 11.97812793838451
+              },
+              "tokens_predicted": 11,
+              "tokens_evaluated": 99,
+              "truncated": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "ПРОВЕРКА ОТВЕТА",
+      "value": "JSON читается: да\nПоля и типы подходят: да\nСведения совпадают с заявкой: да\nПоля и типы подходят. Сведения совпадают с заявкой.\nПроверка локальная: модель не вызывалась, ответ не исправлялся."
+    }
+  ],
+  "checks": [
+    {
+      "run_id": "8f2eee7cf3d54db7bad6ec7b946f75c3",
+      "raw_output": "{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}",
+      "json_valid": true,
+      "schema_valid": true,
+      "content_correct": true,
+      "expected": {
+        "drink": "tea",
+        "cups": 2
+      },
+      "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+    },
+    {
+      "run_id": "4f67c46f28ab420987846add9d392044",
+      "raw_output": "{\"drink\":\"tea\",\"cups\":2}",
+      "json_valid": true,
+      "schema_valid": true,
+      "content_correct": true,
+      "expected": {
+        "drink": "tea",
+        "cups": 2
+      },
+      "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+    },
+    {
+      "run_id": "80b66e327533455babc65e9454187d37",
+      "raw_output": "{\"drink\":\"tea\",\"cups\":3}",
+      "json_valid": true,
+      "schema_valid": true,
+      "content_correct": true,
+      "expected": {
+        "drink": "tea",
+        "cups": 3
+      },
+      "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+    }
+  ],
+  "teacher_model": "неуказанная модель преподавателя",
+  "teacher_transport": "direct_преподаватель_codex",
+  "teacher_seconds": 41.36,
+  "teacher_usage": {
+    "prompt_tokens": 11081,
+    "completion_tokens": 2822,
+    "total_tokens": 13903
+  },
+  "teacher_explanation": {
+    "control": "none",
+    "note": "Объяснено: пример изменил вход, но на данном случае не изменил смысл; различие пробелов — наблюдаемое, не доказательство общего эффекта. Объяснено назначение check: локальная проверка сохранённого ответа по трём уровням, включая структуру, типы и смысл для известных заявок; приведены учебные примеры. Подтверждено: ученик заметил различие пробелов и спросил о роли check. Осталось: самостоятельный отклик ученика о том, что изменилось во входе и почему правильные поля не гарантируют верный напиток.",
+    "reply": "На этой конкретной заявке пример не изменил смысл: в обоих ответах drink=tea и cups=2. Он изменил вход — в variation добавлены строки с примером кофе — и в наблюдаемых ответах виден другой формат: пробелы/переносы. Но из одного случая нельзя заключить, что пример «ничего не меняет» вообще; он мог повлиять на формат, а не на значения, а для других заявок эффект может быть другим.\n\nЗачем check: модель отдаёт текст, а не гарантированную структуру. check читает сохранённый raw_output и исходную заявку, и проверяет три уровня: 1) весь текст — один JSON; 2) есть нужные поля и типы; 3) для известной заявки значения совпадают. Например, «Вот: {\"drink\":\"tea\",\"cups\":2}» — человек видит JSON, но проверка не вырежет фрагмент и отметит, что весь текст не является одним JSON. А {\"drink\":\"coffee\",\"cups\":2} — JSON и поля подходят, но напиток неверен. Поэтому «модель уже отдала JSON» ещё не доказывает, что ответ пригоден программе и что смысл правильный.\n\nСледующее действие: напиши слева одним-двумя предложениями, что именно изменилось во входе при variation и почему check с правильными полями ещё не гарантирует верный напиток."
+  },
+  "teacher_first_usage": {
+    "prompt_tokens": 10327,
+    "completion_tokens": 2778,
+    "total_tokens": 13105
+  },
+  "teacher_answer": {
+    "control": "none",
+    "note": "Наблюдения: baseline и variation дали tea/2, различались пробелы/переносы; собственная вариация изменила заявку на «Три чашки чая», ответ tea/3, check true. Понимание: пример меняет вход, не веса; один случай не доказывает улучшение; check отдельно проверяет выход, потому что правильная форма не гарантирует правильный смысл. Вопрос ученика о пробелах, примере и check отвечен. Осталось: нет неотвеченных вопросов; урок завершён.",
+    "reply": "Да, теперь всё сходится. Наблюдение: в baseline и variation смысл одинаков — tea/2, а различие только в пробелах и переносах; в твоём опыте ты изменил заявку с «Две» на «Три», и ответ стал tea/3. Понимание: пример изменил только вход, веса и настройки не менялись; на одной заявке нельзя доказать улучшение. check нужен отдельно, потому что форма может быть правильной, а смысл нет: {\"drink\":\"coffee\",\"cups\":2} читается как JSON и имеет нужные поля, но напиток неверен. Урок 03 завершён: есть два сопоставимых опыта и собственная вариация; различены JSON, поля и смысл; пример меняет вход, а проверка оценивает выход. Окно можно закрыть отдельно."
+  },
+  "student_endpoint": "http://127.0.0.1:8088",
+  "student_settings": {
+    "temperature": 0,
+    "max_tokens": 96,
+    "seed": 42,
+    "timeout": 60.0,
+    "max_steps": 8,
+    "max_requests": 8,
+    "deadline_seconds": 180.0,
+    "tools": [
+      "read_file",
+      "write_file"
+    ],
+    "skill": false
+  },
+  "schema": null,
+  "terminal_editor_and_comparison": true
+}

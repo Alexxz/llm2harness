@@ -1,0 +1,141 @@
+{
+  "evidence": "author_real_model_example_selection_not_learner",
+  "results": [
+    {
+      "name": "cat",
+      "prompt": "Английское слово: dog\nРусский перевод: собака\n\nАнглийское слово: cat\nРусский перевод:",
+      "text": " кошка\n\nАнглийское слово: horse\nРусский перевод: конь\n\nАнглийское слово: elephant",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 1.644757,
+        "prompt_sha256": "07f9a5c4ef3be814d603997555de8560e61f21845f7d59d610777a0a277a5938",
+        "settings": {
+          "n_predict": 32,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 35,
+            "prompt_ms": 247.267,
+            "prompt_per_token_ms": 7.0647714285714285,
+            "prompt_per_second": 141.54739613454282,
+            "predicted_n": 32,
+            "predicted_ms": 1324.546,
+            "predicted_per_token_ms": 42.72729032258065,
+            "predicted_per_second": 23.404245681161697
+          },
+          "tokens_predicted": 32,
+          "tokens_evaluated": 35,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "house",
+      "prompt": "Английское слово: dog\nРусский перевод: собака\n\nАнглийское слово: house\nРусский перевод:",
+      "text": " дом\n\nАнглийское слово: cat\nРусский перевод: кошка\n\nАнглийское слово: car\n",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 3.102824,
+        "prompt_sha256": "aa9fad294183d576f55a9435c9083ed5eda8958efa02c84d04135792ebaf8fc0",
+        "settings": {
+          "n_predict": 32,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 35,
+            "prompt_ms": 331.827,
+            "prompt_per_token_ms": 9.480771428571428,
+            "prompt_per_second": 105.47664897672583,
+            "predicted_n": 32,
+            "predicted_ms": 2668.45,
+            "predicted_per_token_ms": 86.07903225806452,
+            "predicted_per_second": 11.617230976784276
+          },
+          "tokens_predicted": 32,
+          "tokens_evaluated": 35,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "rome",
+      "prompt": "Столица Франции — Париж.\nСтолица Германии — Берлин.\nСтолица Италии —",
+      "text": " Рим.\nСтолица Испании — Мадрид.\nСтолица Китая — Пекин.\nСтолица К",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 3.355738,
+        "prompt_sha256": "2f1a07f9b91940debdd9c8a05534e2713a6870e7d1e7f898156e2872d55126ad",
+        "settings": {
+          "n_predict": 32,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 34,
+            "prompt_ms": 658.728,
+            "prompt_per_token_ms": 19.37435294117647,
+            "prompt_per_second": 51.61462697805467,
+            "predicted_n": 32,
+            "predicted_ms": 2480.933,
+            "predicted_per_token_ms": 80.03009677419355,
+            "predicted_per_second": 12.495299147538447
+          },
+          "tokens_predicted": 32,
+          "tokens_evaluated": 34,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "name": "tokyo",
+      "prompt": "Столица Франции — Париж.\nСтолица Германии — Берлин.\nСтолица Японии —",
+      "text": " Токио.\nСтолица Китая — Пекин.\nСтолица Китая — Нанкин.\nСтол",
+      "metadata": {
+        "endpoint": "http://127.0.0.1:8088",
+        "elapsed_seconds": 3.276738,
+        "prompt_sha256": "fa3ffeb5f5995aab997fcd525c0d64155daa1364158b5b5d18444f0649e8fd19",
+        "settings": {
+          "n_predict": 32,
+          "temperature": 0,
+          "seed": 42,
+          "stream": false,
+          "cache_prompt": false
+        },
+        "server": {
+          "model": "models/qwen2.5-1.5b-base-q4_k_m.gguf",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 33,
+            "prompt_ms": 723.576,
+            "prompt_per_token_ms": 21.926545454545455,
+            "prompt_per_second": 45.606819463332116,
+            "predicted_n": 32,
+            "predicted_ms": 2328.998,
+            "predicted_per_token_ms": 75.12896774193548,
+            "predicted_per_second": 13.310445092696515
+          },
+          "tokens_predicted": 32,
+          "tokens_evaluated": 33,
+          "truncated": false
+        }
+      }
+    }
+  ]
+}

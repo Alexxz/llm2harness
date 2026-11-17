@@ -1,0 +1,11 @@
+{
+  "actor": "test_harness_administrative_cleanup_after_teacher_finished",
+  "receipt": {
+    "request_id": "73bb1b1452e742d3a0cad8855edd67e1",
+    "action": "close",
+    "requested_at": "2026-11-16T09:21:45.310Z",
+    "target_run_id": null,
+    "status": "applied",
+    "outcome": "no_active_run"
+  }
+}

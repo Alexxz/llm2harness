@@ -1,0 +1,71 @@
+{
+  "id": "07",
+  "slug": "reasoning",
+  "title": "Рассуждение и независимая проверка",
+  "duration_minutes": 75,
+  "depends_on": [
+    "06"
+  ],
+  "status": {
+    "specification": "reviewed",
+    "offline_validation": "not_run",
+    "live_validation": "not_run"
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "mode": "live_model",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Прямой ответ при фиксированных весах и настройках",
+      "observe": "Структура ответа, правильность двух остатков, токены и время",
+      "acceptance": "Сохранён настоящий ответ и результат check_inventory.py"
+    },
+    {
+      "id": "variation",
+      "mode": "live_model",
+      "prompt_file": "prompts/variation.txt",
+      "change": "Добавлено требование краткого плана проверки",
+      "observe": "Правильность результата отдельно от убедительности плана",
+      "acceptance": "Сравнение с baseline при тех же данных, весах, seed, температуре и лимите"
+    },
+    {
+      "id": "plausible-wrong",
+      "mode": "offline_fixture",
+      "fixture_file": "fixtures/plausible_wrong.json",
+      "change": "Заданный правдоподобный, но ошибочный ответ",
+      "observe": "Корректный формат не означает правильные числа",
+      "acceptance": "check_inventory.py возвращает format_ok=true, correct=false и код 1"
+    },
+    {
+      "id": "actual-feedback",
+      "mode": "manual",
+      "prompt_file": "prompts/baseline.txt",
+      "change": "Ученик составляет следующий промпт с фактическим выводом проверяющей программы",
+      "observe": "Результат исправления проверяется независимо; веса прежние",
+      "acceptance": "Сохранены текст обратной связи, настоящий ответ и повторная проверка"
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "INTRO.md",
+    "INSTRUCTOR.md",
+    "prompts/baseline.txt",
+    "prompts/variation.txt",
+    "fixtures/cases.json",
+    "fixtures/correct.json",
+    "fixtures/plausible_wrong.json",
+    "inventory.schema.json",
+    "check_inventory.py"
+  ],
+  "completion_criteria": [
+    "Два настоящих запроса различаются только инструкцией о плане",
+    "Числа проверены независимым кодом",
+    "Неверная фикстура отклонена независимо от плана",
+    "Выполнен запрос с фактической обратной связью",
+    "Ученик отличает наблюдаемый план, обратную связь и изменение весов"
+  ],
+  "sources": [
+    "https://arxiv.org/abs/2201.11903",
+    "https://arxiv.org/abs/2305.04388"
+  ]
+}
