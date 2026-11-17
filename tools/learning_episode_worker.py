@@ -24,12 +24,12 @@ def main():
     operation=request['operation'];config=request['config'];output=Path(request['adapter_dir'])
     if operation not in {'before','train','after','probe','off'}:raise ValueError('Unknown operation')
     if not 1<=config['steps']<=32 or not 0<config['learning_rate']<=.01 or not 1<=config['rank']<=8 or not 1<=config['max_new_tokens']<=128 or not 1<=config['max_seconds']<=180:raise ValueError('Episode budget is invalid')
-    if not isinstance(config.get('pairs'),list) or len(config['pairs'])!=4 or any(not isinstance(p.get(k),str) or not p[k].strip() or len(p[k].encode())>2048 for p in config['pairs'] for k in ('request','answer')):
-        raise ValueError('Exactly four bounded teaching pairs are required')
-    if config['new_request'] in {p['request'] for p in config['pairs']}:raise ValueError('The new request must be outside the teaching pairs')
+    if not isinstance(config.get('pairs'),list) or not 1<=len(config['pairs'])<=16 or any(not isinstance(p.get(k),str) or not p[k].strip() or len(p[k].encode())>2048 for p in config['pairs'] for k in ('request','answer')):
+        raise ValueError('One to sixteen bounded teaching pairs are required')
+    if 'raw_prompt' not in config and config['new_request'] in {p['request'] for p in config['pairs']}:raise ValueError('The new request must be outside the teaching pairs')
     import torch
     from transformers import AutoModelForCausalLM,AutoTokenizer,set_seed
-    torch.set_num_threads(4);set_seed(42)
+    torch.set_num_threads(4);set_seed(config.get('seed',42))
     args=dict(revision=MODEL_REVISION,cache_dir=str(ROOT/'work/model-cache'),local_files_only=True,token=False,trust_remote_code=False)
     started=time.monotonic();emit('loading',message='Загружаются подготовленные локальные веса')
     tokenizer=AutoTokenizer.from_pretrained(MODEL_ID,**args)
@@ -65,7 +65,7 @@ def main():
         if before==after:raise ValueError('Trainable parameters did not change')
         output.mkdir(parents=True);model.save_pretrained(output,safe_serialization=True)
         with (output/'adapter_model.safetensors').open('rb') as stream:weights=hashlib.file_digest(stream,'sha256').hexdigest()
-        report={'base_model':MODEL_ID,'base_revision':MODEL_REVISION,'dtype':'float32','device':'cpu','seed':42,'steps':len(losses),'pairs':config['pairs'],'losses':losses,'parameter_digest_before':before,'parameter_digest_after':after,'adapter_weights_sha256':weights,'trainable_parameters':sum(p.numel() for _,p in trainable),'seconds':round(time.monotonic()-started,3),'training_seconds':round(time.monotonic()-training_start,3),'completed':True}
+        report={'base_model':MODEL_ID,'base_revision':MODEL_REVISION,'dtype':'float32','device':'cpu','seed':config.get('seed',42),'steps':len(losses),'pairs':config['pairs'],'losses':losses,'parameter_digest_before':before,'parameter_digest_after':after,'adapter_weights_sha256':weights,'trainable_parameters':sum(p.numel() for _,p in trainable),'seconds':round(time.monotonic()-started,3),'training_seconds':round(time.monotonic()-training_start,3),'completed':True}
         (output/'episode-manifest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
         emit('result',result=report);return
     if operation in {'after','probe'}:
@@ -77,13 +77,16 @@ def main():
         if actual!=manifest['adapter_weights_sha256']:raise ValueError('Adapter checksum mismatch')
         model=PeftModel.from_pretrained(model,output,is_trainable=False)
     text=config['new_request'] if operation=='probe' else config['request']
-    prompt=tokenizer.apply_chat_template(messages(text),tokenize=False,add_generation_prompt=True)
+    prompt=config['raw_prompt'] if 'raw_prompt' in config else tokenizer.apply_chat_template(messages(text),tokenize=False,add_generation_prompt=True)
     inputs=tokenizer(prompt,return_tensors='pt',add_special_tokens=False)
     if inputs['input_ids'].shape[-1]+config['max_new_tokens']>512:raise ValueError('Inference context limit')
     model.eval()
-    with torch.inference_mode():tokens=model.generate(**inputs,max_new_tokens=config['max_new_tokens'],do_sample=False,pad_token_id=tokenizer.eos_token_id)
+    temperature=config.get('temperature',0)
+    generation={'do_sample':temperature>0}
+    if temperature>0:generation['temperature']=temperature
+    with torch.inference_mode():tokens=model.generate(**inputs,max_new_tokens=config['max_new_tokens'],pad_token_id=tokenizer.eos_token_id,**generation)
     tail=tokens[0,inputs['input_ids'].shape[-1]:]
-    emit('result',result={'request':text,'prompt':prompt,'text':tokenizer.decode(tail,skip_special_tokens=True),'adapter':operation in {'after','probe'},'base_model':MODEL_ID,'base_revision':MODEL_REVISION,'settings':{'seed':42,'do_sample':False,'max_new_tokens':config['max_new_tokens'],'dtype':'float32','device':'cpu'},'seconds':round(time.monotonic()-started,3),'tokens':len(tail)})
+    emit('result',result={'request':text,'prompt':prompt,'text':tokenizer.decode(tail,skip_special_tokens=True),'adapter':operation in {'after','probe'},'base_model':MODEL_ID,'base_revision':MODEL_REVISION,'settings':{'seed':config.get('seed',42),'temperature':temperature,'do_sample':temperature>0,'max_new_tokens':config['max_new_tokens'],'dtype':'float32','device':'cpu'},'seconds':round(time.monotonic()-started,3),'tokens':len(tail)})
 
 
 if __name__=='__main__':

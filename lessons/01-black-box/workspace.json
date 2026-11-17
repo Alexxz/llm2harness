@@ -1,0 +1,238 @@
+{
+  "version": 1,
+  "presets": [
+    {
+      "id": "baseline",
+      "title": "Исходный запрос и повтор с теми же настройками",
+      "prompt_file": "prompts/baseline.txt",
+      "parameters": {
+        "max_tokens": 32,
+        "temperature": 0,
+        "seed": 42
+      }
+    },
+    {
+      "id": "variation",
+      "title": "Во входе заменено только cat на house",
+      "prompt_file": "prompts/variation.txt",
+      "parameters": {
+        "max_tokens": 32,
+        "temperature": 0,
+        "seed": 42
+      }
+    },
+    {
+      "id": "length",
+      "title": "Только max_tokens уменьшен с 32 до 8",
+      "prompt_file": "prompts/baseline.txt",
+      "parameters": {
+        "max_tokens": 8,
+        "temperature": 0,
+        "seed": 42
+      }
+    },
+    {
+      "id": "temperature",
+      "title": "Температура 0 и 0.9 при одинаковом наборе seed",
+      "prompt_file": "prompts/baseline.txt",
+      "parameters": {
+        "max_tokens": 32,
+        "temperature": 0.9,
+        "seed": 42
+      }
+    }
+  ],
+  "phases": [
+    {
+      "name": "Первый ответ",
+      "presets": [
+        "baseline"
+      ],
+      "parameters": [],
+      "instruction": "Загрузи `baseline` и выполни `F5`. Дождись ответа и выполни `F5` ещё раз без загрузки пресета и без изменения полей.",
+      "training": false,
+      "history": false,
+      "check": false,
+      "explanation": "В уроке 00 ты уже выбрал пресет и получил ответ через `F5`. Теперь посмотрим, что именно делает модель с переданным текстом. Она создаёт продолжение поля «**Вход модели**»: в этом примере оно заканчивается началом перевода. Внутри модели есть обученные числовые параметры — **веса**. Обычный запрос их не меняет; текст ответа сам по себе не исполняется как программа.",
+      "action": "Загрузи `baseline` и выполни `F5`. Дождись ответа и выполни `F5` ещё раз без загрузки пресета и без изменения полей.",
+      "observe": "Два запроса завершены. Преподаватель покажет оба сохранённых ответа с одинаковыми входом и настройками; на рабочем поле виден только последний.",
+      "question": "Что модель получила и что дописала? Совпали ли ответы?",
+      "evidence": [
+        {
+          "action": "completed",
+          "preset": "baseline",
+          "count": 2
+        }
+      ],
+      "show_runs": true
+    },
+    {
+      "name": "Изменение входа",
+      "presets": [
+        "baseline",
+        "variation"
+      ],
+      "parameters": [],
+      "instruction": "Загрузи `variation` через `F4` и `Enter` и выполни `F5`.",
+      "training": false,
+      "history": false,
+      "check": false,
+      "explanation": "Пресет `variation` заменяет только cat на house в последней паре. Образец dog остаётся прежним, модель и настройки не меняются. Загрузка очистит поле «**Выход модели**», но исходный ответ останется в журнале: преподаватель восстановит его для сравнения.",
+      "action": "Загрузи `variation` через `F4` и `Enter` и выполни `F5`.",
+      "observe": "Сравни исходный и изменённый текст, а затем два настоящих ответа, которые преподаватель восстановит из журнала.",
+      "question": "Какое одно изменение было во входе? Менялись ли веса модели?",
+      "evidence": [
+        {
+          "action": "completed",
+          "preset": "variation"
+        }
+      ],
+      "show_runs": true,
+      "reference_runs": [
+        {
+          "preset": "baseline",
+          "parameters": {
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32
+          }
+        }
+      ]
+    },
+    {
+      "name": "Длина ответа",
+      "presets": [
+        "baseline",
+        "variation",
+        "length"
+      ],
+      "parameters": [
+        "max_tokens"
+      ],
+      "instruction": "Загрузи `length`, найди значение 8 у `max_tokens` и выполни `F5`.",
+      "training": false,
+      "history": false,
+      "check": false,
+      "explanation": "**Токены** — фрагменты текста, которые не обязательно совпадают со словами. Параметр `max_tokens` ограничивает число создаваемых фрагментов. Пресет `length` оставляет исходный текст и меняет только лимит с 32 на 8. Загрузка очистит показанный ответ; сравним новый результат с сохранённым запуском при 32. Модель не обязана использовать весь лимит.",
+      "action": "Загрузи `length`, найди значение 8 у `max_tokens` и выполни `F5`.",
+      "observe": "Сравни новый ответ с исходным при лимите 32; преподаватель покажет сохранённые условия.",
+      "question": "Что ограничивает `max_tokens` и как лимит 8 повлиял на этот ответ?",
+      "evidence": [
+        {
+          "action": "completed",
+          "preset": "length"
+        }
+      ],
+      "show_runs": true,
+      "reference_runs": [
+        {
+          "preset": "baseline",
+          "parameters": {
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32
+          }
+        }
+      ]
+    },
+    {
+      "name": "Температура",
+      "presets": [
+        "baseline",
+        "variation",
+        "length",
+        "temperature"
+      ],
+      "parameters": [
+        "max_tokens",
+        "temperature"
+      ],
+      "instruction": "Загрузи `baseline` и выполни `F5` при `temperature`=0. Дождись ответа. Через `Tab` выбери поле `temperature`, введи 0.9 и выполни `F5` ещё раз. Пресет между этими двумя запросами не загружай: он сбросит параметры.",
+      "training": false,
+      "history": false,
+      "check": false,
+      "explanation": "**Температура** задаёт степень случайности при выборе следующего фрагмента текста. Большая температура не обещает лучший или обязательно другой ответ. `seed` задаёт начальное состояние случайности; пока оставим его равным 42.\n\n`Tab` выбирает следующее поле, `Shift+Tab` — предыдущее. Выбранное числовое поле выделено; введённое число заменяет его значение. Меняем только `temperature`, сохраняя один текст и `max_tokens`=32.",
+      "action": "Загрузи `baseline` и выполни `F5` при `temperature`=0. Дождись ответа. Через `Tab` выбери поле `temperature`, введи 0.9 и выполни `F5` ещё раз. Пресет между этими двумя запросами не загружай: он сбросит параметры.",
+      "observe": "Преподаватель покажет два сохранённых запуска при `seed`=42: одинаковые текст и лимит, разные температуры.",
+      "question": "Какой один параметр изменили? Что произошло с этими двумя ответами и гарантирует ли температура различие?",
+      "evidence": [
+        {
+          "action": "completed",
+          "parameters": {
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32
+          }
+        },
+        {
+          "action": "completed",
+          "parameters": {
+            "temperature": 0.9,
+            "seed": 42,
+            "max_tokens": 32
+          }
+        }
+      ],
+      "show_runs": true
+    },
+    {
+      "name": "Повтор сравнения",
+      "presets": [
+        "baseline",
+        "variation",
+        "length",
+        "temperature"
+      ],
+      "parameters": [
+        "max_tokens",
+        "temperature",
+        "seed"
+      ],
+      "instruction": "Загрузи `baseline`. Через `Tab` выбери `seed` и введи 43. Выполни `F5` при `temperature`=0, дождись ответа, затем измени только `temperature` на 0.9 и снова выполни `F5`.",
+      "training": false,
+      "history": false,
+      "check": false,
+      "explanation": "Совпадение или различие одной пары ещё не показывает всё поведение модели. Повторим сравнение при другом `seed`: внутри новой пары он должен быть одинаковым. Меняем `seed` с 42 на 43, а затем снова сравниваем температуры 0 и 0.9 при том же тексте и лимите 32. Значения меняются через уже знакомый `Tab`.",
+      "action": "Загрузи `baseline`. Через `Tab` выбери `seed` и введи 43. Выполни `F5` при `temperature`=0, дождись ответа, затем измени только `temperature` на 0.9 и снова выполни `F5`.",
+      "observe": "Преподаватель восстановит обе пары из журнала: при `seed`=42 и при `seed`=43. Загрузка пресета перед второй парой очистила экран, но не журнал.",
+      "question": "Что сохраняли одинаковым внутри каждой пары? Можно ли по этим четырём ответам обещать разнообразие или качество всех будущих ответов?",
+      "evidence": [
+        {
+          "action": "completed",
+          "parameters": {
+            "temperature": 0,
+            "seed": 43,
+            "max_tokens": 32
+          }
+        },
+        {
+          "action": "completed",
+          "parameters": {
+            "temperature": 0.9,
+            "seed": 43,
+            "max_tokens": 32
+          }
+        }
+      ],
+      "show_runs": true,
+      "reference_runs": [
+        {
+          "preset": "baseline",
+          "parameters": {
+            "temperature": 0,
+            "seed": 42,
+            "max_tokens": 32
+          }
+        },
+        {
+          "preset": "baseline",
+          "parameters": {
+            "temperature": 0.9,
+            "seed": 42,
+            "max_tokens": 32
+          }
+        }
+      ]
+    }
+  ]
+}

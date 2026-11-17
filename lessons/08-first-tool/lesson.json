@@ -65,7 +65,8 @@
     "fixtures/not_executed.json",
     "action.schema.json",
     "manual_tool.py",
-    "make_feedback.py"
+    "make_feedback.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Получено настоящее предложение действия",
@@ -77,5 +78,9 @@
   ],
   "sources": [
     "https://arxiv.org/abs/2210.03629"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

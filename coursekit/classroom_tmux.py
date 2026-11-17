@@ -100,13 +100,16 @@ def board_say(value, *, label=None, columns=None):
         theme=Theme({
             "markdown.h1": "bold bright_cyan", "markdown.h1.border": "cyan",
             "markdown.h2": "bold bright_cyan", "markdown.h3": "bold yellow",
-            "markdown.strong": "bold yellow", "markdown.code": "bold bright_yellow",
+            "markdown.strong": "bold yellow", "markdown.code": "bold bright_cyan",
             "markdown.item.bullet": "bright_cyan",
         }),
     )
     # Цвета добавляет только renderer после экранирования данных.
     # Markdown-ссылки остаются текстом, без управляющих OSC-ссылок.
     safe = terminal_text(value)
+    if label == "ПРЕПОДАВАТЕЛЬ":
+        from .teaching_text import teacher_markdown
+        safe = teacher_markdown(safe)
     prose = label in {"УРОК", "СПРАВКА", "ОСНОВЫ ТЕРМИНАЛА", "ПРЕПОДАВАТЕЛЬ"}
     content = Markdown(safe, hyperlinks=False, code_theme="monokai", justify="left") if prose else Text(safe)
     if label == "ПРЕПОДАВАТЕЛЬ":
@@ -264,7 +267,7 @@ class LessonBoard(StudentConsole):
         if self.wait_for_layout:
             self.await_layout()
         from .teacher import TeacherRuntime, teacher_backend_label
-        self.say(f"Преподаватель подключается через {teacher_backend_label()}. Пиши здесь вопросы обычным текстом. F3 — опыты; F2 — вернуться. /lesson — материалы; /retry — повторить ответ после ошибки.")
+        self.say(f"Преподаватель подключается через {teacher_backend_label()}. Пиши здесь вопросы обычным текстом. `F3` — лаборатория; `F2` — преподаватель. `/lesson` — материалы; `/retry` — повторить ответ после ошибки.", label="СПРАВКА")
         # Reopening the teacher pane restores its last reply without resetting the lesson.
         history, after = [], 0
         while True:
@@ -402,6 +405,23 @@ def run_result(session):
 
 def configure_interface(server, session, teacher, experiment):
     """Только интерфейс собственного tmux; рабочие данные и процессы сохраняются."""
+    if (session._find_lesson(session.snapshot()['lesson'])[0] / 'workspace.json').exists():
+        # Keep the command list in one argument: a separate ';' would end bind-key
+        # and execute the remaining commands immediately during configuration.
+        for table in ('root', 'copy-mode', 'copy-mode-vi'):
+            server.command('bind-key', '-T', table, 'F2', f'select-pane -t {experiment} ; send-keys -t {experiment} F2')
+            server.command('bind-key', '-T', table, 'F3', f'select-pane -t {experiment} ; send-keys -t {experiment} F3')
+            for key in ('F1','F4','F5','F6','F7','F8','F9','F10'):
+                server.command('bind-key', '-T', table, key, f'select-pane -t {experiment} ; send-keys -t {experiment} {key}')
+        server.command('set-option', '-g', 'status-left', ' F2 преподаватель | F3 лаборатория ')
+        server.command('set-option', '-g', 'status-left-length', '45')
+        server.command('set-option', '-g', 'status-right', 'F1 помощь | F4 пресеты | F5 выполнить | F6 стоп')
+        server.command('set-option', '-g', 'status-right-length', '65')
+        server.command('bind-key', '-n', 'C-h', f'select-pane -t {experiment} ; send-keys -t {experiment} F1')
+        server.command('select-pane', '-t', teacher, '-T', 'ПРЕПОДАВАТЕЛЬ · F2')
+        server.command('select-pane', '-t', experiment, '-T', 'ЛАБОРАТОРИЯ · F3')
+        server.command('select-pane', '-t', teacher)
+        return
     active = server.command("display-message", "-p", "-t", "course", "#{pane_id}").stdout.strip()
     server.command("set-option", "-g", "status-left-length", "24")
     server.command("set-option", "-g", "status-left", "#[bg=colour24,fg=colour231,bold] Ctrl+h — помощь #[default]")
@@ -412,10 +432,15 @@ def configure_interface(server, session, teacher, experiment):
         server.command("bind-key", "-T", table, "F2", "select-pane", "-t", teacher)
         server.command("bind-key", "-T", table, "F3", "select-pane", "-t", experiment)
         server.command("bind-key", "-T", table, "F4", "display-popup", "-E", "-w", "90%", "-h", "90%", "--", *child_argv(session, "result"))
-        if session.snapshot()["lesson"] == "04":
+        if session.snapshot()["lesson"] == "04" and session._find_lesson('04')[1].get('practice_mode')=='learning-lab-v1':
+            server.command("bind-key", "-T", table, "F8", "select-pane", "-t", experiment, ";", "send-keys", "-t", experiment, "F8")
+            for key in ('F4','F9'):
+                server.command("bind-key", "-T", table, key, "select-pane", "-t", experiment, ";", "send-keys", "-t", experiment, key)
+        elif session.snapshot()["lesson"] == "04":
             server.command("bind-key", "-T", table, "F8", "display-popup", "-E", "-w", "100%", "-h", "100%", "--", *child_argv(session, "learning"))
         server.command("bind-key", "-T", table, "F10", "display-popup", "-E", "-w", "100%", "-h", "100%", "--", *child_argv(session, "editor"))
-        server.command("bind-key", "-T", table, "F9", "display-popup", "-E", "-w", "95%", "-h", "95%", "--", *child_argv(session, "playground"))
+        if not (session.snapshot()["lesson"] == "04" and session._find_lesson('04')[1].get('practice_mode')=='learning-lab-v1'):
+            server.command("bind-key", "-T", table, "F9", "display-popup", "-E", "-w", "95%", "-h", "95%", "--", *child_argv(session, "playground"))
     server.command("bind-key", "-n", "C-h", "display-popup", "-E", "-w", "80%", "-h", "80%", "--", *child_argv(session, "help"))
     for table in ("copy-mode", "copy-mode-vi"):
         server.command("bind-key", "-T", table, "C-h", "display-popup", "-E", "-w", "80%", "-h", "80%", "--", *child_argv(session, "help"))
@@ -589,6 +614,11 @@ def run_split(session):
     state = session.snapshot()
     if state["gate"] == "closed" or state["owner_pid"] is not None:
         raise RuntimeError("Нужна открытая сессия без другого терминала ученика")
+    if (session._find_lesson(state['lesson'])[0] / 'workspace.json').exists():
+        if size.columns < 100 or size.lines < 26:
+            raise RuntimeError('Для преподавателя и лаборатории увеличь терминал хотя бы до 100×26.')
+        from .workbench import Workspace
+        Workspace(session)
     result, client = 0, None
     with tempfile.TemporaryDirectory(prefix="llm-course-tmux-", dir="/tmp") as temporary, _signals():
         socket = Path(temporary) / "socket"

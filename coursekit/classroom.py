@@ -226,7 +226,7 @@ class Session:
         prompt = _read(directory / "prompts" / "baseline.txt", directory, MAX_TEXT).decode("utf-8")
         state = {"version": 1, "id": session.id, "lesson": identifier, "lesson_directory": str(directory.relative_to(session.root)),
                  "created_at": _now(), "gate": "paused", "prompt": prompt, "schema": None,
-                 "settings": settings, "capabilities": ["doctor"] if identifier == "00" else ["doctor", "complete"], "endpoint": endpoint,
+                 "settings": settings, "capabilities": ["doctor"] if identifier == "00" and not metadata.get("requires_model") else ["doctor", "complete"], "endpoint": endpoint,
                  "allow_remote": bool(allow_remote), "sandbox_image": sandbox_image,
                  "active_run": None, "last_run": None, "owner_pid": None, "owner_token": None,
                  "control_requests": [], "continuation": None, "run_count": 0, "recovery_required": False}

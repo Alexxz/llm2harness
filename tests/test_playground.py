@@ -20,6 +20,17 @@ class Server(BaseHTTPRequestHandler):
             self.wfile.write(b'{"content":"synthetic playground result","tokens_predicted":3}')
         except (BrokenPipeError,ConnectionResetError):pass
 
+class PromptWrapTests(unittest.TestCase):
+    def test_wrap_preserves_input_and_character_positions(self):
+        from coursekit.playground import prompt_rows
+        text='Длинная инструкция для модели. '*8+'\n\nЗаявка: две чашки чая.'
+        rows=prompt_rows(text,24)
+        self.assertTrue(all(len(part)<=24 for _,part in rows))
+        for start, part in rows:
+            self.assertEqual(text[start:start+len(part)],part)
+        self.assertEqual(''.join(part for _,part in rows),text.replace('\n',''))
+
+
 class PlaygroundTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)

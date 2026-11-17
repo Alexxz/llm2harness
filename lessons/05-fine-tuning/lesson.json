@@ -42,7 +42,8 @@
     "INTRO.md",
     "README.md",
     "prompts/baseline.txt",
-    "prompts/variation.txt"
+    "prompts/variation.txt",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Настоящее обучение изменило параметры и сохранило адаптер с manifest",
@@ -54,5 +55,9 @@
     "https://huggingface.co/docs/peft/v0.15.0/package_reference/lora",
     "https://huggingface.co/docs/transformers/v4.51.3/main_classes/trainer",
     "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

@@ -63,7 +63,8 @@
     "prompts/variation.txt",
     "fixtures/cases.json",
     "decision.schema.json",
-    "retry_experiment.py"
+    "retry_experiment.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Различены транспортный повтор, исправление формы и исправление результата",
@@ -74,5 +75,9 @@
   "sources": [
     "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2",
     "https://www.rfc-editor.org/rfc/rfc9110.html#section-10.2.3"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

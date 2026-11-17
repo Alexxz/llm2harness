@@ -46,7 +46,7 @@ class Handler(BaseHTTPRequestHandler):
             except (BrokenPipeError, ConnectionResetError):
                 pass
             return
-        self.wfile.write(json.dumps({"content": "synthetic response", "tokens_predicted": 2}).encode())
+        self.wfile.write(json.dumps({"content": "synthetic response", "tokens_predicted": 2, "stop_type": "eos"}).encode())
 
 
 class ModelBoundaryTests(unittest.TestCase):
@@ -72,6 +72,7 @@ class ModelBoundaryTests(unittest.TestCase):
         trace = Trace()
         result = ModelClient(self.endpoint, trace=trace).generate("точный текст", max_tokens=17, temperature=0.2, seed=7)
         self.assertEqual(result["text"], "synthetic response")
+        self.assertEqual(result["metadata"]["server"]["stop_type"], "eos")
         self.assertEqual(len(Handler.requests), 1)
         request = Handler.requests[0]
         self.assertEqual(request["path"], "/completion")

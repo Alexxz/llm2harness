@@ -63,7 +63,8 @@
     "fixtures/notes-a.txt",
     "fixtures/notes-b.txt",
     "fixtures/protocol-example.json",
-    "mcp_experiment.py"
+    "mcp_experiment.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Настоящий локальный клиент и отдельный сервер проходят жизненный цикл MCP",
@@ -76,5 +77,9 @@
     "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle",
     "https://modelcontextprotocol.io/specification/2025-06-18/basic/transports",
     "https://modelcontextprotocol.io/specification/2025-06-18/server/tools"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

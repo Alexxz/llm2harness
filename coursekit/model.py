@@ -83,7 +83,7 @@ class ModelClient:
                 "elapsed_seconds": round(time.monotonic() - started, 6),
                 "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
                 "settings": {key: value for key, value in payload.items() if key != "prompt"},
-                "server": {key: decoded[key] for key in ("model", "timings", "tokens_predicted", "tokens_evaluated", "truncated", "stopped_eos", "stopped_limit") if key in decoded},
+                "server": {key: decoded[key] for key in ("model", "timings", "tokens_predicted", "tokens_evaluated", "truncated", "stopped_eos", "stopped_limit", "stop_type") if key in decoded},
             },
         }
         if self.trace:

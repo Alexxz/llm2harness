@@ -433,6 +433,12 @@ def main(argv=None, *, root=ROOT):
                 from .classroom_tmux import run_split
                 return run_split(session)
             if args.experiment:
+                if (session._find_lesson(session.snapshot()['lesson'])[0] / 'workspace.json').exists():
+                    from .workbench import run_workspace
+                    return run_workspace(session)
+                if session.snapshot()['lesson']=='04' and session._find_lesson('04')[1].get('practice_mode')=='learning-lab-v1':
+                    from .learning_lab import run_lab
+                    return run_lab(session, embedded=True)
                 from .classroom_tmux import ExperimentConsole
                 return ExperimentConsole(session).run()
             return StudentConsole(session).run()
@@ -483,7 +489,7 @@ def main(argv=None, *, root=ROOT):
         print(json.dumps(result, ensure_ascii=True, indent=2))
         return 0
     except (ValueError, OSError, RuntimeError) as error:
-        print(json.dumps({"ok": False, "error": str(error), "error_type": type(error).__name__}, ensure_ascii=True, indent=2))
+        print(json.dumps({"ok": False, "error": str(error), "error_type": type(error).__name__}, ensure_ascii=False, indent=2))
         return 2
 
 

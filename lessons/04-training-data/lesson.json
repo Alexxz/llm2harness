@@ -15,7 +15,7 @@
     {
       "id": "before",
       "mode": "live_model",
-      "prompt_file": "prompts/baseline.txt",
+      "prompt_file": "prompts/workspace-baseline.txt",
       "change": "Первый ответ на знакомую заявку без обученной добавки",
       "observe": "Настоящий неизменённый текст и проверка JSON",
       "acceptance": "Сохранён исходный ответ и точный вход"
@@ -30,7 +30,7 @@
     {
       "id": "after",
       "mode": "live_model",
-      "prompt_file": "prompts/variation.txt",
+      "prompt_file": "prompts/workspace-baseline.txt",
       "change": "Подключена обученная добавка при том же входе и настройках",
       "observe": "Два настоящих ответа и добровольное отключение добавки",
       "acceptance": "Входы и настройки равны; желаемый ответ не добавлен в повторный запрос"
@@ -40,7 +40,8 @@
       "mode": "manual",
       "change": "После сравнения выполнен запрос на новой заявке вне четырёх пар",
       "observe": "Первая проба переноса и отличие от успеха на учебном примере",
-      "acceptance": "Новый настоящий ответ записан; понимание обсуждено без экзамена на термин eval"
+      "acceptance": "Новый настоящий ответ записан; понимание обсуждено без экзамена на термин eval",
+      "prompt_file": "prompts/workspace-new_request.txt"
     }
   ],
   "artifacts": [
@@ -64,7 +65,13 @@
     "profile.json",
     "REDESIGN.md",
     "learning-lab.json",
-    "core-schema.json"
+    "core-schema.json",
+    "THEORY.md",
+    "prompts/reproduce-before.txt",
+    "workspace.json",
+    "WORKSPACE.md",
+    "prompts/workspace-baseline.txt",
+    "prompts/workspace-new_request.txt"
   ],
   "completion_criteria": [
     "Получены настоящий ответ до и после на одинаковом входе и настройках",
@@ -102,5 +109,21 @@
     "test_log": "results/learning-lab-full-tests.log",
     "preflight": "evidence/learning-lab-preflight.json"
   },
-  "practice_mode": "learning-lab-v1"
+  "practice_mode": "learning-lab-v1",
+  "workspace_contract": "terminal-workspace-v1",
+  "workspace_human_validation": "not_run_after_intro_revision",
+  "prerequisite_learning": {
+    "00": [
+      "две области",
+      "F1/Esc",
+      "пресет заменяет вход и параметры и очищает выход",
+      "первый настоящий запрос F5"
+    ]
+  },
+  "teaching_order": [
+    "Ответ исходной модели",
+    "Примеры и обучение",
+    "Выбор обученной модели",
+    "Новая заявка"
+  ]
 }

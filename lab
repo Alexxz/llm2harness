@@ -1,6 +1,16 @@
 #!/usr/bin/python3
 """Запуск основного стенда системным Python, независимо от пользовательского pyenv."""
 
+from pathlib import Path
+import sys
+
+from coursekit.local_settings import load_local_settings
 from coursekit.__main__ import main
+
+try:
+    load_local_settings(Path(__file__).resolve().parent)
+except ValueError as error:
+    print(str(error), file=sys.stderr)
+    raise SystemExit(2)
 
 raise SystemExit(main())

@@ -114,6 +114,10 @@ def check_teacher(root):
         answer = backend.answer([])
         if answer['control'] != 'none':
             raise ValueError('Проверка преподавателя вернула учебное управление')
+    except RuntimeError as error:
+        # Session recovery instructions do not apply before a classroom exists.
+        message = str(error).split(' Прогресс сохранён;', 1)[0].split(' /retry', 1)[0]
+        raise RuntimeError(message + ' Урок ещё не начался. После устранения причины повторите команду запуска.') from None
     finally:
         backend.cancel_process()
 
@@ -136,14 +140,15 @@ def prepare(root, lesson, *, endpoint=None, allow_remote=False, split=False):
     try:
         if split and not shutil.which('tmux'):
             raise ValueError('Для двух окон нужен tmux: установите пакет tmux средствами вашей ОС.')
-        print('Проверка подключения преподавателя (без начала урока)…', flush=True)
+        from .teacher import teacher_backend_label
+        print('Проверка подключения преподавателя (без начала урока)… ' + teacher_backend_label(), flush=True)
         report['stage'] = 'teacher'
         check_teacher(root)
         report['teacher'] = 'ready'
         report['stage'] = 'model'
         with (directory.parent / 'prepare.lock').open('a') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
-            if identifier in {'01', '02', '03'}:
+            if identifier in {'01', '02', '03'} or (identifier == '00' and metadata.get('requires_model')):
                 process = ensure_base(root, endpoint, directory)
             elif identifier == '04':
                 if endpoint.rstrip('/') != 'http://127.0.0.1:8089':

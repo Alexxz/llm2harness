@@ -59,7 +59,8 @@
     "fixtures/synthetic-valid.json",
     "fixtures/synthetic-wrong-meaning.json",
     "prompts/baseline.txt",
-    "prompts/variation.txt"
+    "prompts/variation.txt",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Показан синтетический объект правильной формы с неправильным смыслом",
@@ -70,5 +71,9 @@
     "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md",
     "https://github.com/ggml-org/llama.cpp/blob/master/grammars/README.md",
     "https://json-schema.org/understanding-json-schema"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

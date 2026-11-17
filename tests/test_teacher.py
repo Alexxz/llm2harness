@@ -148,6 +148,20 @@ class TeacherTests(unittest.TestCase):
         finally:
             runtime.close()
 
+    def test_backend_failure_distinguishes_network_causes_without_raw_details(self):
+        from coursekit.teacher import backend_failure
+        for diagnostic, explanation in [
+            ('certificate verify failed', 'TLS'),
+            ('failed to lookup address', 'DNS'),
+            ('tunnel connection failed', 'прокси'),
+            ('connection refused', 'отклонил'),
+            ('503 Service Unavailable', 'недоступен'),
+        ]:
+            with self.subTest(diagnostic=diagnostic):
+                message = backend_failure(diagnostic + '; private diagnostic marker', 1)
+                self.assertIn(explanation, message)
+                self.assertNotIn('private diagnostic marker', message)
+
     def test_backend_failure_explains_limit_without_exposing_diagnostics(self):
         from coursekit.teacher import backend_failure
         detail = 'rate limit exceeded; private diagnostic marker must stay private'

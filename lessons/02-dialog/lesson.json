@@ -47,7 +47,7 @@
     {
       "id": "assemble",
       "mode": "manual",
-      "change": "Ученик в редакторе F10 кнопкой F6 собирает полный настоящий первый выход и вопрос, проверяет и сохраняет F5",
+      "change": "Ученик через F9 собирает новый вход из настоящего первого входа и ответа, читает его и отдельно выполняет F5",
       "observe": "Явная цепочка первый вход → первый выход → второй вход → второй выход",
       "acceptance": "Во втором model_request находится точный полный first_response.text, новый вопрос и исходный префикс; затем выполнен реальный запрос"
     },
@@ -77,7 +77,9 @@
     "fixtures/start.json",
     "fixtures/README.md",
     "dialog.py",
-    "run-card.json"
+    "run-card.json",
+    "workspace.json",
+    "WORKSPACE.md"
   ],
   "completion_criteria": [
     "Есть реальные сопоставимые ответы с фактом, без факта и после замены одного факта",
@@ -104,5 +106,25 @@
     "note": "Шесть реальных запросов через StudentConsole, точная сборка edit и сопоставимость суффикса проверены. Отдельно пройдено начало настоящего tmux с настоящим ядром и синтетическим преподавателем для проверки UI; два объяснения проверены через настоящий codex. Это авторские пилоты, не прохождение ученика.",
     "full_console_pilot": "evidence/lesson-02-live-pilot.json",
     "teacher_replay": "results/lesson-02-teacher-review.json"
+  },
+  "workspace_contract": "terminal-workspace-v1",
+  "workspace_human_validation": "acceptable_user_report",
+  "prerequisite_learning": {
+    "00": [
+      "две области",
+      "F1/Esc",
+      "пресет заменяет вход и параметры и очищает выход",
+      "первый настоящий запрос F5"
+    ]
+  },
+  "teaching_order": [
+    "Факт во входе",
+    "Без факта и с другим фактом",
+    "Первый ход",
+    "Передача истории"
+  ],
+  "human_validation": {
+    "status": "acceptable_user_report",
+    "evidence": "../../course/reviews/lessons-01-03-human-acceptance.md"
   }
 }

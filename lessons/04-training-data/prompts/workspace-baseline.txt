@@ -1,0 +1,5 @@
+<|im_start|>system
+Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>
+<|im_start|>user
+Две чашки чая.<|im_end|>
+<|im_start|>assistant

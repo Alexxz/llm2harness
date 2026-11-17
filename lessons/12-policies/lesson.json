@@ -54,7 +54,8 @@
     "fixtures/notes-injection.txt",
     "fixtures/policy-cases.json",
     "prepare.py",
-    "probe.py"
+    "probe.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Проверить и разрешённые, и запрещённые файловые операции",
@@ -66,5 +67,9 @@
   "sources": [
     "https://docs.docker.com/engine/security/",
     "https://docs.docker.com/reference/cli/docker/container/run/"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

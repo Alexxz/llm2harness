@@ -1,3 +1,4 @@
+import curses
 import copy
 import json
 from pathlib import Path
@@ -91,6 +92,88 @@ class LearningLabTests(unittest.TestCase):
         self.lab.state['stage']=1
         self.assertIn('Обучения ещё не было',content(self.lab.state))
         self.assertIn('без запуска обучения',content(self.lab.state))
+
+    def test_embedded_laboratory_starts_with_presets_without_opening_practice(self):
+        from unittest.mock import Mock
+        from coursekit.learning_lab import _laboratory_screen, laboratory_menu
+        text=laboratory_menu(self.lab.state)
+        self.assertIn('F9 · Пример ошибки',text)
+        self.assertIn('F8 · Обучение',text)
+        self.assertNotIn('ТЕКУЩИЕ ДАННЫЕ',text)
+        screen=Mock()
+        screen.getmaxyx.return_value=(30,90)
+        screen.get_wch.return_value=curses.KEY_F9
+        with patch.object(self.lab,'tick',side_effect=[True,False]), patch('coursekit.learning_lab.open_example') as example, patch('coursekit.learning_lab._screen') as practice:
+            _laboratory_screen(screen,self.lab)
+        example.assert_called_once_with(screen,self.lab)
+        practice.assert_not_called()
+
+    def test_lesson04_tmux_routes_practice_keys_to_laboratory_without_popup(self):
+        from unittest.mock import Mock
+        from coursekit.classroom_tmux import configure_interface
+        server=Mock()
+        server.command.return_value.stdout='%teacher'
+        configure_interface(server,self.parent,'%teacher','%lab')
+        calls=[call.args for call in server.command.call_args_list]
+        for key in ('F8','F9'):
+            bindings=[args for args in calls if args[:4]==('bind-key','-T','root',key)]
+            self.assertTrue(bindings)
+            self.assertTrue(all('display-popup' not in args for args in bindings))
+            command = ' '.join(bindings[-1][4:])
+            self.assertIn('select-pane -t %lab',command)
+            self.assertIn('send-keys -t %lab ' + key,command)
+
+    def test_example_opens_exact_prompt_without_running_or_replacing_regular_draft(self):
+        from coursekit.learning_lab import open_example
+        regular=self.parent.directory/'playground.json'
+        regular.write_text('{"prompt":"my own draft"}')
+        snapshot=self.parent.snapshot()
+        snapshot['endpoint']='http://127.0.0.1:8089'
+        stage=self.lab.state['stage']
+        def inspect(screen, playground):
+            self.assertTrue(playground.example)
+            expected=(self.root/'lessons/04-training-data/prompts/reproduce-before.txt').read_text()
+            self.assertEqual(playground.draft['prompt'],expected)
+            self.assertEqual(playground.draft['max_tokens'],64)
+            self.assertEqual(playground.draft['temperature'],0)
+            self.assertEqual(playground.draft['seed'],42)
+            self.assertIsNone(playground.child)
+            return 0
+        from unittest.mock import Mock
+        screen=Mock()
+        with patch.object(self.parent,'snapshot',return_value=snapshot), patch('coursekit.training_lesson.profile'), patch('coursekit.playground._screen',side_effect=inspect):
+            open_example(screen,self.lab)
+        self.assertEqual(self.lab.state['stage'],stage)
+        self.assertEqual(regular.read_text(),'{"prompt":"my own draft"}')
+        self.assertFalse(any(event['event']=='playground_request' for event in self.parent.events(limit=100)))
+
+    def test_first_screen_distinguishes_model_input_from_learner_example(self):
+        text=content(self.lab.state,width=120)
+        self.assertIn('Вход · инструкция модели',text)
+        self.assertIn('Вход · заявка пользователя',text)
+        self.assertIn('Пример выхода · не ответ модели',text)
+        self.assertIn('МОДЕЛИ НЕ ОТПРАВЛЯЕТСЯ',text)
+        self.assertIn(self.lab.state['config']['instruction'][:40],text)
+        self.assertIsNone(self.lab.state.get('before'))
+
+    def test_input_and_target_are_separate_frames_at_narrow_width(self):
+        self.lab.state['stage']=1
+        text=content(self.lab.state,width=34)
+        self.assertEqual(text.count('┌'), 8)
+        self.assertIn('1. Вход',text)
+        self.assertIn('1. Выход',text)
+        for line in text.splitlines():
+            if line.startswith(('┌','│','└')):
+                self.assertEqual(len(line),34)
+        self.assertEqual(self.lab.state['config']['pairs'][0]['answer'],'{"drink":"tea","cups":2}')
+
+    def test_frame_wraps_multiline_output_without_losing_text(self):
+        from coursekit.learning_lab import text_frame
+        value='```json\n'+('длинная строка '*8)+'\n```'
+        lines=text_frame('Выход',value,width=30)
+        self.assertTrue(all(len(line)==30 for line in lines))
+        restored=''.join(line[2:-2].rstrip() for line in lines[1:-1])
+        self.assertEqual(restored.replace(' ',''),value.replace(' ','').replace('\n',''))
 
     def test_prepared_start_opens_only_fixed_practice_and_no_teacher_request(self):
         class Backend:

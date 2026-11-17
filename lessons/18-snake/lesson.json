@@ -62,7 +62,8 @@
     "fixtures/headless_cases.json",
     "fixtures/synthetic-good-report.json",
     "check_snake.py",
-    "test_checker.py"
+    "test_checker.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Игру создал собственный агент с трассой настоящих модельных запросов",
@@ -74,5 +75,9 @@
     "https://github.com/Fission-AI/OpenSpec/blob/main/docs/workflows.md",
     "https://docs.docker.com/reference/cli/docker/container/run/",
     "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

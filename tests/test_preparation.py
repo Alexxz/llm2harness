@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
-from coursekit.preparation import ensure_base, prepare
+from coursekit.preparation import check_teacher, ensure_base, prepare
 from coursekit.classroom_console import main
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +24,24 @@ class PreparationTests(unittest.TestCase):
         with patch('coursekit.preparation.prepare', side_effect=ValueError('not ready')), patch('coursekit.classroom.Session.create') as create, patch('sys.stdout', new_callable=io.StringIO):
             self.assertEqual(main(['start', '--lesson', '01']), 2)
             create.assert_not_called()
+
+    def test_startup_error_preserves_readable_russian(self):
+        with patch('coursekit.preparation.prepare', side_effect=RuntimeError('Нет соединения')), patch('sys.stdout', new_callable=io.StringIO) as output:
+            self.assertEqual(main(['start', '--lesson', '04']), 2)
+        self.assertIn('Нет соединения', output.getvalue())
+        self.assertEqual(json.loads(output.getvalue())['error'], 'Нет соединения')
+
+    def test_preflight_failure_does_not_offer_session_retry(self):
+        from coursekit.teacher import backend_failure
+        backend = Mock()
+        backend.answer.side_effect = RuntimeError(backend_failure('connection failed', 1))
+        with patch('coursekit.teacher.teacher_backend', return_value=backend):
+            with self.assertRaises(RuntimeError) as failure:
+                check_teacher(ROOT)
+        self.assertIn('повторите команду запуска', str(failure.exception))
+        self.assertNotIn('/retry', str(failure.exception))
+        self.assertNotIn('Прогресс сохранён', str(failure.exception))
+        backend.cancel_process.assert_called_once()
 
     def test_interface_needs_teacher_but_not_model(self):
         with tempfile.TemporaryDirectory() as temporary:

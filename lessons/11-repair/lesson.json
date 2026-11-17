@@ -51,7 +51,8 @@
     "prepare.py",
     "build_task.py",
     "check.py",
-    "test_helpers.py"
+    "test_helpers.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Получить настоящий исходный отчёт дефекта",
@@ -62,5 +63,9 @@
   "sources": [
     "https://www.gnu.org/software/bash/manual/bash.html",
     "https://docs.docker.com/reference/cli/docker/container/run/"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

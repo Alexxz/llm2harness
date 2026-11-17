@@ -45,7 +45,8 @@
     "prompts/baseline.txt",
     "prompts/variation.txt",
     "rubric.json",
-    "fixtures/interview-rounds.json"
+    "fixtures/interview-rounds.json",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Ученик показывает подключённую инструкцию в запросе к той же модели",
@@ -55,5 +56,9 @@
   "sources": [
     "https://learn.chatgpt.com/docs/build-skills",
     "https://agentskills.io/specification"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

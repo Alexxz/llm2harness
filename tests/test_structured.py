@@ -95,3 +95,15 @@ class StructuredTests(unittest.TestCase):
         self.session.set_prompt('My next draft')
         self.assertIn('Следующий вход уже изменён',check(self.session))
         self.assertEqual(self.session.snapshot()['prompt'],'My next draft')
+
+    def test_explanations_distinguish_automatic_checks_and_unperformed_checks(self):
+        from coursekit.structured import explain_checks
+        invalid=explain_checks(evaluate('Вот JSON: {"drink":"tea","cups":2}',PROMPT,SCHEMA))
+        self.assertIn('JSON: нет',invalid)
+        self.assertIn('Поля/типы: не проверено',invalid)
+        self.assertIn('Смысл: не проверено',invalid)
+        wrong_order=explain_checks(evaluate('{"drink":"coffee","cups":2}',PROMPT,SCHEMA))
+        self.assertIn('JSON: да',wrong_order)
+        self.assertIn('Поля/типы: да',wrong_order)
+        self.assertIn('Смысл: нет',wrong_order)
+        self.assertIn('не совпали с текущей заявкой',wrong_order)

@@ -45,7 +45,8 @@
     "prompts/baseline.txt",
     "prompts/variation.txt",
     "requirements-template.md",
-    "fixtures/incomplete-mapping.json"
+    "fixtures/incomplete-mapping.json",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Наш агент использует настоящий OpenSpec внутри контролируемого контейнера",
@@ -56,5 +57,9 @@
   "sources": [
     "https://github.com/Fission-AI/OpenSpec/blob/main/docs/cli.md",
     "https://github.com/Fission-AI/OpenSpec/blob/main/docs/workflows.md"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

@@ -1,0 +1,813 @@
+{
+  "purpose": "author-training-stability-check",
+  "not_a_student_session": true,
+  "not_a_teacher_student_simulation": true,
+  "protocol": "Fresh original model and fresh LoRA for each training seed; fixed inference seed=42 and temperature=0. No tuning or stopping based on probe results.",
+  "versions": {
+    "python": "3.12.3",
+    "torch": "2.6.0+cpu",
+    "transformers": "4.51.3",
+    "peft": "0.15.2"
+  },
+  "source_hashes": {
+    "lessons/04-training-data/workspace.json": "dd875a9989ef68d8fad8dd7b1e108682b4be5b951526ce5b5fb4993ccf799e26",
+    "tools/learning_episode_worker.py": "2238a65a2200705e3d078dff786e8c7ca6cdbe0dfab62bdf0c454af892ffacf0"
+  },
+  "config": {
+    "version": 1,
+    "instruction": "Преобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.",
+    "request": "Две чашки чая.",
+    "pairs": [
+      {
+        "request": "Две чашки чая.",
+        "answer": "{\"drink\":\"tea\",\"cups\":2}"
+      },
+      {
+        "request": "Три чашки кофе.",
+        "answer": "{\"drink\":\"coffee\",\"cups\":3}"
+      },
+      {
+        "request": "Одна чашка чая.",
+        "answer": "{\"drink\":\"tea\",\"cups\":1}"
+      },
+      {
+        "request": "Одна чашка кофе.",
+        "answer": "{\"drink\":\"coffee\",\"cups\":1}"
+      }
+    ],
+    "new_request": "Четыре чашки кофе.",
+    "steps": 12,
+    "learning_rate": 0.001,
+    "rank": 4,
+    "max_new_tokens": 64,
+    "max_seconds": 120
+  },
+  "prompts": {
+    "before": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+    "after": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nДве чашки чая.<|im_end|>\n<|im_start|>assistant\n",
+    "new_request": "<|im_start|>system\nПреобразуй заявку на напиток в JSON. Верни только один объект без пояснений и Markdown. Поля: drink — tea для чая или coffee для кофе; cups — количество чашек, целое число.<|im_end|>\n<|im_start|>user\nЧетыре чашки кофе.<|im_end|>\n<|im_start|>assistant\n"
+  },
+  "summary": {
+    "training_completed": 10,
+    "familiar_before_success": 0,
+    "familiar_after_success": 10,
+    "new_request_success": 10,
+    "unique_adapter_hashes": 10,
+    "unique_familiar_outputs": 1,
+    "training_seconds_mean": 18.1
+  },
+  "seconds": 500.57,
+  "runs": [
+    {
+      "training_seed": 42,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 12.744,
+      "parameter_digest_before": "e673346c121dbfb403b6e1a8157d35c8ee672b4f4da34abf4434f18cff3e1522",
+      "parameter_digest_after": "480007286b71c9fcf680e289bec83f807fcb322a3553ba4827dd7cbf07c4203a",
+      "adapter_weights_sha256": "824113c4887b46d953d7339e522d43bf35a886c8a15a5c8e33b118182d2586ba",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 43,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 17.497,
+      "parameter_digest_before": "32ba9aa890fab0703f8bca2aaa42c25339da3e015b66bec9a3a608774585a7be",
+      "parameter_digest_after": "6a7b16566012f5e27e8265e560484e95912bbbdf21c4d22e6d441d2212e8162c",
+      "adapter_weights_sha256": "5131066d14a5c130837b119de1c9c2f537513075b7e09f536201cf7a1ff31518",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 44,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 20.992,
+      "parameter_digest_before": "ef8212db3b99bf668a20d99fdb6082a51559802ce01967c0f9c3285e208e8112",
+      "parameter_digest_after": "f922ecce7fe6c31e41849c03a7bae4bb5adc9082c479e276d5ecdc698ca39039",
+      "adapter_weights_sha256": "2fbc606d0fb98d71c02f8550515a347b0a694be67db84858775b36d17617f7cd",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 45,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 19.678,
+      "parameter_digest_before": "0bfb6aa33587e773460ca64b94e12bc01830926900a6d430864182b5cbbc8044",
+      "parameter_digest_after": "2b8d435a5b4eab0574f4e159b7f4bc41b8a95ffc213fd93ed0088417d984673b",
+      "adapter_weights_sha256": "38f61c7684f564944c85584abded34b2d6711d96d8d67b8ad1ec3a1134752d6a",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 46,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 15.005,
+      "parameter_digest_before": "8e3eb6fcd9a60cf643f0afd715ebdcff9c6d227fc1473171688344dd309ac350",
+      "parameter_digest_after": "872e79c9089cd950d206b30f5c587a6b5ae1f502d259994e444288ccbec92817",
+      "adapter_weights_sha256": "b1ea555165c6c6975af82a360955c56359e10e31e86eebb8f495487668331ef3",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 47,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 19.834,
+      "parameter_digest_before": "5120dd9787fd98154b2d937356872531628750e791737467fc20642f4dcde2b9",
+      "parameter_digest_after": "231cf1bd4a1c88f192c09eb157c074d5cd982feed4c7ab4c8c21442e81da67a0",
+      "adapter_weights_sha256": "9097f3a7055197d2a2d2980d87eaf29b189e343d9c1ce78bbb6e7886d0513929",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 48,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 18.475,
+      "parameter_digest_before": "7e220448cd8580ff7eb5fef94b0c366e11bd8aa51fbacc301df66c6608e836d2",
+      "parameter_digest_after": "7df76fb81ba56c8dab8bf9b743acb8677095b802a55fe3f3ca26d5e4dd7f2212",
+      "adapter_weights_sha256": "f648047e879bd73fe95d878984e48025275bc1f1fb1e7538f9ad57557898d50c",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 49,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 19.021,
+      "parameter_digest_before": "ec8903d3d2880e1b64ad2c358ab3edaebe09392125e51c07fe386aec82f4e2d0",
+      "parameter_digest_after": "4bdfa933c3b1432b1e8dbf895a80bfd0ca027b4c8185de7cbfc8579392721755",
+      "adapter_weights_sha256": "0ae3ace4066c4434be493bbaa33de549ae8baac5cdab3bc555313bd1930ff8cc",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 50,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 17.3,
+      "parameter_digest_before": "ad57fb063f5e516e60ba445483d6902e498f7d5685ab1486cdbf50a43580b51f",
+      "parameter_digest_after": "e8ff39feba0ed2ffc335d37d2ce550a5869cc9100ff2dd957457f3b60a314262",
+      "adapter_weights_sha256": "04126c385d10fc2d4946f6f7e14070b3a291617dce5ab6575511be275ef1930f",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "training_seed": 51,
+      "completed": true,
+      "training_steps": 12,
+      "training_seconds": 20.495,
+      "parameter_digest_before": "938b55fe60589b6b392fb423add05deb09c66961ea90af4c2d2eb4390e316eb4",
+      "parameter_digest_after": "37b3a2bc0bb2e0451663f7fa2319531ab2418cc488687892e3035cd3a1e2c752",
+      "adapter_weights_sha256": "132ab67aa885d648f54fa77c06c57b1c47ec63677870c9befee828a0b6df97ad",
+      "before": {
+        "text": "```json\n{\n  \"drink\": \"tea\",\n  \"cups\": 2\n}\n```",
+        "check": {
+          "json_valid": false,
+          "schema_valid": null,
+          "content_correct": null,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "JSON не читается: строка 1, столбец 1. Проверь кавычки, скобки и лишний текст. Исходный ответ сохранён без исправлений."
+        },
+        "success": false,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "after": {
+        "text": "{\"drink\":\"tea\",\"cups\":2}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "tea",
+            "cups": 2
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      },
+      "new_request": {
+        "text": "{\"drink\":\"coffee\",\"cups\":4}",
+        "check": {
+          "json_valid": true,
+          "schema_valid": true,
+          "content_correct": true,
+          "expected": {
+            "drink": "coffee",
+            "cups": 4
+          },
+          "explanation": "Поля и типы подходят. Сведения совпадают с заявкой."
+        },
+        "success": true,
+        "settings": {
+          "seed": 42,
+          "temperature": 0,
+          "do_sample": false,
+          "max_new_tokens": 64,
+          "dtype": "float32",
+          "device": "cpu"
+        }
+      }
+    }
+  ],
+  "limits": "Ten training seeds, one environment, one familiar and one new request. No parameter tuning on these outcomes. This is not a guarantee for other inputs or an evaluation of teacher/student dialogue."
+}

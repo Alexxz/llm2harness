@@ -54,7 +54,8 @@
     "fixtures/stock.json",
     "prepare_workspace.py",
     "check_report.py",
-    "check_stand.py"
+    "check_stand.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Настоящий автономный запуск создал независимо проверенный отчёт",
@@ -65,5 +66,9 @@
   ],
   "sources": [
     "https://arxiv.org/abs/2210.03629"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

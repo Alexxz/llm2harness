@@ -32,7 +32,7 @@
     {
       "id": "own_change",
       "mode": "manual",
-      "change": "Ученик в F10 меняет одну текущую заявку и сохраняет F5",
+      "change": "Ученик редактирует текущую заявку в поле Вход модели и отдельно выполняет F5",
       "observe": "Самостоятельный реальный запрос и его проверка",
       "acceptance": "Сохранены собственный вход и ответ; ученик объяснил наблюдение"
     }
@@ -59,7 +59,9 @@
     "core-schema.json",
     "prompts/extended-baseline.txt",
     "prompts/extended-variation.txt",
-    "PLAN.md"
+    "PLAN.md",
+    "workspace.json",
+    "WORKSPACE.md"
   ],
   "completion_criteria": [
     "Есть два настоящих сопоставимых ответа baseline и variation и одна собственная вариация заявки",
@@ -89,5 +91,24 @@
     "teacher_model": "неуказанная модель преподавателя",
     "tests": 137,
     "note": "Три настоящих запроса к локальной Qwen base; check и compare без модельных вызовов, F4 сравнение и F10 редактирование в настоящем tmux. Два настоящих ответа преподавателя через отдельное подключение: объяснение затруднения, затем приёмка после синтетического объяснения ученика. Это авторский пилот, не прохождение пользователя."
+  },
+  "workspace_contract": "terminal-workspace-v1",
+  "workspace_human_validation": "acceptable_user_report",
+  "prerequisite_learning": {
+    "00": [
+      "две области",
+      "F1/Esc",
+      "пресет заменяет вход и параметры и очищает выход",
+      "первый настоящий запрос F5"
+    ]
+  },
+  "teaching_order": [
+    "Проверка ответа",
+    "Пример в запросе",
+    "Своя заявка"
+  ],
+  "human_validation": {
+    "status": "acceptable_user_report",
+    "evidence": "../../course/reviews/lessons-01-03-human-acceptance.md"
   }
 }

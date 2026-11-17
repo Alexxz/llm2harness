@@ -1,0 +1,721 @@
+{
+  "purpose": "author-preset-calibration",
+  "not_a_student_session": true,
+  "profile": "base",
+  "protocol_revision": "User explicitly permits budget termination of a whole correct short response. No postprocessing, no hidden stop, no grammar. Exact configured seeds checked separately from seed-variation robustness.",
+  "selected": [
+    {
+      "id": "baseline",
+      "title": "Вопрос о планете",
+      "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+      "parameters": {
+        "max_tokens": 4,
+        "temperature": 0.2,
+        "seed": 42
+      },
+      "expected_observed_text": " Земля."
+    },
+    {
+      "id": "colors",
+      "title": "Цвет снега",
+      "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+      "parameters": {
+        "max_tokens": 5,
+        "temperature": 0.2,
+        "seed": 42
+      },
+      "expected_observed_text": " Снег белый"
+    },
+    {
+      "id": "animals",
+      "title": "Лапы кошки",
+      "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+      "parameters": {
+        "max_tokens": 9,
+        "temperature": 0.2,
+        "seed": 42
+      },
+      "expected_observed_text": " Кошки имеют 4 лапы."
+    },
+    {
+      "id": "counting",
+      "title": "Простой счёт",
+      "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+      "parameters": {
+        "max_tokens": 2,
+        "temperature": 0.2,
+        "seed": 42
+      },
+      "expected_observed_text": " 4"
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "exact_repeat_success": 5,
+      "exact_repeat_total": 5,
+      "seed_variation_identical": 4,
+      "seed_variation_total": 5
+    },
+    "colors": {
+      "exact_repeat_success": 5,
+      "exact_repeat_total": 5,
+      "seed_variation_identical": 4,
+      "seed_variation_total": 5
+    },
+    "animals": {
+      "exact_repeat_success": 5,
+      "exact_repeat_total": 5,
+      "seed_variation_identical": 1,
+      "seed_variation_total": 5
+    },
+    "counting": {
+      "exact_repeat_success": 5,
+      "exact_repeat_total": 5,
+      "seed_variation_identical": 5,
+      "seed_variation_total": 5
+    }
+  },
+  "runs": [
+    {
+      "preset": "baseline",
+      "trial": 1,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 2,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 3,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 4,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 5,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 6,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 0,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 7,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 1,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля,",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 8,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 7,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 9,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 43,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "baseline",
+      "trial": 10,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Как называется наша планета?\nОтвет одним словом:",
+        "n_predict": 4,
+        "temperature": 0.2,
+        "seed": 44,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Земля.",
+      "stop_type": "limit",
+      "tokens_predicted": 4
+    },
+    {
+      "preset": "colors",
+      "trial": 1,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 2,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 3,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 4,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 5,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 6,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 0,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 7,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 1,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег может быть",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 8,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 7,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 9,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 43,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "colors",
+      "trial": 10,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Снег белый или чёрный?\nОтвет:",
+        "n_predict": 5,
+        "temperature": 0.2,
+        "seed": 44,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Снег белый",
+      "stop_type": "limit",
+      "tokens_predicted": 5
+    },
+    {
+      "preset": "animals",
+      "trial": 1,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки имеют 4 лапы.",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 2,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки имеют 4 лапы.",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 3,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки имеют 4 лапы.",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 4,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки имеют 4 лапы.",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 5,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки имеют 4 лапы.",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 6,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 0,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошку можно разделить на две части",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 7,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 1,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Сколько лап у кошки?",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 8,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 7,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки, как и собаки, имеют",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 9,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 43,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки имеют 4 лапы.",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "animals",
+      "trial": 10,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько лап у кошки?\nОтвет:",
+        "n_predict": 9,
+        "temperature": 0.2,
+        "seed": 44,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " Кошки имеют 4 лапы,",
+      "stop_type": "limit",
+      "tokens_predicted": 9
+    },
+    {
+      "preset": "counting",
+      "trial": 1,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 2,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 3,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 4,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 5,
+      "stage": "exact_repeat",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 42,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 6,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 0,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 7,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 1,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 8,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 7,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 9,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 43,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    },
+    {
+      "preset": "counting",
+      "trial": 10,
+      "stage": "seed_variation",
+      "request": {
+        "prompt": "Вопрос: Сколько будет 2 + 2?\nОтвет:",
+        "n_predict": 2,
+        "temperature": 0.2,
+        "seed": 44,
+        "stream": false,
+        "cache_prompt": false
+      },
+      "output": " 4",
+      "stop_type": "limit",
+      "tokens_predicted": 2
+    }
+  ],
+  "limits": "Known demonstration prompts, fixed settings in one environment. Budget-limited generation, not natural EOS. Seed changes may produce broken or different answers; all measured variants retained."
+}

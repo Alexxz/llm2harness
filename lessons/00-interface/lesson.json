@@ -2,9 +2,9 @@
   "id": "00",
   "slug": "interface",
   "title": "Знакомство с интерфейсом",
-  "duration_minutes": 10,
+  "duration_minutes": 15,
   "depends_on": [],
-  "requires_model": false,
+  "requires_model": true,
   "status": {
     "specification": "reviewed",
     "offline_validation": "not_run",
@@ -14,24 +14,24 @@
     {
       "id": "navigation",
       "mode": "manual",
-      "change": "F3 выбирает терминал ученика, F2 возвращает к материалам",
-      "observe": "Курсор и рамка меняют выбранное окно",
-      "acceptance": "Ученик различает назначения окон и сообщает о результате в обычном чате"
+      "change": "Переключение F3/F2",
+      "observe": "Выбранная область и журнал",
+      "acceptance": "Новые focused/teacher_focus после объяснения"
     },
     {
       "id": "help",
       "mode": "manual",
-      "change": "Помощь по Ctrl+h и возврат по Esc",
-      "observe": "Справка появляется и закрывается, ввод сохраняется",
-      "acceptance": "Есть interface_help_opened/closed, нет запроса модели"
+      "change": "Подсказка F1/Esc",
+      "observe": "Открытие и возврат без изменения данных",
+      "acceptance": "Новые help_opened/help_closed"
     },
     {
-      "id": "show",
-      "mode": "manual",
+      "id": "select_and_run",
+      "mode": "live_model",
       "prompt_file": "prompts/baseline.txt",
-      "change": "Показ подготовленного учебного текста",
-      "observe": "Две строки в подписанном блоке входа",
-      "acceptance": "Есть show без model_request; ученик отличает вход от ответа в обычном чате"
+      "change": "Ученик выбирает пресет и сразу выполняет F5 в одном опыте",
+      "observe": "Вопрос и настоящий ответ без промежуточного экзамена",
+      "acceptance": "Новые preset_loaded → completed → teacher_focus и обсуждение результата"
     }
   ],
   "artifacts": [
@@ -39,16 +39,35 @@
     "INTRO.md",
     "INSTRUCTOR.md",
     "prompts/baseline.txt",
-    "prompts/variation.txt"
+    "prompts/variation.txt",
+    "workspace.json",
+    "WORKSPACE.md",
+    "prompts/colors.txt",
+    "prompts/animals.txt",
+    "prompts/counting.txt",
+    "EXPLANATIONS.md",
+    "PRESET_SELECTION.md"
   ],
   "completion_criteria": [
-    "Выбор окон F2/F3 и понимание их назначения",
-    "Помощь Ctrl+h и возврат Esc",
-    "Выполненный show и объяснение подготовленного текста",
-    "Преподаватель явно объявил завершение фиксированного плана из трёх шагов"
+    "Различены преподаватель и лаборатория и поля Вход модели/Выход модели",
+    "Открыта и закрыта подсказка",
+    "Выбран и загружен один из четырёх пресетов",
+    "Получен настоящий ответ модели и объяснено отличие загрузки от запуска"
   ],
   "sources": [
     "https://github.com/tmux/tmux/wiki/Getting-Started",
     "https://man.openbsd.org/tmux.1"
-  ]
+  ],
+  "workspace_contract": "terminal-workspace-v1",
+  "initial_generation": {
+    "max_tokens": 4,
+    "temperature": 0.2,
+    "seed": 42
+  },
+  "human_validation": {
+    "status": "completed_user_report",
+    "revision": "four-stage lesson before this change",
+    "current_revision": "not_run"
+  },
+  "preset_calibration": "fixed_settings_verified"
 }

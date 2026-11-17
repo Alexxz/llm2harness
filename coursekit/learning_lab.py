@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import textwrap
 import threading
 import time
 import uuid
@@ -192,18 +193,30 @@ def teacher_view(parent):
     return {'opened':True,'visible':visible,'stage':stage,'stage_name':STAGES[stage],'next_action':action,'F5_inside_practice':ACTIONS[stage],'training_completed':bool(state['training']),'screen_text':content(state),'finished':state['finished'],'understanding_not_assessed_by_buttons':True}
 
 
-def content(state,details=False):
+def text_frame(title, text, width=78):
+    width=max(10,width)
+    inner=width-4
+    heading=(' '+title+' ')[:width-2]
+    lines=['┌'+heading+'─'*(width-2-len(heading))+'┐']
+    for line in terminal_text(text,limit=MAX_TEXT).expandtabs(4).split('\n'):
+        for part in textwrap.wrap(line,width=inner,replace_whitespace=False,drop_whitespace=False) or ['']:
+            lines.append('│ '+part.ljust(inner)+' │')
+    lines.append('└'+'─'*(width-2)+'┘')
+    return lines
+
+
+def content(state,details=False,width=78):
     c=state['config'];stage=state['stage']
     chapters=(1,2,3,4,4,5,5)
     titles=('Ответ до обучения','Учебные пары','Настоящее обучение','Ответ после обучения','Сравнение до и после','Новая заявка','Итог опыта')
     goals=(
-        'Увидеть, как исходная модель отвечает без нашей добавки.',
-        'Задать образцы ответов, на которых будем учить модель.',
-        'Изменить параметры небольшой добавки по учебным парам.',
-        'Проверить ту же заявку с обученной добавкой.',
-        'Увидеть эффект добавки при неизменном входе.',
-        'Проверить заявку, которой не было среди учебных пар.',
-        'Связать изменение параметров с наблюдаемыми ответами.')
+        'Обработчику заказов нужен чистый JSON с верными напитком и количеством. Сначала проверим, подходит ли исходный ответ. Затем попробуем обучением закрепить нужный формат и повторим тот же запрос.',
+        'Учебная пара — заявка и наш желаемый ответ. Программа будет учиться на этих образцах; сейчас мы только рассматриваем их, параметры пока не меняются.',
+        'Параметры — числа, с помощью которых модель выбирает продолжение текста. Программа сравнит предсказания с учебными образцами и вычислит поправки к этим числам. Здесь обучается только небольшая добавка LoRA; исходные веса остаются прежними.',
+        'Теперь подключим обученную добавку и повторим прежний запрос. Учебных пар в нём не будет: проверяем влияние изменённых параметров, а не подсказки в тексте.',
+        'Запрос и настройки одинаковые; отличается подключение добавки. Сравним форму и содержание ответов отдельно: правильный JSON ещё может содержать неверный заказ.',
+        'Знакомая заявка участвовала в обучении, поэтому успех на ней мог быть подстройкой под пример. Новая заявка покажет, получилось ли применить выученное хотя бы в одном другом случае.',
+        'Обучение изменило параметры добавки, а три ответа показывают результат на двух заявках. Обсудим, помогла ли добавка с формой и сведениями о заказе. Для вывода о надёжности понадобятся другие заявки.')
     done=(
         'Ещё ничего не запускали. Параметры не менялись.',
         'Получен ответ ДО. Обучения ещё не было.',
@@ -214,47 +227,68 @@ def content(state,details=False):
         'Получен ответ и на новую заявку. Результаты сохранены.')
     actions=(
         'F5 — получить ответ исходной модели.',
-        'Прочитайте пары. F5 — подтвердить их без запуска обучения.',
+        'Сверь каждую заявку с образцом: напиток передан в drink, количество — числом в cups, вокруг JSON нет пояснений. F5 — подтвердить пары без запуска обучения.',
         'F5 — запустить настоящее обучение.',
         'F5 — отправить тот же вход с обученной добавкой.',
-        'Сравните ответы. F5 — показать новую заявку.',
+        'Сравни JSON и сведения о заказе в двух ответах. F5 — показать новую заявку.',
         'F5 — получить ответ на новую заявку с добавкой.',
         'F5 — вернуться в F2 и обсудить наблюдения с преподавателем.')
     results=(
         'Появится настоящий ответ ДО, затем откроются учебные пары.',
         'Откроется экран запуска обучения. До отдельного нажатия веса не меняются.',
-        'Увидите реальные шаги; после завершения станет доступен повторный запрос.',
+        'Появятся шаги и время обучения. После завершения можно будет повторить запрос.',
         'Появится ответ ПОСЛЕ и сравнение рядом с исходным.',
         'Появится другая заявка. Её ответ пока не будет запрошен.',
-        'Появится отдельный результат первой пробы на новой задаче.',
-        'Опыт останется сохранённым. Кнопки не заменяют обсуждения понимания.')
+        'Появится ответ. Проверим, верно ли указаны напиток и число чашек.',
+        'В F2 разберём, что изменилось в ответах и какие вопросы остались.')
     lines=[f'ЭТАП {chapters[stage]}/5 · {titles[stage]}',
            '1 Ответ до  →  2 Пары  →  3 Обучение  →  4 Сравнение  →  5 Новая заявка',
            '', 'ЦЕЛЬ',goals[stage],'','УЖЕ СДЕЛАНО',done[stage],'','ТЕКУЩИЕ ДАННЫЕ']
     def answer(key,label):
         value=state.get(key)
         if not value:return
-        lines.extend([label,value['text']])
+        lines.extend(text_frame('Выход · '+label,value['text'],width))
         if value.get('check'):
             check=value['check'];status=lambda v:'да' if v is True else 'нет' if v is False else 'не проверяли'
             lines.append('JSON читается: '+status(check['json_valid'])+' | Поля/типы: '+status(check['schema_valid'])+' | Значения: '+status(check['content_correct']))
     if stage==0:
-        lines+=['Заявка: '+c['request'],'Нужны два поля: drink — напиток, cups — число чашек.']
+        lines+=['ЧТО ПОЛУЧИТ МОДЕЛЬ',
+                'Запрос состоит из двух частей: инструкции о формате и заявки на напиток.']
+        lines+=text_frame('Вход · инструкция модели',c['instruction'],width)
+        lines+=text_frame('Вход · заявка пользователя',c['request'],width)
+        lines+=['','ПОЯСНЕНИЕ ДЛЯ ТЕБЯ · МОДЕЛИ НЕ ОТПРАВЛЯЕТСЯ',
+                'Для другой заявки «Одна чашка кофе» нужный ответ выглядел бы так:']
+        lines+=text_frame('Пример выхода · не ответ модели','{"drink":"coffee","cups":1}',width)
+        lines+=['Это иллюстрация формата: drink хранит напиток, cups — число чашек.',
+                '', 'РЕАЛЬНАЯ ОШИБКА · ИЗ ПРОШЛОГО ПРОГОНА',
+                'На заявку «Две чашки чая» исходная модель уже отвечала так:']
+        lines+=text_frame('Выход · сохранённый ответ до обучения','```json\n{\n  "drink": "tea",\n  "cups": 2\n}\n```',width)
+        lines+=['Данные внутри верны, но строки с ``` вокруг объекта не входят в JSON.',
+                'Наш обработчик читает весь ответ как JSON и останавливается на первой строке.',
+                'Инструкция «без пояснений и Markdown» уже была в запросе.',
+                'Попробуем обучением закрепить ответ без обрамления. Успех не гарантирован.',
+                'F5 — получить ответ на текущую заявку.',
+                'F9 — посмотреть пример в песочнице: точный вход и настройки уже заполнены.',
+                'В песочнице F5 получает новый ответ, Esc возвращает на этот шаг.']
     elif stage==1:
-        lines+=['Слово «желаемый» означает НАШ образец, а не новый ответ модели.']
+        lines+=['Это подготовленные нами образцы, а не новые ответы модели.',
+                'Как читать пару: «Две чашки чая» → {"drink":"tea","cups":2}.',
+                '«чая» задаёт drink=tea, «две» — cups=2. Число записано без кавычек.',
+                'В остальных парах меняются напиток и количество, но сохраняется форма: только JSON с drink и cups.',
+                'Программа будет учиться по этим ответам, поэтому сначала проверяем сами образцы.']
         for i,pair in enumerate(c['pairs'],1):
-            lines+=[f"{i}. Заявка: {pair['request']}",'   Желаемый ответ: '+pair['answer']]
+            lines+=text_frame(f'{i}. Вход · заявка',pair['request'],width)
+            lines+=text_frame(f'{i}. Выход · Желаемый ответ:',pair['answer'],width)
+            lines.append('')
         lines+=['F7 — при желании изменить первый образец. Полный ответ ДО — в F4.']
     elif stage==2:
-        lines+=[f"Учебных пар: {len(c['pairs'])}. Шагов обновления: {c['steps']}.",
-                'Исходные веса остаются прежними. Меняется только LoRA-добавка.',
-                'Программа сравнит предсказания с образцами и обновит обучаемые числа.']
+        lines+=[f"Учебных пар: {len(c['pairs'])}. Шагов обновления: {c['steps']}."]
     elif stage==3:
         t=state['training'];lines+=[f"Выполнено {t['steps']} шагов за {t['training_seconds']:.1f} с обучения.",
-            'Повторяем заявку: '+c['request'],
             'Инструкция и настройки те же. Учебные образцы в запрос не добавляются.']
+        lines+=text_frame('Вход · повторная заявка',c['request'],width)
     elif stage==4:
-        lines+=['Заявка в обоих случаях: '+c['request']]
+        lines+=text_frame('Вход · одинаковый для обоих ответов',c['request'],width)
         answer('before','А. БЕЗ ОБУЧЕННОЙ ДОБАВКИ');lines.append('')
         answer('after','Б. С ОБУЧЕННОЙ ДОБАВКОЙ')
         if state.get('off'):
@@ -262,8 +296,8 @@ def content(state,details=False):
         else:lines+=['','Необязательно: F8 повторит эту заявку без добавки.']
         lines+=['Изменение параметров не гарантирует улучшение каждого ответа.']
     elif stage==5:
-        lines+=['Новая заявка: '+c['new_request'],
-                'Этой заявки не было в четырёх учебных парах.',
+        lines+=text_frame('Вход · новая заявка',c['new_request'],width)
+        lines+=['Этой заявки не было в четырёх учебных парах.',
                 'Правильный ответ не будет подставлен в запрос.']
     else:
         answer('before','1. ДО:');lines.append('');answer('after','2. ПОСЛЕ:');lines.append('');answer('probe','3. НОВАЯ ЗАЯВКА:')
@@ -275,8 +309,11 @@ def content(state,details=False):
         for key,label in [('before','ДО'),('after','ПОСЛЕ'),('off','ДОБАВКА ОТКЛЮЧЕНА'),('probe','НОВАЯ ЗАЯВКА')]:
             value=state.get(key)
             if value:
-                lines+=['',label,'Заявка: '+value['request'],'Полный ответ:',value['text'],
-                        'Точный переданный вход:',value['prompt'],'Настройки: '+json.dumps(value['settings'],ensure_ascii=False)]
+                lines+=['',label]
+                lines+=text_frame('Вход · заявка',value['request'],width)
+                lines+=text_frame('Выход · полный ответ',value['text'],width)
+                lines+=text_frame('Вход · точный запрос модели',value['prompt'],width)
+                lines+=['Настройки: '+json.dumps(value['settings'],ensure_ascii=False)]
         if state.get('training'):
             t=state['training'];lines+=['','Параметры опыта: '+json.dumps({k:c[k] for k in ('steps','rank','learning_rate','max_new_tokens')},ensure_ascii=False),
                 'Файл добавки: '+t.get('adapter_directory','сохранён в дочерней сессии'),
@@ -285,26 +322,91 @@ def content(state,details=False):
     return '\n'.join(lines)
 
 
-def run_lab(parent):
-    lab=LearningLab(parent);parent._record('learning_lab_opened','student',{'child':lab.child.id})
-    try:return curses.wrapper(lambda screen:_screen(screen,lab))
+def open_example(screen, lab):
+    from .playground import Playground, _screen as playground_screen
+    from .training_lesson import profile
+    if lab.busy:
+        raise ValueError('Дождись завершения текущего опыта.')
+    if lab.parent.snapshot()['endpoint'].rstrip('/') != 'http://127.0.0.1:8089':
+        raise ValueError('Для примера нужен локальный профиль урока 04 на порту 8089.')
+    profile()
+    directory, _ = lab.parent._find_lesson('04')
+    prompt = _read(directory / 'prompts/reproduce-before.txt', lab.parent.root, MAX_TEXT).decode('utf-8')
+    playground = Playground(lab.parent, preset={'prompt': prompt, 'max_tokens': 64, 'temperature': 0, 'seed': 42})
+    try:
+        return playground_screen(screen, playground)
+    finally:
+        playground.close()
+        lab.parent._record('playground_closed', 'student', {'example': 'lesson04-before'})
+        screen.timeout(100)
+
+
+def laboratory_menu(state):
+    return '\n'.join([
+        'ЛАБОРАТОРИЯ · УРОК 04', '',
+        'Объяснение урока — слева, в F2.',
+        'Здесь можно выбрать подготовленный опыт. Выбор ничего не запускает.', '',
+        'F9 · Пример ошибки',
+        'Точный запрос, на котором модель добавляла Markdown вокруг JSON.',
+        'Откроется песочница; F5 внутри неё получает настоящий ответ.', '',
+        'F8 · Обучение: до и после',
+        'Заявка → учебные пары → обучение → сравнение ответов.',
+        'Откроется практикум с сохранённого шага: '+STAGES[state['stage']]+'.', '',
+        'F2 — к объяснению преподавателя',
+    ])
+
+
+def _laboratory_screen(screen, lab):
+    screen.timeout(100)
+    message=''
+    while lab.tick():
+        try:curses.curs_set(0)
+        except curses.error:pass
+        screen.erase()
+        rows, cols=screen.getmaxyx()
+        lines=[]
+        for line in (laboratory_menu(lab.state)+'\n'+message).splitlines():
+            lines+=textwrap.wrap(line,width=max(10,cols-2)) or ['']
+        for row,line in enumerate(lines[:max(1,rows-1)]):
+            try:screen.addnstr(row,0,line,max(1,cols-1))
+            except curses.error:pass
+        screen.refresh()
+        try:key=screen.get_wch()
+        except curses.error:continue
+        try:
+            if key==curses.KEY_F9:
+                open_example(screen,lab)
+            elif key in (curses.KEY_F8,'\n','\r'):
+                lab.parent._record('learning_lab_opened','student',{'child':lab.child.id})
+                try:_screen(screen,lab)
+                finally:lab.parent._record('learning_lab_closed','student',{'stage':lab.state['stage'],'finished':lab.state['finished']})
+            elif key=='\x1b':
+                subprocess.run(['tmux','select-pane','-L'],check=False,timeout=3)
+        except (ValueError,RuntimeError,OSError) as error:message=str(error)
+    return 0
+
+
+def run_lab(parent, *, embedded=False):
+    lab=LearningLab(parent);lab.embedded=embedded
+    if not embedded:parent._record('learning_lab_opened','student',{'child':lab.child.id})
+    try:return curses.wrapper(lambda screen:(_laboratory_screen if embedded else _screen)(screen,lab))
     finally:
         lab.close();parent._record('learning_lab_closed','student',{'stage':lab.state['stage'],'finished':lab.state['finished']})
 
 
 def _screen(screen,lab):
     import textwrap
-    screen.timeout(100);offset=0;details=False;editing=False;draft='';position=0;selected=False;message='F5 выполняет только подписанный шаг. Esc сохраняет опыт и возвращает в F2.'
+    screen.timeout(100);offset=0;details=False;editing=False;draft='';position=0;selected=False;message='F5 выполняет подписанный шаг. Esc — назад; F2 — к преподавателю.'
     while lab.tick():
         rows,cols=screen.getmaxyx();screen.erase()
         def put(y,text,style=0):
             try:screen.addnstr(y,0,terminal_text(text,limit=MAX_TEXT),max(1,cols-1),style)
             except curses.error:pass
         wrapped=[]
-        for line in content(lab.state,details).splitlines():wrapped+=textwrap.wrap(line,width=max(10,cols-2),replace_whitespace=False) or ['']
+        for line in content(lab.state,details,width=max(10,cols-2)).splitlines():wrapped+=textwrap.wrap(line,width=max(10,cols-2),replace_whitespace=False) or ['']
         height=max(1,rows-5);offset=min(max(0,offset),max(0,len(wrapped)-height))
         for i,line in enumerate(wrapped[offset:offset+height]):
-            heading=line in {'ЦЕЛЬ','УЖЕ СДЕЛАНО','ТЕКУЩИЕ ДАННЫЕ','ВАШЕ ДЕЙСТВИЕ','ПОСЛЕ ЭТОГО'} or line.startswith(('ЭТАП ','А. ','Б. ','ДЕТАЛИ ОПЫТА'))
+            heading=line in {'ЦЕЛЬ','УЖЕ СДЕЛАНО','ТЕКУЩИЕ ДАННЫЕ','ВАШЕ ДЕЙСТВИЕ','ПОСЛЕ ЭТОГО','ЧТО ПОЛУЧИТ МОДЕЛЬ','ПОЯСНЕНИЕ ДЛЯ ТЕБЯ · МОДЕЛИ НЕ ОТПРАВЛЯЕТСЯ'} or line.startswith(('ЭТАП ','А. ','Б. ','ДЕТАЛИ ОПЫТА'))
             put(i,line,curses.A_BOLD if heading else 0)
         if editing:
             put(rows-4,message)
@@ -312,9 +414,10 @@ def _screen(screen,lab):
         elif lab.busy:
             put(rows-3,'|/-\\'[int(time.monotonic()*8)%4]+f' {int(time.monotonic()-lab.started)} с · '+lab.progress,curses.A_BOLD)
         else:put(rows-3,lab.error or message)
-        put(rows-2,'↑↓ / PgUp PgDn — читать · F4 — точные входы и детали · Esc — в F2')
+        put(rows-2,'↑↓ / PgUp PgDn — читать · F4 — детали · Esc — назад · F2 — преподаватель')
         labels=ACTIONS
         footer='Выполняется · F6 остановить · Esc остановить и вернуться' if lab.busy else 'F5 — '+labels[lab.state['stage']]+' · F7 изменить до обучения'
+        if not lab.busy and lab.state['stage']==0:footer+=' · F9 пример в песочнице'
         put(rows-1,footer,curses.A_REVERSE)
         try:
             curses.curs_set(1 if editing else 0)
@@ -348,6 +451,11 @@ def _screen(screen,lab):
         elif key==curses.KEY_F7 and not lab.busy and lab.state['stage'] in {0,1}:
             editing=True;draft=lab.state['config']['request'] if lab.state['stage']==0 else lab.state['config']['pairs'][0]['answer'];position=len(draft);selected=True
             message='Редактирование: стрелки · новый ввод заменяет выделенное · Enter сохранить · Esc отменить'
+        elif key==curses.KEY_F9 and lab.state['stage']==0 and not lab.busy:
+            try:
+                open_example(screen,lab)
+                message='Пример закрыт. Ты на прежнем шаге практикума; F5 — получить ответ ДО.'
+            except (ValueError,RuntimeError,OSError) as error:message=str(error)
         elif key==curses.KEY_F8 and lab.state['stage']>=4:
             try:lab.start('off');offset=0
             except ValueError as error:message=str(error)

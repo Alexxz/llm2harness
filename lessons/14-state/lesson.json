@@ -62,7 +62,8 @@
     "prompts/variation.txt",
     "prompts/ask-name.txt",
     "fixtures/states.json",
-    "checkpoint_experiment.py"
+    "checkpoint_experiment.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Различены вход модели, файлы проекта, журнал событий и checkpoint",
@@ -75,5 +76,9 @@
     "https://docs.python.org/3.12/library/json.html",
     "https://docs.python.org/3.12/library/os.html#os.replace",
     "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

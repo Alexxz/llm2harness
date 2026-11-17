@@ -57,7 +57,9 @@
     "TEACHER_START.md",
     "SETUP.md",
     "AFTER_SHOW.md",
-    "EXPLANATIONS.md"
+    "EXPLANATIONS.md",
+    "workspace.json",
+    "WORKSPACE.md"
   ],
   "completion_criteria": [
     "Выполнены два реальных исходных запроса и запрос изменённого промпта с сохранёнными параметрами",
@@ -87,11 +89,25 @@
   },
   "pedagogy_revision": "mechanism_explanation_then_worked_example_then_experiment_then_assessment",
   "teaching_order": [
-    "first_completion",
-    "optional_play",
-    "max_tokens",
-    "temperature",
-    "conclusion"
+    "Первый ответ",
+    "Изменение входа",
+    "Длина ответа",
+    "Температура",
+    "Повтор сравнения"
   ],
-  "delivery_contract": "interactive-v1"
+  "delivery_contract": "interactive-v1",
+  "workspace_contract": "terminal-workspace-v1",
+  "workspace_human_validation": "acceptable_user_report",
+  "prerequisite_learning": {
+    "00": [
+      "две области",
+      "F1/Esc",
+      "пресет заменяет вход и параметры и очищает выход",
+      "первый настоящий запрос F5"
+    ]
+  },
+  "human_validation": {
+    "status": "acceptable_user_report",
+    "evidence": "../../course/reviews/lessons-01-03-human-acceptance.md"
+  }
 }

@@ -137,3 +137,31 @@ def render_comparison(found, comparable):
         blocks.extend([title, 'Вход:\n' + row['prompt'], 'Настройки: ' + json.dumps(row['settings'], ensure_ascii=False), 'Модель: ' + str(row.get('model')) + '; сервер: ' + str(row.get('endpoint')), 'Полный ответ:\n' + row['output'], format_check(row['check'])])
     blocks.append('ДАЛЬШЕ: F10 — изменить только напиток или количество в строке «Текущая заявка»; F5 сохранить. Затем run и check при открытом допуске. Вопросы и обсуждение — F2.')
     return '\n\n'.join(blocks)
+
+
+def explain_checks(report):
+    """Explain recorded checks without treating an unperformed check as a failure."""
+    def verdict(key):
+        value=report.get(key)
+        return 'да' if value is True else 'нет' if value is False else 'не проверено'
+    json_text='Весь ответ удалось прочитать как JSON.' if report.get('json_valid') else 'Весь ответ не удалось прочитать как JSON.'
+    if report.get('schema_valid') is None:
+        fields_text='Эту проверку не выполняли, поскольку JSON не прочитан.'
+    elif report['schema_valid']:
+        fields_text='Нужные поля и типы значений подходят: drink — строка, cups — целое число.'
+    else:
+        fields_text='Набор полей или типы значений не подходят; например, количество не должно быть строкой.'
+    if report.get('content_correct') is True:
+        content_text='Напиток и количество совпали с текущей заявкой.'
+    elif report.get('content_correct') is False:
+        content_text='Напиток или количество не совпали с текущей заявкой.'
+    elif report.get('schema_valid'):
+        content_text='Автоматическое сравнение смысла для этой формулировки недоступно; результат нужно сопоставить с заявкой вручную.'
+    else:
+        content_text='Смысл не сравнивали: сначала должен подойти формат ответа.'
+    return '\n\n'.join([
+        '**Что проверила программа**',
+        '**JSON: '+verdict('json_valid')+'** — '+json_text,
+        '**Поля/типы: '+verdict('schema_valid')+'** — '+fields_text,
+        '**Смысл: '+verdict('content_correct')+'** — '+content_text,
+    ])

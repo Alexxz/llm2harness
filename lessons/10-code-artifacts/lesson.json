@@ -42,7 +42,8 @@
     "INSTRUCTOR.md",
     "prompts/baseline.txt",
     "prompts/variation.txt",
-    "check.py"
+    "check.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Показать write_file и фактически созданный файл",
@@ -54,5 +55,9 @@
     "https://www.gnu.org/software/bash/manual/bash.html",
     "https://docs.docker.com/engine/containers/run/",
     "https://docs.docker.com/reference/cli/docker/container/run/"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }

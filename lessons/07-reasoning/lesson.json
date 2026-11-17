@@ -55,7 +55,8 @@
     "fixtures/correct.json",
     "fixtures/plausible_wrong.json",
     "inventory.schema.json",
-    "check_inventory.py"
+    "check_inventory.py",
+    "LABORATORY_PLAN.md"
   ],
   "completion_criteria": [
     "Два настоящих запроса различаются только инструкцией о плане",
@@ -67,5 +68,9 @@
   "sources": [
     "https://arxiv.org/abs/2201.11903",
     "https://arxiv.org/abs/2305.04388"
-  ]
+  ],
+  "workspace_migration": {
+    "status": "design_reviewed_not_implemented",
+    "plan": "LABORATORY_PLAN.md"
+  }
 }
